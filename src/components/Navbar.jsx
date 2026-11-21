@@ -6,16 +6,45 @@ import { cn } from '../lib/utils';
 export default function Navbar() {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('#patents');
 
   useEffect(() => {
-    const onScroll = () => setStuck(window.scrollY > 40);
+    const onScroll = () => {
+      setStuck(window.scrollY > 40);
+
+      const sectionIds = ['patents', 'trajectory', 'projects', 'leadership', 'credentials', 'media', 'contact'];
+      const scrollPosition = window.scrollY + 180;
+
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveTab(`#${sectionIds[i]}`);
+            break;
+          }
+        }
+      }
+    };
+
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (window.location.hash) {
+      setActiveTab(window.location.hash);
+    }
+    const onHashChange = () => {
+      if (window.location.hash) setActiveTab(window.location.hash);
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
   const navLinks = [
-    { label: 'Patents', href: '#patents', highlight: true },
+    { label: 'Patents', href: '#patents' },
     { label: 'Trajectory', href: '#trajectory' },
     { label: 'Projects', href: '#projects' },
     { label: 'Leadership', href: '#leadership' },
@@ -56,22 +85,33 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Center Desktop Navigation Pills — Quarry UI Style */}
-        <nav className="hidden md:flex items-center gap-1 font-mono text-xs" aria-label="Main Navigation">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'rounded-full px-3.5 py-1.5 transition-colors',
-                link.highlight
-                  ? 'bg-[#2f6bff] text-white font-bold shadow-sm hover:bg-[#2558d9]'
-                  : 'text-slate-300 hover:bg-white/10 hover:text-white'
-              )}
-            >
-              {link.label}
-            </a>
-          ))}
+        {/* Center Desktop Navigation Pills — Dynamic Sliding Pill */}
+        <nav className="relative hidden md:flex items-center gap-1 font-mono text-xs" aria-label="Main Navigation">
+          {navLinks.map((link) => {
+            const isActive = activeTab === link.href;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setActiveTab(link.href)}
+                className={cn(
+                  'relative rounded-full px-3.5 py-1.5 transition-colors duration-200 z-10 select-none',
+                  isActive
+                    ? 'text-white font-bold'
+                    : 'text-slate-300 hover:text-white'
+                )}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavPill"
+                    className="absolute inset-0 rounded-full bg-[#2f6bff] shadow-sm -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right CTA Action & Mobile Toggle */}
@@ -137,10 +177,13 @@ export default function Navbar() {
                 >
                   <a
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setActiveTab(link.href);
+                      setOpen(false);
+                    }}
                     className={cn(
                       'block py-2.5 px-3 rounded-lg text-xs tracking-wider transition-colors',
-                      link.highlight
+                      activeTab === link.href
                         ? 'bg-[#2f6bff] text-white font-bold'
                         : 'text-slate-300 hover:text-white hover:bg-white/5'
                     )}
