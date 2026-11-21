@@ -14,7 +14,7 @@ import MobileQuickNav from './components/MobileQuickNav';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#080a0f] text-slate-100 flex flex-col font-sans selection:bg-emerald-500/20 selection:text-emerald-300 pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col font-sans selection:bg-emerald-500/25 selection:text-emerald-300 pb-16 md:pb-0">
       <Navbar />
       <main className="flex-1">
         <HeroSection />

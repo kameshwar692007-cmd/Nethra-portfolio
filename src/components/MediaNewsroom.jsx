@@ -9,9 +9,11 @@ import {
   ChevronDown, 
   ChevronUp, 
   X,
-  FileCheck2,
   Globe2
 } from 'lucide-react';
+import SpotlightCard from './ui/SpotlightCard';
+import BorderBeam from './ui/BorderBeam';
+import NumberTicker from './ui/NumberTicker';
 
 export default function MediaNewsroom() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -40,7 +42,7 @@ export default function MediaNewsroom() {
   const displayedArticles = filteredArticles.slice(0, visibleCount);
 
   return (
-    <section id="media" className="py-14 sm:py-20 bg-[#0d1322] border-b border-[#202c44] relative">
+    <section id="media" className="py-14 sm:py-20 bg-[#0d1322] border-b-2 border-[#202c44] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -57,98 +59,106 @@ export default function MediaNewsroom() {
           </p>
         </div>
 
-        {/* PR Campaign Highlights Card with Visible Boundaries & Exact Natural Image Ratios */}
-        <div className="mb-8 rounded-2xl bg-[#141d30] border-2 border-[#23304a] p-5 sm:p-7 shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            
-            {/* Left Column (7 cols) */}
-            <div className="lg:col-span-7 space-y-3.5">
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-[11px] font-mono font-bold">
-                  OFFICIAL NATIONAL CAMPAIGN &bull; 24 FEB 2026
-                </span>
+        {/* PR Campaign Highlights Card with 21st.dev Border Beam & Spotlight */}
+        <div className="mb-8">
+          <SpotlightCard className="p-5 sm:p-7 shadow-xl relative group">
+            <BorderBeam size={280} duration={11} colorFrom="#10b981" colorTo="#34d399" borderWidth={2} />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              
+              {/* Left Column (7 cols) */}
+              <div className="lg:col-span-7 space-y-3.5">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-[11px] font-mono font-bold">
+                    OFFICIAL NATIONAL CAMPAIGN &bull; 24 FEB 2026
+                  </span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug font-display">
+                  &ldquo;From Government School to Startup Founder at 16: The Inspiring Journey of Nethra D&rdquo;
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  Syndicated coverage across 207 verified news outlets with a combined reach exceeding 2.3 Million readers across 28+ states and union territories.
+                </p>
+
+                {/* Numerical Metrics with NumberTicker */}
+                <div className="grid grid-cols-3 gap-2.5 pt-1">
+                  <div className="p-3 rounded-xl bg-[#0c1322] border border-[#1e2a42] text-center">
+                    <span className="block text-xl sm:text-2xl font-extrabold text-emerald-400 font-display">
+                      <NumberTicker value={207} />
+                    </span>
+                    <span className="text-[11px] text-slate-300 font-medium font-sans">Publishers</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#0c1322] border border-[#1e2a42] text-center">
+                    <span className="block text-xl sm:text-2xl font-extrabold text-emerald-400 font-display">2.3M+</span>
+                    <span className="text-[11px] text-slate-300 font-medium font-sans">Audience</span>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#0c1322] border border-[#1e2a42] text-center">
+                    <span className="block text-xl sm:text-2xl font-extrabold text-emerald-400 font-display">
+                      <NumberTicker value={28} />+
+                    </span>
+                    <span className="text-[11px] text-slate-300 font-medium font-sans">States</span>
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="pt-2 flex flex-wrap gap-2.5">
+                  <button
+                    onClick={() => setIsModalOpen(true)}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 active:scale-98 text-slate-950 text-xs font-bold transition-all shadow-[0_2px_10px_rgba(16,185,129,0.25)]"
+                  >
+                    <Search className="w-3.5 h-3.5" />
+                    <span>Search All 207 Articles</span>
+                  </button>
+
+                  <a
+                    href="/documents/Nethra-D-Inspiring-Journey-Media-Report.pdf"
+                    download
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#162035] hover:bg-[#1d2a45] border border-[#2a3a5a] active:scale-98 text-slate-200 text-xs font-semibold transition-all hover:border-emerald-500/50"
+                  >
+                    <Download className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>17-Page Media Dossier (PDF)</span>
+                  </a>
+                </div>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug font-display">
-                &ldquo;From Government School to Startup Founder at 16: The Inspiring Journey of Nethra D&rdquo;
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                Syndicated coverage across 207 verified news outlets with a combined reach exceeding 2.3 Million readers across 28+ states and union territories.
-              </p>
-
-              {/* Numerical Metrics */}
-              <div className="grid grid-cols-3 gap-2.5 pt-1">
-                <div className="p-3 rounded-xl bg-[#0c1322] border border-[#1e2a42] text-center">
-                  <span className="block text-xl sm:text-2xl font-extrabold text-emerald-400 font-display">207</span>
-                  <span className="text-[11px] text-slate-300 font-medium">Publishers</span>
-                </div>
-                <div className="p-3 rounded-xl bg-[#0c1322] border border-[#1e2a42] text-center">
-                  <span className="block text-xl sm:text-2xl font-extrabold text-emerald-400 font-display">2.3M+</span>
-                  <span className="text-[11px] text-slate-300 font-medium">Audience</span>
-                </div>
-                <div className="p-3 rounded-xl bg-[#0c1322] border border-[#1e2a42] text-center">
-                  <span className="block text-xl sm:text-2xl font-extrabold text-emerald-400 font-display">28+</span>
-                  <span className="text-[11px] text-slate-300 font-medium">States</span>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-2 flex flex-wrap gap-2.5">
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-400 hover:bg-emerald-300 active:scale-98 text-slate-950 text-xs font-bold transition-all shadow-[0_2px_10px_rgba(16,185,129,0.25)]"
-                >
-                  <Search className="w-3.5 h-3.5" />
-                  <span>Search All 207 Articles</span>
-                </button>
-
-                <a
-                  href="/documents/Nethra-D-Inspiring-Journey-Media-Report.pdf"
-                  download
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#162035] hover:bg-[#1d2a45] border border-[#2a3a5a] active:scale-98 text-slate-200 text-xs font-semibold transition-all hover:border-emerald-500/50"
-                >
-                  <Download className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>17-Page Media Dossier (PDF)</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Preserved Intrinsic Ratios (5 cols) */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-3 items-center">
-              {/* Exact ratio for Tamil daily: 1484 / 1600 */}
-              <div 
-                className="rounded-xl overflow-hidden border-2 border-[#263552] bg-[#0c1322] p-2 flex flex-col justify-between shadow-md"
-                style={{ aspectRatio: '1484 / 1600' }}
-              >
-                <img
-                  src="/assets/news-tamil-daily-feature.jpeg"
-                  alt="Tamil Daily Newspaper coverage of Nethra D"
-                  className="w-full h-full object-contain filter brightness-95 rounded"
+              {/* Right Column: Preserved Intrinsic Ratios (5 cols) */}
+              <div className="lg:col-span-5 grid grid-cols-2 gap-3 items-center">
+                {/* Exact ratio for Tamil daily: 1484 / 1600 */}
+                <div 
+                  className="rounded-xl overflow-hidden border-2 border-[#263552] bg-[#0c1322] p-2 flex flex-col justify-between shadow-md"
                   style={{ aspectRatio: '1484 / 1600' }}
-                />
-                <span className="text-[10px] text-emerald-400 font-mono font-medium text-center block mt-1">Regional Print Daily</span>
-              </div>
+                >
+                  <img
+                    src="/assets/news-tamil-daily-feature.jpeg"
+                    alt="Tamil Daily Newspaper coverage of Nethra D"
+                    className="w-full h-full object-contain filter brightness-95 rounded"
+                    style={{ aspectRatio: '1484 / 1600' }}
+                  />
+                  <span className="text-[10px] text-emerald-400 font-mono font-medium text-center block mt-1">Regional Print Daily</span>
+                </div>
 
-              {/* Exact ratio for PR report cover: 1488 / 2105 */}
-              <div 
-                className="rounded-xl overflow-hidden border-2 border-[#263552] bg-[#0c1322] p-2 flex flex-col justify-between shadow-md"
-                style={{ aspectRatio: '1488 / 2105' }}
-              >
-                <img
-                  src="/certificates/pr-media-coverage-report.png"
-                  alt="PR Release Report 207 Publishers"
-                  className="w-full h-full object-contain filter brightness-95 rounded"
+                {/* Exact ratio for PR report cover: 1488 / 2105 */}
+                <div 
+                  className="rounded-xl overflow-hidden border-2 border-[#263552] bg-[#0c1322] p-2 flex flex-col justify-between shadow-md"
                   style={{ aspectRatio: '1488 / 2105' }}
-                />
-                <span className="text-[10px] text-emerald-400 font-mono font-medium text-center block mt-1">National Media Dossier</span>
+                >
+                  <img
+                    src="/certificates/pr-media-coverage-report.png"
+                    alt="PR Release Report 207 Publishers"
+                    className="w-full h-full object-contain filter brightness-95 rounded"
+                    style={{ aspectRatio: '1488 / 2105' }}
+                  />
+                  <span className="text-[10px] text-emerald-400 font-mono font-medium text-center block mt-1">National Media Dossier</span>
+                </div>
               </div>
-            </div>
 
-          </div>
+            </div>
+          </SpotlightCard>
         </div>
 
-        {/* Compact In-Page News Grid */}
+        {/* Compact In-Page News Grid with Spotlight Cards */}
         <div>
           <div className="flex items-center justify-between mb-4">
             <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono flex items-center gap-2">
@@ -166,9 +176,9 @@ export default function MediaNewsroom() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
             {displayedArticles.map((article) => (
-              <div
+              <SpotlightCard
                 key={article.id}
-                className="p-4 rounded-xl bg-[#141d30] border-2 border-[#23304a] hover:border-emerald-500/40 transition-colors flex flex-col justify-between shadow-sm"
+                className="p-4 shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
@@ -193,7 +203,7 @@ export default function MediaNewsroom() {
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
 
@@ -229,7 +239,7 @@ export default function MediaNewsroom() {
 
       </div>
 
-      {/* Full-Screen Searchable Directory Modal */}
+      {/* Full-Screen Searchable Directory Modal with Border Beam */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-[#090d16]/90 backdrop-blur-md">
           <motion.div
@@ -239,6 +249,8 @@ export default function MediaNewsroom() {
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full max-w-4xl bg-[#111827] border-2 border-[#2a3a5a] rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
           >
+            <BorderBeam size={320} duration={12} colorFrom="#10b981" colorTo="#34d399" />
+
             {/* Modal Header */}
             <div className="px-5 py-4 border-b border-[#202c44] flex items-center justify-between bg-[#0e1526]">
               <div>

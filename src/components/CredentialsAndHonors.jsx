@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { honorsData, certificationsData } from '../data/portfolioData';
-import { Award, GraduationCap, CheckCircle2, ShieldCheck, Languages, ExternalLink } from 'lucide-react';
+import { Award, CheckCircle2, ShieldCheck, Languages } from 'lucide-react';
+import SpotlightCard from './ui/SpotlightCard';
 
 export default function CredentialsAndHonors() {
   const [activeTab, setActiveTab] = useState('honors');
@@ -16,8 +17,14 @@ export default function CredentialsAndHonors() {
     { title: "Support Women Artisans & Weavers", ministry: "Central Cottage Industries Corp of India Ltd", id: "8843766559" },
   ];
 
+  const tabs = [
+    { id: 'honors', label: `National Honors & Awards (${honorsData.length})` },
+    { id: 'certs', label: `Certifications & Training (${certificationsData.length})` },
+    { id: 'pledges', label: `Govt of India Pledges (${governmentPledges.length})` },
+  ];
+
   return (
-    <section id="credentials" className="py-14 sm:py-20 bg-[#0b0f19] border-b border-[#202c44] relative">
+    <section id="credentials" className="py-14 sm:py-20 bg-[#0b0f19] border-b-2 border-[#202c44] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -34,40 +41,31 @@ export default function CredentialsAndHonors() {
           </p>
         </div>
 
-        {/* Segmented View Switcher */}
-        <div className="flex items-center justify-center gap-2 mb-8 overflow-x-auto pb-1 scrollbar-none">
-          <button
-            onClick={() => setActiveTab('honors')}
-            className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-              activeTab === 'honors'
-                ? 'bg-emerald-400 text-slate-950 shadow-[0_2px_10px_rgba(16,185,129,0.25)]'
-                : 'bg-[#141d30] text-slate-300 hover:text-white hover:bg-[#1a253d] border border-[#263552]'
-            }`}
-          >
-            National Honors &amp; Awards ({honorsData.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('certs')}
-            className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-              activeTab === 'certs'
-                ? 'bg-emerald-400 text-slate-950 shadow-[0_2px_10px_rgba(16,185,129,0.25)]'
-                : 'bg-[#141d30] text-slate-300 hover:text-white hover:bg-[#1a253d] border border-[#263552]'
-            }`}
-          >
-            Certifications &amp; Training ({certificationsData.length})
-          </button>
-
-          <button
-            onClick={() => setActiveTab('pledges')}
-            className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-all ${
-              activeTab === 'pledges'
-                ? 'bg-emerald-400 text-slate-950 shadow-[0_2px_10px_rgba(16,185,129,0.25)]'
-                : 'bg-[#141d30] text-slate-300 hover:text-white hover:bg-[#1a253d] border border-[#263552]'
-            }`}
-          >
-            Govt of India Pledges ({governmentPledges.length})
-          </button>
+        {/* Segmented View Switcher with Quarry UI / Apple Sliding Pill */}
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-8 overflow-x-auto p-1.5 bg-[#0a0f1d] border-2 border-[#23304a] rounded-2xl w-fit mx-auto scrollbar-none">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative whitespace-nowrap px-4 py-2 rounded-xl text-xs font-bold transition-colors z-10 ${
+                  isActive
+                    ? 'text-slate-950 font-bold'
+                    : 'text-slate-300 hover:text-white'
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="credentialsTabPill"
+                    className="absolute inset-0 bg-emerald-400 rounded-xl -z-10 shadow-[0_2px_10px_rgba(16,185,129,0.25)]"
+                    transition={{ type: "spring", stiffness: 450, damping: 32 }}
+                  />
+                )}
+                <span className="relative z-10">{tab.label}</span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Tab Content Display */}
@@ -86,9 +84,9 @@ export default function CredentialsAndHonors() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {honorsData.map((honor, i) => (
-                    <div
+                    <SpotlightCard
                       key={i}
-                      className="p-5 rounded-2xl bg-[#141d30] border-2 border-[#23304a] hover:border-emerald-500/40 transition-colors shadow-md"
+                      className="p-5 shadow-md group"
                     >
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <span className="text-xs font-mono font-bold text-emerald-400 bg-[#0c1322] px-2.5 py-0.5 rounded border border-[#1e2a42]">
@@ -98,21 +96,21 @@ export default function CredentialsAndHonors() {
                           Verified Recognition
                         </span>
                       </div>
-                      <h3 className="text-sm sm:text-base font-extrabold text-white mb-1 leading-snug font-display">
+                      <h3 className="text-sm sm:text-base font-extrabold text-white mb-1 leading-snug font-display group-hover:text-emerald-300 transition-colors">
                         {honor.title}
                       </h3>
-                      <div className="text-xs font-semibold text-emerald-400">{honor.award}</div>
+                      <div className="text-xs font-semibold text-emerald-400 font-display">{honor.award}</div>
                       <div className="text-[11px] text-slate-400 mt-0.5 font-medium">{honor.organization}</div>
                       <p className="mt-2 text-xs text-slate-300 leading-relaxed font-normal">
                         {honor.desc}
                       </p>
-                    </div>
+                    </SpotlightCard>
                   ))}
                 </div>
 
                 {/* Visual Award Photos in exact intrinsic aspect ratios */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                  <div className="p-4 rounded-2xl bg-[#141d30] border-2 border-[#23304a] flex flex-col justify-between shadow-md">
+                  <SpotlightCard className="p-4 shadow-md">
                     <div 
                       className="w-full rounded-xl overflow-hidden bg-[#0c1322] mb-3 border border-[#1e2a42] flex items-center justify-center p-2"
                       style={{ aspectRatio: '1179 / 1465' }}
@@ -125,10 +123,10 @@ export default function CredentialsAndHonors() {
                       />
                     </div>
                     <div className="text-xs sm:text-sm font-bold text-white font-display">Kalai Thiruvizha Cultural &amp; Literature Honor</div>
-                    <p className="text-[11px] text-slate-300 mt-0.5">Tamil Nadu School Education Department district &amp; state certificate.</p>
-                  </div>
+                    <p className="text-[11px] text-slate-300 mt-0.5 font-normal">Tamil Nadu School Education Department district &amp; state certificate.</p>
+                  </SpotlightCard>
 
-                  <div className="p-4 rounded-2xl bg-[#141d30] border-2 border-[#23304a] flex flex-col justify-between shadow-md">
+                  <SpotlightCard className="p-4 shadow-md">
                     <div 
                       className="w-full rounded-xl overflow-hidden bg-[#0c1322] mb-3 border border-[#1e2a42] flex items-center justify-center p-2"
                       style={{ aspectRatio: '1179 / 1477' }}
@@ -141,8 +139,8 @@ export default function CredentialsAndHonors() {
                       />
                     </div>
                     <div className="text-xs sm:text-sm font-bold text-white font-display">Beyond Science &bull; Space Astronomy Honor</div>
-                    <p className="text-[11px] text-slate-300 mt-0.5">Scientific inquiry into astronomical telemetry and cosmic systems.</p>
-                  </div>
+                    <p className="text-[11px] text-slate-300 mt-0.5 font-normal">Scientific inquiry into astronomical telemetry and cosmic systems.</p>
+                  </SpotlightCard>
                 </div>
               </motion.div>
             )}
@@ -158,9 +156,9 @@ export default function CredentialsAndHonors() {
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
               >
                 {certificationsData.map((cert, idx) => (
-                  <div
+                  <SpotlightCard
                     key={idx}
-                    className="p-4 rounded-xl bg-[#141d30] border-2 border-[#23304a] hover:border-emerald-500/40 transition-colors flex flex-col justify-between shadow-sm"
+                    className="p-4 shadow-sm"
                   >
                     <div>
                       <span className="text-[10px] font-mono font-bold text-emerald-300 uppercase tracking-wide block mb-1">
@@ -177,7 +175,7 @@ export default function CredentialsAndHonors() {
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                       <span>Verified Credential</span>
                     </div>
-                  </div>
+                  </SpotlightCard>
                 ))}
               </motion.div>
             )}
@@ -193,49 +191,55 @@ export default function CredentialsAndHonors() {
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
               >
                 {governmentPledges.map((item, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-[#141d30] border-2 border-[#23304a] flex items-start gap-3 shadow-sm">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-xs font-bold text-white font-display">{item.title}</div>
-                      <div className="text-[11px] text-slate-300 mt-0.5">{item.ministry}</div>
-                      <div className="text-[10px] font-mono text-emerald-300 mt-1 bg-[#0c1322] px-2 py-0.5 rounded border border-[#1e2a42] inline-block">
-                        ID: {item.id}
+                  <SpotlightCard key={idx} className="p-4 shadow-sm">
+                    <div className="flex items-start gap-3">
+                      <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                      <div>
+                        <div className="text-xs font-bold text-white font-display">{item.title}</div>
+                        <div className="text-[11px] text-slate-300 mt-0.5">{item.ministry}</div>
+                        <div className="text-[10px] font-mono text-emerald-300 mt-1 bg-[#0c1322] px-2 py-0.5 rounded border border-[#1e2a42] inline-block">
+                          ID: {item.id}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </SpotlightCard>
                 ))}
               </motion.div>
             )}
 
           </AnimatePresence>
 
-          {/* Trilingual Fluency Showcase */}
-          <div className="mt-8 p-4 sm:p-5 rounded-2xl bg-[#141d30] border-2 border-[#23304a] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-950/90 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
-                <Languages className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
-                  Trilingual Linguistic Fluency
+          {/* Trilingual Fluency Showcase with Spotlight */}
+          <div className="mt-8">
+            <SpotlightCard className="p-4 sm:p-5 shadow-md">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-950/90 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shrink-0">
+                    <Languages className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                      Trilingual Linguistic Fluency
+                    </div>
+                    <div className="text-xs text-slate-300">
+                      Global academic and technical communication capabilities.
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs text-slate-300">
-                  Global academic and technical communication capabilities.
-                </div>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-lg bg-[#0c1322] border border-[#1e2a42] text-xs font-mono font-medium text-emerald-300">
-                English (Professional)
-              </span>
-              <span className="px-3 py-1 rounded-lg bg-[#0c1322] border border-[#1e2a42] text-xs font-mono font-medium text-emerald-300">
-                Tamil (Native)
-              </span>
-              <span className="px-3 py-1 rounded-lg bg-[#0c1322] border border-[#1e2a42] text-xs font-mono font-medium text-emerald-300">
-                Japanese (Elementary)
-              </span>
-            </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-3 py-1 rounded-lg bg-[#0c1322] border border-[#1e2a42] text-xs font-mono font-medium text-emerald-300">
+                    English (Professional)
+                  </span>
+                  <span className="px-3 py-1 rounded-lg bg-[#0c1322] border border-[#1e2a42] text-xs font-mono font-medium text-emerald-300">
+                    Tamil (Native)
+                  </span>
+                  <span className="px-3 py-1 rounded-lg bg-[#0c1322] border border-[#1e2a42] text-xs font-mono font-medium text-emerald-300">
+                    Japanese (Elementary)
+                  </span>
+                </div>
+              </div>
+            </SpotlightCard>
           </div>
 
         </div>
