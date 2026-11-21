@@ -92,7 +92,7 @@ export default function ContactSection() {
                 <a
                   href="/documents/Nethra-Neha-DS-CV.docx"
                   download
-                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs uppercase font-mono tracking-wider transition-all shadow-md active:scale-98"
+                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase font-mono tracking-wider transition-all shadow-sm active:scale-98"
                 >
                   <FileText className="w-4 h-4" />
                   <span>Download Curriculum Vitae (.docx)</span>
@@ -170,7 +170,7 @@ export default function ContactSection() {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs uppercase font-mono tracking-wider shadow-md transition-all active:scale-98"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase font-mono tracking-wider shadow-sm transition-all active:scale-98"
                   >
                     <Send className="w-4 h-4" />
                     <span>Transmit Dispatch to Executive Desk</span>

@@ -16,9 +16,9 @@ export default function MobileQuickNav() {
     >
       <button
         onClick={() => scrollTo('patents')}
-        className="flex-1 py-2 flex flex-col items-center gap-1 active:scale-95 transition-transform text-cyan-300"
+        className="flex-1 py-2 flex flex-col items-center gap-1 active:scale-95 transition-transform text-white font-bold"
       >
-        <ShieldCheck className="w-4 h-4 text-cyan-400" />
+        <ShieldCheck className="w-4 h-4 text-white" />
         <span>Patents (07)</span>
       </button>
 
@@ -59,7 +59,7 @@ export default function MobileQuickNav() {
         className="w-9 py-2 flex flex-col items-center justify-center text-slate-400 hover:text-white active:scale-95 transition-transform"
         title="Scroll to Top"
       >
-        <ArrowUp className="w-4 h-4 text-cyan-400" />
+        <ArrowUp className="w-4 h-4 text-white" />
         <span>Top</span>
       </button>
     </nav>
