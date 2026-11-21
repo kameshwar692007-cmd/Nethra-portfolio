@@ -23,19 +23,19 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 bg-[#0a0c10] border-b border-white/[0.08] relative">
+    <section id="contact" className="py-16 sm:py-20 bg-[#0a0c10] border-b border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-14 sm:mb-20">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">
-            <Mail className="w-4 h-4 text-cyan-400" />
-            <span>06 // Direct Dialogue &bull; Institutional Inquiries</span>
+        <div className="max-w-3xl mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-mono mb-3">
+            <Mail className="w-3.5 h-3.5 text-cyan-400" />
+            <span>06 // DIRECT DIALOGUE &bull; INQUIRIES</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.04] font-display">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.05] font-display">
             Initiate Direct Contact
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+          <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
             For academic research collaborations, patent licensing inquiries, civic technology initiatives, or keynote invitations with Nethra Neha DS.
           </p>
         </div>

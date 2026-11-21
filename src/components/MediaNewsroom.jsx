@@ -29,20 +29,20 @@ export default function MediaNewsroom() {
   const displayedArticles = filteredArticles.slice(0, visibleCount);
 
   return (
-    <section id="media" className="py-24 sm:py-32 bg-[#090b10] border-b border-white/[0.08] relative">
+    <section id="media" className="py-16 sm:py-20 bg-[#090b10] border-b border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 sm:mb-18 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-4">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">
-              <Newspaper className="w-4 h-4 text-cyan-400" />
-              <span>05 // National Press Record &bull; 207+ Verified Outlets</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-mono mb-3">
+              <Newspaper className="w-3.5 h-3.5 text-cyan-400" />
+              <span>05 // NATIONAL PRESS RECORD &bull; 207+ OUTLETS</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.04] font-display">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.05] font-display">
               Media Dossier &amp; Newsroom
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               Profiled across 207+ national and regional news publications across all 28 Indian States &amp; Union Territories with an estimated total readership exceeding 2.3 Million.
             </p>
           </div>

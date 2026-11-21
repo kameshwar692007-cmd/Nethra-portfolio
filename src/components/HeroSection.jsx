@@ -4,7 +4,7 @@ import { ArrowUpRight, ShieldCheck, FileText, ChevronDown } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="about" className="relative pt-24 pb-16 sm:pt-32 sm:pb-24 md:pt-40 md:pb-32 overflow-hidden border-b border-white/[0.08] bg-[#0a0c10]">
+    <section id="about" className="relative pt-20 pb-12 sm:pt-24 sm:pb-16 md:pt-28 md:pb-20 overflow-hidden border-b border-white/[0.08] bg-[#0a0c10]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Top Verified Identity Tag */}

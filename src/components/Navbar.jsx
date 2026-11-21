@@ -37,15 +37,19 @@ export default function Navbar() {
           
           {/* Brand Logo & Name */}
           <a href="#" className="flex items-center gap-3 group select-none">
-            <div className="w-9 h-9 rounded-md bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold text-base group-hover:border-cyan-400 transition-colors">
-              N
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.25)] transition-all">
+              <svg className="w-4 h-4 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 20V4l16 16V4" />
+                <circle cx="4" cy="4" r="1.5" fill="currentColor" />
+                <circle cx="20" cy="20" r="1.5" fill="currentColor" />
+              </svg>
             </div>
-            <div>
-              <span className="font-display font-bold text-white tracking-tight text-sm sm:text-base block group-hover:text-cyan-400 transition-colors">
-                NETHRA NEHA DS
+            <div className="flex flex-col">
+              <span className="font-display font-extrabold text-white tracking-tight text-sm sm:text-base leading-none group-hover:text-cyan-300 transition-colors">
+                NETHRA NEHA <span className="text-cyan-400 font-mono">DS</span>
               </span>
-              <span className="text-[10px] sm:text-[11px] font-mono text-slate-400 block tracking-wider uppercase">
-                Founder &bull; Annexra Technologies
+              <span className="text-[10px] font-mono text-slate-400 tracking-wider uppercase mt-1 leading-none">
+                Annexra &bull; 07 Sovereign IP
               </span>
             </div>
           </a>
