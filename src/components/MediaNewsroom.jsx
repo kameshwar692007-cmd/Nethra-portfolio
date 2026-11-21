@@ -1,26 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import newsArticles from '../data/newsArticles.json';
-import { 
-  Newspaper, 
-  Search, 
-  ExternalLink, 
-  Download, 
-  ChevronDown, 
-  ChevronUp, 
-  X,
-  Globe2
-} from 'lucide-react';
-import NumberTicker from './ui/NumberTicker';
+import { Newspaper, Search, ExternalLink, Download, ChevronDown, Building } from 'lucide-react';
 
 export default function MediaNewsroom() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [visibleCount, setVisibleCount] = useState(6);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const regions = useMemo(() => {
-    return ['All', 'National / Pan-India', 'Tamil Nadu', 'Karnataka', 'Kerala', 'Maharashtra', 'Rajasthan', 'Madhya Pradesh'];
+    return ['All', 'National / Pan-India', 'Tamil Nadu', 'Karnataka', 'Kerala', 'Maharashtra'];
   }, []);
 
   const filteredArticles = useMemo(() => {
@@ -40,315 +29,154 @@ export default function MediaNewsroom() {
   const displayedArticles = filteredArticles.slice(0, visibleCount);
 
   return (
-    <section id="media" className="py-14 sm:py-20 bg-[#0d1424] border-b border-[#1e293b] relative">
+    <section id="media" className="py-24 sm:py-32 bg-[#090b10] border-b border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#064e3b] border border-[#059669] text-[#a7f3d0] text-xs font-mono font-bold uppercase tracking-wider mb-3">
-            <Newspaper className="w-4 h-4 text-[#34d399]" />
-            National Press &amp; Verified Media
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 sm:mb-18 gap-6">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">
+              <Newspaper className="w-4 h-4 text-cyan-400" />
+              <span>05 // National Press Record &bull; 207+ Verified Outlets</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.04] font-display">
+              Media Dossier &amp; Newsroom
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              Profiled across 207+ national and regional news publications across all 28 Indian States &amp; Union Territories with an estimated total readership exceeding 2.3 Million.
+            </p>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            207+ Press Features Across India
-          </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Featured across leading national dailies, state media networks, and technology publications celebrating Nethra&apos;s innovations from a Salem government school.
-          </p>
+
+          <a
+            href="/documents/Nethra-D-Inspiring-Journey-Media-Report.pdf"
+            download
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-xs font-mono font-bold tracking-wider transition-all uppercase self-start md:self-end shadow-md active:scale-98"
+          >
+            <Download className="w-4 h-4" />
+            <span>Download PR Report (PDF)</span>
+          </a>
         </div>
 
-        {/* PR Campaign Highlights Card with Solid Craftsmanship */}
-        <div className="mb-8 rounded-2xl bg-[#121a2d] border border-[#263654] border-t-4 border-t-[#059669] p-6 sm:p-8 shadow-md">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            
-            {/* Left Column (7 cols) */}
-            <div className="lg:col-span-7 space-y-3.5">
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-md bg-[#064e3b] text-[#a7f3d0] border border-[#059669] text-xs font-mono font-bold">
-                  OFFICIAL NATIONAL CAMPAIGN • 24 FEB 2026
-                </span>
-              </div>
-
-              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-snug font-display">
-                &ldquo;From Government School to Startup Founder at 16: The Inspiring Journey of Nethra D&rdquo;
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
-                Syndicated coverage across 207 verified news outlets with a combined reach exceeding 2.3 Million readers across 28+ states and union territories.
-              </p>
-
-              {/* Numerical Metrics with NumberTicker */}
-              <div className="grid grid-cols-3 gap-3 pt-1">
-                <div className="p-3.5 rounded-xl bg-[#0b1120] border border-[#1e2a42] text-center">
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-white font-display">
-                    <NumberTicker value={207} />
-                  </span>
-                  <span className="text-[11px] text-slate-300 font-bold uppercase font-mono mt-0.5 block">Publishers</span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-[#0b1120] border border-[#1e2a42] text-center">
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-[#34d399] font-display">2.3M+</span>
-                  <span className="text-[11px] text-slate-300 font-bold uppercase font-mono mt-0.5 block">Audience</span>
-                </div>
-                <div className="p-3.5 rounded-xl bg-[#0b1120] border border-[#1e2a42] text-center">
-                  <span className="block text-2xl sm:text-3xl font-extrabold text-white font-display">
-                    <NumberTicker value={28} />+
-                  </span>
-                  <span className="text-[11px] text-slate-300 font-bold uppercase font-mono mt-0.5 block">States</span>
-                </div>
-              </div>
-
-              {/* Action Buttons in Solid Colors */}
-              <div className="pt-2 flex flex-wrap gap-3">
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#059669] hover:bg-[#047857] text-white text-xs font-bold transition-all shadow-sm active:scale-98"
-                >
-                  <Search className="w-4 h-4" />
-                  <span>Search All 207 Articles</span>
-                </button>
-
-                <a
-                  href="/documents/Nethra-D-Inspiring-Journey-Media-Report.pdf"
-                  download
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0f172a] hover:bg-[#1e293b] border border-[#334155] active:scale-98 text-slate-200 text-xs font-bold transition-all"
-                >
-                  <Download className="w-4 h-4 text-[#34d399]" />
-                  <span>17-Page Media Dossier (PDF)</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Right Column: Preserved Intrinsic Ratios (5 cols) */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-3 items-center">
-              {/* Exact ratio for Tamil daily: 1484 / 1600 */}
-              <div 
-                className="rounded-xl overflow-hidden border border-[#263654] bg-[#090e1a] p-2 flex flex-col justify-between shadow-sm"
-                style={{ aspectRatio: '1484 / 1600' }}
-              >
-                <img
-                  src="/assets/news-tamil-daily-feature.jpeg"
-                  alt="Tamil Daily Newspaper coverage of Nethra D"
-                  className="w-full h-full object-contain filter brightness-95 rounded"
-                  style={{ aspectRatio: '1484 / 1600' }}
-                />
-                <span className="text-[10px] text-[#34d399] font-mono font-bold text-center block mt-1">Regional Print Daily</span>
-              </div>
-
-              {/* Exact ratio for PR report cover: 1488 / 2105 */}
-              <div 
-                className="rounded-xl overflow-hidden border border-[#263654] bg-[#090e1a] p-2 flex flex-col justify-between shadow-sm"
-                style={{ aspectRatio: '1488 / 2105' }}
-              >
-                <img
-                  src="/certificates/pr-media-coverage-report.png"
-                  alt="PR Release Report 207 Publishers"
-                  className="w-full h-full object-contain filter brightness-95 rounded"
-                  style={{ aspectRatio: '1488 / 2105' }}
-                />
-                <span className="text-[10px] text-[#34d399] font-mono font-bold text-center block mt-1">National Media Dossier</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Compact In-Page News Grid with Solid Cards */}
-        <div>
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono flex items-center gap-2">
-              <Globe2 className="w-4 h-4 text-[#34d399]" />
-              Verified Publications ({displayedArticles.length} of {newsArticles.length})
-            </h4>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="text-xs font-bold text-[#34d399] hover:underline inline-flex items-center gap-1 font-mono"
+        {/* Featured Newspaper Clippings */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          {[
+            { img: '/assets/news-tamil-daily-feature.jpeg', title: 'Tamil Daily Full Feature', sub: 'Salem District Edition' },
+            { img: '/assets/news-just-now-salem.jpeg', title: 'Just Now Salem Breaking', sub: 'Youth Innovation Coverage' },
+            { img: '/assets/publication-record.jpeg', title: 'Official Press Dossier', sub: '207+ Publications Documented' }
+          ].map((item, idx) => (
+            <div
+              key={idx}
+              className="rounded-xl overflow-hidden bg-[#0d1017] border border-white/[0.08] hover:border-cyan-500/30 transition-all shadow-xl"
             >
-              <span>Explore All 207 Outlets</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {displayedArticles.map((article) => (
-              <div
-                key={article.id}
-                className="p-4 rounded-xl bg-[#121a2d] border border-[#22314e] hover:border-[#059669] transition-all flex flex-col justify-between shadow-sm"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-xs font-bold text-white line-clamp-1 font-display">{article.outlet}</span>
-                    <span className="text-[10px] text-[#a7f3d0] font-mono font-bold px-2 py-0.5 rounded-md bg-[#064e3b] border border-[#059669] shrink-0">
-                      {article.region}
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-300 line-clamp-2 leading-relaxed font-normal">
-                    {article.title}
-                  </p>
+              <div className="h-56 overflow-hidden bg-[#06080d] flex items-center justify-center p-2">
+                <img 
+                  src={item.img} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover rounded filter contrast-[1.02]"
+                />
+              </div>
+              <div className="p-4 border-t border-white/[0.08]">
+                <div className="text-sm font-bold text-white font-display">
+                  {item.title}
                 </div>
-                <div className="mt-3.5 pt-2.5 border-t border-[#1e2a42] flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400 font-mono truncate max-w-[130px]">{article.domain}</span>
-                  <a
-                    href={article.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#34d399] hover:underline transition-colors"
-                  >
-                    <span>Read Article</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+                <div className="text-[11px] font-mono text-slate-400 mt-0.5">
+                  {item.sub}
                 </div>
               </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Search & Region Filter Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+          <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 scrollbar-none font-mono text-xs">
+            {regions.map((region) => (
+              <button
+                key={region}
+                onClick={() => setSelectedRegion(region)}
+                className={`px-3.5 py-2 rounded-lg whitespace-nowrap transition-colors uppercase tracking-wider ${
+                  selectedRegion === region
+                    ? 'bg-cyan-400 text-slate-950 font-bold'
+                    : 'bg-[#12151c] border border-white/[0.08] text-slate-400 hover:text-white'
+                }`}
+              >
+                {region}
+              </button>
             ))}
           </div>
 
-          {/* Compact View More / Show Less Controls */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            {visibleCount < 18 ? (
-              <button
-                onClick={() => setVisibleCount((prev) => prev + 6)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#141d30] hover:bg-[#1a253d] border border-[#263654] hover:border-[#059669] text-xs font-bold text-white active:scale-98 transition-all shadow-sm"
-              >
-                <ChevronDown className="w-4 h-4 text-[#34d399]" />
-                <span>Show Next 6 Articles</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => setVisibleCount(6)}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#141d30] hover:bg-[#1a253d] border border-[#263654] hover:border-[#059669] text-xs font-bold text-white active:scale-98 transition-all shadow-sm"
-              >
-                <ChevronUp className="w-4 h-4 text-[#34d399]" />
-                <span>Collapse to Top 6</span>
-              </button>
-            )}
-
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#064e3b] hover:bg-[#065f46] border border-[#059669] text-xs font-bold text-[#a7f3d0] active:scale-98 transition-all shadow-sm"
-            >
-              <Search className="w-4 h-4 text-[#34d399]" />
-              <span>Open Complete Searchable Directory (207 Articles)</span>
-            </button>
+          <div className="relative w-full sm:w-72 font-mono">
+            <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search outlet or domain..."
+              className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#12151c] border border-white/[0.08] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400"
+            />
           </div>
         </div>
 
-      </div>
-
-      {/* Full-Screen Searchable Directory Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-[#070b14]/90 backdrop-blur-sm">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.96 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-4xl bg-[#121a2d] border-2 border-[#2b3a58] rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
-          >
-            {/* Modal Header */}
-            <div className="px-5 py-4 border-b border-[#202c44] flex items-center justify-between bg-[#0e1628]">
-              <div>
-                <h3 className="text-base sm:text-lg font-extrabold text-white tracking-tight font-display">
-                  National Press Coverage • 207 Verified Outlets
-                </h3>
-                <p className="text-xs text-slate-300 font-sans">
-                  Explore coverage across all 28 states and union territories.
-                </p>
-              </div>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#1a253d] transition-colors"
-                aria-label="Close"
+        {/* Filtered Articles Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <AnimatePresence mode="popLayout">
+            {displayedArticles.map((article, idx) => (
+              <motion.div
+                key={article.id || idx}
+                layout
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                className="p-5 rounded-xl bg-[#0d1017] border border-white/[0.08] flex flex-col justify-between"
               >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Search & Filter Controls */}
-            <div className="p-4 border-b border-[#202c44] bg-[#0b1120] space-y-3">
-              <div className="relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#34d399]" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search outlets (e.g. Karnataka, Kerala, Forbes, Wire, Tamil Nadu, Express)..."
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#141d30] border border-[#23304a] text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-[#059669]"
-                />
-              </div>
-
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs">
-                {regions.map((region) => (
-                  <button
-                    key={region}
-                    onClick={() => setSelectedRegion(region)}
-                    className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-                      selectedRegion === region
-                        ? 'bg-[#059669] text-white'
-                        : 'bg-[#141d30] text-slate-300 hover:bg-[#1a253d] border border-[#23304a]'
-                    }`}
-                  >
-                    {region}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Modal Scrollable Articles List */}
-            <div className="p-4 sm:p-5 overflow-y-auto space-y-2.5 max-h-[55vh]">
-              <div className="text-xs text-slate-300 font-mono mb-2 flex items-center justify-between">
-                <span>Found <strong className="text-[#34d399] font-bold">{filteredArticles.length}</strong> matching publications</span>
-                <span className="text-[11px] text-slate-400">Press Release: 24 Feb 2026</span>
-              </div>
-
-              {filteredArticles.map((article) => (
-                <div
-                  key={article.id}
-                  className="p-3.5 rounded-xl bg-[#0b1120] border border-[#1e2a42] hover:border-[#059669] flex flex-col sm:flex-row sm:items-center justify-between gap-2 transition-colors"
-                >
-                  <div className="flex items-start sm:items-center gap-2.5">
-                    <span className="w-6 h-6 rounded-md bg-[#121a2d] border border-[#22314e] text-[#34d399] text-xs font-mono font-bold flex items-center justify-center shrink-0">
-                      {article.id}
-                    </span>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-white font-display">{article.outlet}</span>
-                        <span className="text-[10px] text-[#34d399] font-mono">{article.domain}</span>
-                      </div>
-                      <span className="text-[11px] text-slate-300 block line-clamp-1">{article.title}</span>
-                    </div>
+                <div>
+                  <div className="flex items-center justify-between text-xs font-mono text-slate-500 mb-2">
+                    <span className="text-cyan-400 font-bold">{article.region}</span>
+                    <span>{article.date}</span>
                   </div>
 
-                  <div className="flex items-center gap-3 shrink-0 self-end sm:self-auto">
-                    <span className="px-2 py-0.5 rounded-md bg-[#121a2d] border border-[#22314e] text-[10px] text-slate-300 font-mono">
-                      {article.region}
-                    </span>
-                    <a
-                      href={article.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-[#34d399] hover:underline"
-                    >
-                      <span>Read</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
+                  <h3 className="text-sm font-bold text-white font-display leading-snug">
+                    {article.headline || article.outlet}
+                  </h3>
+
+                  <div className="mt-2 text-xs font-mono text-slate-400 flex items-center gap-1.5 truncate">
+                    <Building className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+                    <span className="truncate">{article.outlet} ({article.domain})</span>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Modal Footer */}
-            <div className="px-5 py-3.5 border-t border-[#202c44] bg-[#0e1628] flex items-center justify-between">
-              <span className="text-xs font-mono text-[#34d399] font-bold">Total Reach: 2.3M+ Potential Audience</span>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 rounded-lg text-xs font-bold bg-[#141d30] hover:bg-[#1a253d] text-white border border-[#23304a]"
-              >
-                Close Directory
-              </button>
-            </div>
-          </motion.div>
+                <div className="mt-4 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-mono">
+                  <span className="text-slate-500 text-[11px]">Rank: #{article.rank || idx + 1}</span>
+                  <a
+                    href={`https://${article.domain}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-slate-400 hover:text-cyan-300 transition-colors"
+                  >
+                    <span>Visit Domain</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
-      )}
 
+        {/* Load More Button */}
+        {filteredArticles.length > visibleCount && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setVisibleCount((prev) => prev + 12)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-[#12151c] border border-white/10 hover:border-white/20 text-xs font-mono text-slate-200 transition-all uppercase tracking-wider"
+            >
+              <span>LOAD MORE ARTICLES ({filteredArticles.length - visibleCount} REMAINING)</span>
+              <ChevronDown className="w-4 h-4 text-cyan-400" />
+            </button>
+          </div>
+        )}
+
+      </div>
     </section>
   );
 }

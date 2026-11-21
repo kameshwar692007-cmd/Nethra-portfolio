@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from '../data/portfolioData';
-import { Code, ExternalLink, Cpu, Check } from 'lucide-react';
+import { Code, ExternalLink, Cpu, Check, Layers, ArrowUpRight } from 'lucide-react';
 
 export default function ProjectsSection() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const [showSkills, setShowSkills] = useState(false);
-
   const activeProject = projectsData[activeProjectIndex];
 
   const skillCategories = [
     {
       title: "AI & Medical Technology",
-      skills: ["TensorFlow.js", "AI in Healthcare (NCVET Level 4)", "Hematological Oncology Models", "Predictive Analytics"]
+      skills: ["TensorFlow.js (In-Browser Inference)", "AI in Healthcare (NCVET Level 4)", "Hematological Oncology Models", "Predictive Analytics"]
     },
     {
       title: "Cloud & Systems",
@@ -23,95 +21,95 @@ export default function ProjectsSection() {
       skills: ["JavaScript (ES6+)", "Angular", "HTML5 & Canvas API", "Flutter & Dart Fundamentals"]
     },
     {
-      title: "Design Thinking",
-      skills: ["Miro Global Ambassador", "Figma UI Systems", "Human-Centered Design", "Technical Writing"]
+      title: "Human-Centered Design",
+      skills: ["Miro Global Ambassador", "Figma UI Systems", "User Interface Architecture", "Technical Writing"]
     }
   ];
 
   return (
-    <section id="projects" className="py-14 sm:py-20 bg-[#0d1424] border-b border-[#1e293b] relative">
+    <section id="projects" className="py-24 sm:py-32 bg-[#090b10] border-b border-white/[0.08] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#064e3b] border border-[#059669] text-[#a7f3d0] text-xs font-mono font-bold uppercase tracking-wider mb-3">
-            <Code className="w-4 h-4 text-[#34d399]" />
-            Software Engineering &amp; Research Solutions
+        <div className="max-w-3xl mb-14 sm:mb-18">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">
+            <Code className="w-4 h-4 text-cyan-400" />
+            <span>03 // Engineering &amp; Computational Systems</span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Featured Projects &amp; Software
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.04] font-display">
+            Software &amp; Deep Tech Projects
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Hands-on technical solutions engineered for automated microplastic detection, carbon lifecycle accounting, and civic infrastructure.
+          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+            Independent software development spanning in-browser computer vision neural nets, distributed cloud telemetry, and progressive civic applications.
           </p>
         </div>
 
-        {/* Tabbed Project Switcher with Solid Active Pill */}
-        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-6 overflow-x-auto p-1.5 bg-[#101726] border border-[#22314e] rounded-xl w-fit mx-auto scrollbar-none">
+        {/* Project Selector Tabs */}
+        <div className="flex items-center gap-2 mb-10 overflow-x-auto pb-2 scrollbar-none font-mono text-xs">
           {projectsData.map((project, idx) => {
             const isActive = activeProjectIndex === idx;
             return (
               <button
                 key={idx}
                 onClick={() => setActiveProjectIndex(idx)}
-                className={`relative whitespace-nowrap px-4 py-2 rounded-lg text-xs font-bold transition-all z-10 ${
+                className={`relative px-4 py-2.5 rounded-lg whitespace-nowrap transition-all uppercase tracking-wider ${
                   isActive
-                    ? 'text-white bg-[#059669] shadow-sm'
-                    : 'text-slate-300 hover:text-white hover:bg-[#18233a]'
+                    ? 'text-slate-950 font-bold bg-cyan-400 shadow-sm'
+                    : 'text-slate-400 hover:text-white bg-[#12151c] border border-white/[0.08]'
                 }`}
               >
-                {project.title.split('–')[0].trim()}
+                <span>{project.title.split('–')[0].trim()}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Active Project Solid Card */}
-        <div className="max-w-3xl mx-auto mb-8">
+        {/* Active Project Deep Dive Card */}
+        <div className="rounded-xl border border-white/[0.1] bg-[#0d1017] p-6 sm:p-10 shadow-2xl mb-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProjectIndex}
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="p-6 sm:p-8 rounded-2xl bg-[#121a2d] border border-[#263654] border-t-4 border-t-[#059669] shadow-md"
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25 }}
+              className="space-y-6"
             >
-              <div className="flex items-center justify-between gap-2 mb-3">
-                <span className="px-3 py-1 rounded-md bg-[#064e3b] text-[#a7f3d0] border border-[#059669] text-[11px] font-mono font-bold uppercase tracking-wide">
+              <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+                <span className="px-3 py-1 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-semibold uppercase">
                   {activeProject.badge}
                 </span>
-                <span className="text-xs font-mono text-slate-300 bg-[#0b1120] px-2.5 py-1 rounded border border-[#1e2a42]">
-                  {activeProject.period}
-                </span>
+                <span className="text-slate-400">{activeProject.period}</span>
               </div>
 
-              <h3 className="text-lg sm:text-2xl font-extrabold text-white mb-2 font-display">
+              <h3 className="text-2xl sm:text-4xl font-bold text-white font-display tracking-tight">
                 {activeProject.title}
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed mb-4 font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-3xl">
                 {activeProject.summary}
               </p>
 
-              {/* Features list */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5">
-                {activeProject.features.map((feat, fIdx) => (
-                  <div key={fIdx} className="p-3 rounded-xl bg-[#0b1120] border border-[#1e2a42] flex items-start gap-2.5 text-slate-200">
-                    <Check className="w-4 h-4 text-[#34d399] shrink-0 mt-0.5" />
-                    <span className="text-xs leading-snug">{feat}</span>
-                  </div>
-                ))}
+              {/* Technical Features Matrix */}
+              <div className="pt-2">
+                <div className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">
+                  Core Architectural Capabilities:
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-slate-300">
+                  {activeProject.features.map((feat, i) => (
+                    <div key={i} className="p-3 rounded-lg bg-[#121620] border border-white/[0.06] flex items-center gap-2.5">
+                      <Check className="w-4 h-4 text-cyan-400 shrink-0" />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Tech stack */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pt-3.5 border-t border-[#202c44]">
-                <div className="flex flex-wrap gap-1.5">
-                  {activeProject.tech.map((t, tIdx) => (
-                    <span
-                      key={tIdx}
-                      className="px-2.5 py-1 rounded-md bg-[#0b1120] border border-[#1e2a42] text-[11px] font-mono font-medium text-[#34d399]"
-                    >
+              {/* Tech Stack Pills & Launch Link */}
+              <div className="pt-6 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+                <div className="flex flex-wrap gap-2">
+                  {activeProject.tech.map((t, idx) => (
+                    <span key={idx} className="px-2.5 py-1 rounded bg-[#141822] border border-white/10 text-slate-300">
                       {t}
                     </span>
                   ))}
@@ -121,53 +119,44 @@ export default function ProjectsSection() {
                   href={activeProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#059669] hover:bg-[#047857] px-3.5 py-2 rounded-lg transition-all"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold transition-all uppercase tracking-wider"
                 >
-                  <span>Explore Project</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Launch Application / Code</span>
+                  <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Compact Toggle for Technical Skills Matrix */}
-        <div className="max-w-3xl mx-auto text-center">
-          <button
-            onClick={() => setShowSkills(!showSkills)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#141d30] hover:bg-[#1a253d] border border-[#263654] text-xs font-bold text-white active:scale-98 transition-all shadow-sm"
-          >
-            <Cpu className="w-4 h-4 text-[#34d399]" />
-            <span>{showSkills ? 'Hide Competencies Matrix' : 'View Specialized Technical Competencies Matrix'}</span>
-          </button>
+        {/* Technical Competency Matrix */}
+        <div className="border-t border-white/[0.08] pt-14 sm:pt-18">
+          <div className="max-w-2xl mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-white font-display tracking-tight">
+              Engineering Disciplines &bull; NCVET Level 4 Certified
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-400 mt-1 font-mono">
+              Recognized vocational qualifications and production toolchains.
+            </p>
+          </div>
 
-          <AnimatePresence>
-            {showSkills && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-left mt-4 overflow-hidden pt-1"
-              >
-                {skillCategories.map((cat, i) => (
-                  <div key={i} className="p-4 rounded-xl bg-[#121a2d] border border-[#22314e]">
-                    <h4 className="text-[11px] font-bold text-[#a7f3d0] font-mono uppercase tracking-wider mb-2.5">
-                      {cat.title}
-                    </h4>
-                    <ul className="space-y-1.5 text-xs text-slate-300">
-                      {cat.skills.map((s, sIdx) => (
-                        <li key={sIdx} className="flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] shrink-0" />
-                          <span className="text-[11px] text-slate-200">{s}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {skillCategories.map((cat, i) => (
+              <div key={i} className="p-5 rounded-xl bg-[#0e1219] border border-white/[0.08]">
+                <div className="text-xs font-bold text-white font-display mb-3 text-cyan-300">
+                  {cat.title}
+                </div>
+                <ul className="space-y-2 text-xs font-mono text-slate-400">
+                  {cat.skills.map((s, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                      <span>{s}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
