@@ -1,10 +1,21 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { honorsData, certificationsData } from '../data/portfolioData';
-import { Award, CheckCircle2, ShieldCheck, Languages } from 'lucide-react';
+import { Award, CheckCircle2, ShieldCheck, Languages, ChevronDown, ChevronUp } from 'lucide-react';
+import { cn } from '../lib/utils';
 
 export default function CredentialsAndHonors() {
   const [activeTab, setActiveTab] = useState('honors');
+  const [showAllHonors, setShowAllHonors] = useState(false);
+  const [showAllCerts, setShowAllCerts] = useState(false);
+  const [showAllPledges, setShowAllPledges] = useState(false);
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setShowAllHonors(false);
+    setShowAllCerts(false);
+    setShowAllPledges(false);
+  };
 
   const governmentPledges = [
     { title: "Energy Efficiency Pledge", ministry: "Energy Efficiency Services Ltd, Ministry of Power", id: "2484488976" },
@@ -39,24 +50,27 @@ export default function CredentialsAndHonors() {
           </p>
         </div>
 
-        {/* Segmented View Switcher — Solid Brand Blue Active Tab */}
-        <div className="flex items-center gap-1.5 mb-8 overflow-x-auto p-1 bg-[#0e121a] border border-white/10 rounded-lg w-fit scrollbar-none font-mono text-xs">
-          {tabs.map((tab) => {
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`whitespace-nowrap px-4 py-2 rounded-md text-xs font-medium transition-all ${
-                  isActive
-                    ? 'text-white bg-[#2f6bff] font-bold shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
+        {/* Segmented View Switcher — Zero Overflow on Mobile with Horizontal Scroll */}
+        <div className="w-full max-w-full overflow-x-auto scrollbar-none mb-8 pb-1">
+          <div className="inline-flex items-center gap-1.5 p-1 bg-[#0e121a] border border-white/10 rounded-lg font-mono text-xs">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleTabChange(tab.id)}
+                  className={cn(
+                    "whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-md text-xs font-medium transition-all select-none",
+                    isActive
+                      ? "text-white bg-[#2f6bff] font-bold shadow-sm"
+                      : "text-slate-400 hover:text-white"
+                  )}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Tab Content Display */}
@@ -151,8 +165,36 @@ export default function CredentialsAndHonors() {
                     </div>
                   </div>
 
-                  {/* Bento Card 4: Beyond Science Space Astronomy Visual Bento (Tight Container, No Extra Space) */}
-                  <div className="rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col sm:flex-row overflow-hidden shadow-lg">
+                  {/* Bento Card 3: International Model United Nations (IMUN) 2024 (Text) */}
+                  <div className={cn(
+                    "p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg",
+                    !showAllHonors && "hidden md:flex"
+                  )}>
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2 font-mono text-xs">
+                        <span className="text-[#2f6bff] font-bold px-2 py-0.5 rounded bg-[#2f6bff]/10 border border-[#2f6bff]/20">
+                          {honorsData[2].year}
+                        </span>
+                        <span className="text-slate-400 text-[11px]">
+                          Verified Distinction
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold text-white mb-1 leading-snug font-display">
+                        {honorsData[2].title}
+                      </h3>
+                      <div className="text-xs font-semibold text-[#2f6bff]">{honorsData[2].award}</div>
+                      <div className="text-[11px] text-slate-400 mt-0.5">{honorsData[2].organization}</div>
+                      <p className="mt-2.5 text-xs text-slate-300 leading-relaxed font-normal">
+                        {honorsData[2].desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Bento Card 4: Beyond Science Space Astronomy Visual Bento */}
+                  <div className={cn(
+                    "rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col sm:flex-row overflow-hidden shadow-lg",
+                    !showAllHonors && "hidden md:flex"
+                  )}>
                     <div className="w-full sm:w-[195px] md:w-[210px] shrink-0 bg-[#06080c] flex items-center justify-center overflow-hidden border-b sm:border-b-0 sm:border-r border-white/10 p-0">
                       <img
                         src="/assets/award-beyond-space.jpeg"
@@ -183,7 +225,10 @@ export default function CredentialsAndHonors() {
                   </div>
 
                   {/* Bento Card 5: State Kalai Thiruvizha Honors (Text) */}
-                  <div className="p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg">
+                  <div className={cn(
+                    "p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg",
+                    !showAllHonors && "hidden md:flex"
+                  )}>
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2 font-mono text-xs">
                         <span className="text-[#2f6bff] font-bold px-2 py-0.5 rounded bg-[#2f6bff]/10 border border-[#2f6bff]/20">
@@ -205,7 +250,10 @@ export default function CredentialsAndHonors() {
                   </div>
 
                   {/* Bento Card 6: Budget Quest 2025–26 (Text) */}
-                  <div className="p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg">
+                  <div className={cn(
+                    "p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg",
+                    !showAllHonors && "hidden md:flex"
+                  )}>
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2 font-mono text-xs">
                         <span className="text-[#2f6bff] font-bold px-2 py-0.5 rounded bg-[#2f6bff]/10 border border-[#2f6bff]/20">
@@ -227,10 +275,30 @@ export default function CredentialsAndHonors() {
                   </div>
 
                 </div>
+
+                {/* Mobile View More Toggle for Honors */}
+                <div className="md:hidden pt-2">
+                  <button
+                    onClick={() => setShowAllHonors(!showAllHonors)}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#0e121a] hover:bg-[#141926] border border-white/10 text-[#2f6bff] font-mono text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm active:scale-98"
+                  >
+                    {showAllHonors ? (
+                      <>
+                        <ChevronUp className="w-3.5 h-3.5" />
+                        <span>Show Less</span>
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-3.5 h-3.5" />
+                        <span>View All Honors &amp; Distinctions ({honorsData.length + 2})</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </motion.div>
             )}
 
-            {/* 2. Certifications Tab */}
+            {/* 2. Certifications Tab — Modular with View More on Mobile */}
             {activeTab === 'certs' && (
               <motion.div
                 key="certs"
@@ -238,34 +306,62 @@ export default function CredentialsAndHonors() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.18 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+                className="space-y-4"
               >
-                {certificationsData.map((cert, idx) => (
-                  <div
-                    key={idx}
-                    className="p-4 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between"
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {certificationsData.map((cert, idx) => {
+                    const hideOnMobile = !showAllCerts && idx >= 4;
+                    return (
+                      <div
+                        key={idx}
+                        className={cn(
+                          "p-4 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between",
+                          hideOnMobile && "hidden sm:flex"
+                        )}
+                      >
+                        <div>
+                          <span className="text-[10px] font-mono font-medium text-[#2f6bff] uppercase tracking-wide block mb-1">
+                            {cert.category} &bull; {cert.year}
+                          </span>
+                          <h4 className="text-xs sm:text-sm font-bold text-white leading-snug font-display">
+                            {cert.title}
+                          </h4>
+                          <p className="text-[11px] text-slate-400 mt-1 leading-normal">
+                            {cert.issuer}
+                          </p>
+                        </div>
+                        <div className="mt-3 pt-2 border-t border-white/5 text-[10px] text-[#2f6bff] font-mono flex items-center gap-1.5 font-semibold">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2f6bff] shrink-0" />
+                          <span>Verified Credential</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Mobile View More Toggle for Certifications */}
+                <div className="sm:hidden pt-2">
+                  <button
+                    onClick={() => setShowAllCerts(!showAllCerts)}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#0e121a] hover:bg-[#141926] border border-white/10 text-[#2f6bff] font-mono text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm active:scale-98"
                   >
-                    <div>
-                      <span className="text-[10px] font-mono font-medium text-[#2f6bff] uppercase tracking-wide block mb-1">
-                        {cert.category} &bull; {cert.year}
-                      </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-white leading-snug font-display">
-                        {cert.title}
-                      </h4>
-                      <p className="text-[11px] text-slate-400 mt-1 leading-normal">
-                        {cert.issuer}
-                      </p>
-                    </div>
-                    <div className="mt-3 pt-2 border-t border-white/5 text-[10px] text-[#2f6bff] font-mono flex items-center gap-1.5 font-semibold">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#2f6bff] shrink-0" />
-                      <span>Verified Credential</span>
-                    </div>
-                  </div>
-                ))}
+                    {showAllCerts ? (
+                      <>
+                        <ChevronUp className="w-3.5 h-3.5" />
+                        <span>Show Less</span>
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-3.5 h-3.5" />
+                        <span>View All Certifications ({certificationsData.length})</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </motion.div>
             )}
 
-            {/* 3. Government of India Pledges Tab */}
+            {/* 3. Government of India Pledges Tab — Modular with View More on Mobile */}
             {activeTab === 'pledges' && (
               <motion.div
                 key="pledges"
@@ -273,50 +369,81 @@ export default function CredentialsAndHonors() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.18 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+                className="space-y-4"
               >
-                {governmentPledges.map((item, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex items-start gap-3">
-                    <ShieldCheck className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-xs font-bold text-white font-display">{item.title}</div>
-                      <div className="text-[11px] text-slate-400 mt-0.5">{item.ministry}</div>
-                      <div className="text-[10px] font-mono text-[#2f6bff] mt-1 bg-[#2f6bff]/10 px-2 py-0.5 rounded border border-[#2f6bff]/20 inline-block font-semibold">
-                        ID: {item.id}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {governmentPledges.map((item, idx) => {
+                    const hideOnMobile = !showAllPledges && idx >= 3;
+                    return (
+                      <div
+                        key={idx}
+                        className={cn(
+                          "p-4 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex items-start gap-3",
+                          hideOnMobile && "hidden sm:flex"
+                        )}
+                      >
+                        <ShieldCheck className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
+                        <div>
+                          <div className="text-xs font-bold text-white font-display">{item.title}</div>
+                          <div className="text-[11px] text-slate-400 mt-0.5">{item.ministry}</div>
+                          <div className="text-[10px] font-mono text-[#2f6bff] mt-1 bg-[#2f6bff]/10 px-2 py-0.5 rounded border border-[#2f6bff]/20 inline-block font-semibold">
+                            ID: {item.id}
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
+                    );
+                  })}
+                </div>
+
+                {/* Mobile View More Toggle for Pledges */}
+                <div className="sm:hidden pt-2">
+                  <button
+                    onClick={() => setShowAllPledges(!showAllPledges)}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#0e121a] hover:bg-[#141926] border border-white/10 text-[#2f6bff] font-mono text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm active:scale-98"
+                  >
+                    {showAllPledges ? (
+                      <>
+                        <ChevronUp className="w-3.5 h-3.5" />
+                        <span>Show Less</span>
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-3.5 h-3.5" />
+                        <span>View All Pledges ({governmentPledges.length})</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </motion.div>
             )}
 
           </AnimatePresence>
 
-          {/* Trilingual Fluency Showcase */}
-          <div className="p-5 rounded-xl bg-[#0d1017] border border-white/10">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#2f6bff]/15 border border-[#2f6bff]/30 flex items-center justify-center text-[#2f6bff] shrink-0">
+          {/* Trilingual Fluency Showcase — Fully Responsive Wrapping, Zero Overflow */}
+          <div className="p-4 sm:p-5 rounded-xl bg-[#0d1017] border border-white/10">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-start sm:items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-[#2f6bff]/15 border border-[#2f6bff]/30 flex items-center justify-center text-[#2f6bff] shrink-0 mt-0.5 sm:mt-0">
                   <Languages className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
                     Trilingual Linguistic Fluency
                   </div>
-                  <div className="text-xs text-slate-400">
+                  <div className="text-xs text-slate-400 mt-0.5">
                     Academic, scientific, and global technical communication capabilities.
                   </div>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-xs font-mono font-medium text-[#2f6bff]">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
+                <span className="px-2.5 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-[11px] font-mono font-medium text-[#2f6bff]">
                   English (Professional)
                 </span>
-                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-xs font-mono font-medium text-[#2f6bff]">
+                <span className="px-2.5 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-[11px] font-mono font-medium text-[#2f6bff]">
                   Tamil (Native)
                 </span>
-                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-xs font-mono font-medium text-[#2f6bff]">
+                <span className="px-2.5 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-[11px] font-mono font-medium text-[#2f6bff]">
                   Japanese (Elementary)
                 </span>
               </div>
