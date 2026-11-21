@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import MarqueeStrip from './components/MarqueeStrip';
 import PatentShowcase from './components/PatentShowcase';
 import JourneySection from './components/JourneySection';
 import MediaNewsroom from './components/MediaNewsroom';
@@ -17,6 +18,7 @@ export default function App() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
+        <MarqueeStrip />
         <PatentShowcase />
         <JourneySection />
         <MediaNewsroom />

@@ -165,28 +165,46 @@ export const storyData = {
 
 export const leadershipRoles = [
   {
-    title: "Founder & Director (CEO)",
-    org: "Annexra (Annexra Technologies)",
-    period: "January 2026 – Present",
-    location: "Salem, Tamil Nadu, India",
-    type: "Executive Leadership",
-    desc: "Leading a research-driven technology company developing scalable hardware-software solutions across smart agriculture, predictive healthcare diagnostics, and accessible data systems."
-  },
-  {
     title: "Manager – Technology & Digital Systems",
     org: "Tamil Nadu Volunteers",
     period: "October 2025 – Present",
-    location: "Chennai, Tamil Nadu (Hybrid)",
-    type: "Social Sector Tech Management",
-    desc: "Oversees IT infrastructure, mission-critical digital workflow automation, community data systems, and volunteer management web platforms across the state."
+    location: "Chennai, Tamil Nadu, India (Hybrid)",
+    type: "Civic Technology & Digital Infrastructure",
+    highlight: true,
+    desc: "Oversees state-wide IT infrastructure, centralized database systems, and mission-critical online platforms for Tamil Nadu Volunteers. Architected automated digital dispatch workflows and volunteer management portals serving thousands of volunteers across 38 districts in Tamil Nadu.",
+    responsibilities: [
+      "IT Infrastructure & Security: Oversees cloud architectures, web systems, and uptime management.",
+      "Statewide Volunteer Data Systems: Directs volunteer onboarding databases, verification, and district communications.",
+      "Digital Platform Engineering: Manages deployment of responsive web applications and civic mobilization portals.",
+      "Grassroots Social Impact: Bridges high-performance software with disaster relief, environmental drives, and social welfare."
+    ]
+  },
+  {
+    title: "Founder & Director (CEO)",
+    org: "Annexra (Annexra Technologies Pvt Ltd)",
+    period: "January 2026 – Present",
+    location: "Salem, Tamil Nadu, India",
+    type: "Executive Leadership & R&D",
+    highlight: true,
+    desc: "Founded and registered Annexra Technologies at age 16 to engineer scalable deep-tech hardware-software solutions. Leading multi-disciplinary research initiatives spanning AI-driven precision medicine for blood cancer, smart agricultural irrigation systems, and accessible public terminals.",
+    responsibilities: [
+      "Corporate Governance: Directed company incorporation, legal regulatory compliance, and fiscal management.",
+      "Deep Tech Architecture: Leading development of 7 sovereign-registered patents and intellectual property.",
+      "R&D Strategy: Guiding engineering teams across IoT sensor hardware, TensorFlow.js models, and cloud systems."
+    ]
   },
   {
     title: "Global Ambassador & Meetup Ambassador",
     org: "Miro",
     period: "February 2026 – Present",
-    location: "Global / Remote & On-site",
-    type: "Design Thinking & Collaboration",
-    desc: "Appointed as a worldwide community ambassador for Miro, conducting design sprints, visual collaboration workshops, and mentoring students in rapid product prototyping."
+    location: "Global / Hybrid & On-site",
+    type: "Visual Collaboration & Design Systems",
+    highlight: false,
+    desc: "Selected as an official Global Ambassador and Meetup Ambassador for Miro, conducting design sprints, agile product brainstorming, and collaborative problem-solving workshops for student innovators and industry professionals.",
+    responsibilities: [
+      "Organizes regional design thinking meetups and collaborative hackathons.",
+      "Evangelizes human-centered interface design and product mapping frameworks."
+    ]
   },
   {
     title: "Global Member & Ambassador",
@@ -194,31 +212,50 @@ export const leadershipRoles = [
     period: "March 2026 – Present",
     location: "India & International",
     type: "UN SDG Advocacy",
-    desc: "Champions global sustainable development initiatives with an emphasis on SDG 3 (Good Health & Well-being), SDG 9 (Industry, Innovation & Infrastructure), and SDG 13 (Climate Action)."
+    highlight: false,
+    desc: "Appointed as a Global Member and Ambassador, championing sustainable innovation frameworks aligned with United Nations Sustainable Development Goals: SDG 3 (Good Health), SDG 9 (Industry & Innovation), and SDG 13 (Climate Action).",
+    responsibilities: [
+      "Participates in international sustainability dialogues and youth environmental initiatives.",
+      "Integrates green technologies and waste-reduction computing in rural farming communities."
+    ]
   },
   {
     title: "Paytm Campus Ambassador",
     org: "Paytm",
     period: "April 2026 – Present",
     location: "India (Remote)",
-    type: "Fintech Evangelism",
-    desc: "Educates youth communities on secure digital payment architectures, UPI standards, and financial technology literacy."
+    type: "Fintech Literacy",
+    highlight: false,
+    desc: "Promoted secure digital payments, UPI adoption, and cybersecurity hygiene among student communities.",
+    responsibilities: [
+      "Conducts fintech awareness sessions on cashless economics and payment security."
+    ]
   },
   {
     title: "AI Transformation Consultant Intern",
     org: "Tata iQ",
     period: "2025 – 2026",
     location: "India",
-    type: "Enterprise AI & Analytics",
-    desc: "Analyzed large-scale analytical datasets, formulated predictive feature engineering pipelines, and designed ethical AI operational frameworks."
+    type: "Enterprise AI & Predictive Analytics",
+    highlight: false,
+    desc: "Analyzed complex analytical datasets, designed predictive data science pipelines, and formulated ethical AI operational frameworks for enterprise applications.",
+    responsibilities: [
+      "Engineered machine learning models and data preprocessing pipelines.",
+      "Collaborated on ethical AI standards and algorithmic bias reduction."
+    ]
   },
   {
     title: "Hematology Research Contributor",
     org: "HemeCancer.org",
     period: "2025 – 2026",
-    location: "Research Fellowship",
-    type: "Medical Science",
-    desc: "Participated in leukemia, lymphoma, and blood disorder data investigations, cultivating the foundation for her Canadian precision medicine patent."
+    location: "Medical Science Fellowship",
+    type: "Clinical Oncology",
+    highlight: false,
+    desc: "Investigated blood disorders, leukemia subtype classification, and clinical research parameters, providing the empirical foundation for her Canadian precision medicine patent.",
+    responsibilities: [
+      "Conducted literature reviews and clinical telemetry analysis on hematological malignancies.",
+      "Modeled prognostic indicators for personalized cancer therapeutics."
+    ]
   }
 ];
 
