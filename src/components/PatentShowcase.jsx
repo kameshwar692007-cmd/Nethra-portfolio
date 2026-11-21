@@ -174,14 +174,24 @@ export default function PatentShowcase() {
                           <span>Detailed Dossier</span>
                         </button>
 
-                        <a
-                          href={patent.documentUrl}
-                          download
-                          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold transition-colors"
-                        >
-                          <Download className="w-3.5 h-3.5" />
-                          <span>Download PDF</span>
-                        </a>
+                        {patent.documentUrl ? (
+                          <a
+                            href={patent.documentUrl}
+                            download
+                            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold transition-colors"
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                            <span>Download PDF</span>
+                          </a>
+                        ) : (
+                          <button
+                            onClick={() => setSelectedPatent(patent)}
+                            className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-cyan-400/10 hover:bg-cyan-400/20 text-cyan-300 border border-cyan-500/30 font-semibold transition-colors"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                            <span>Inspect Record</span>
+                          </button>
+                        )}
                       </div>
                     </div>
 
@@ -284,14 +294,20 @@ export default function PatentShowcase() {
 
               {/* Modal Footer */}
               <div className="p-5 border-t border-white/10 flex justify-end gap-3 bg-[#0a0c10]">
-                <a
-                  href={selectedPatent.documentUrl}
-                  download
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-400 text-slate-950 text-xs font-mono font-bold hover:bg-cyan-300 transition-colors uppercase tracking-wider"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download Official PDF Document</span>
-                </a>
+                {selectedPatent.documentUrl ? (
+                  <a
+                    href={selectedPatent.documentUrl}
+                    download
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-400 text-slate-950 text-xs font-mono font-bold hover:bg-cyan-300 transition-colors uppercase tracking-wider"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Official PDF Document</span>
+                  </a>
+                ) : (
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/[0.04] text-slate-400 border border-white/10 text-xs font-mono">
+                    Official Sovereign Dossier on Record
+                  </span>
+                )}
               </div>
             </motion.div>
           </div>
