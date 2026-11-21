@@ -23,11 +23,11 @@ export default function MobileQuickNav() {
       </button>
 
       <button
-        onClick={() => scrollTo('trajectory')}
+        onClick={() => scrollTo('journey')}
         className="flex-1 py-2 flex flex-col items-center gap-1 active:scale-95 transition-transform hover:text-white"
       >
         <Compass className="w-4 h-4 text-slate-400" />
-        <span>Trajectory</span>
+        <span>Journey</span>
       </button>
 
       <button

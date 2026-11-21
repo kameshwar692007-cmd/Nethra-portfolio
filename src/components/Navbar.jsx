@@ -6,13 +6,44 @@ import { cn } from '../lib/utils';
 export default function Navbar() {
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('#patents');
+  const [activeTab, setActiveTab] = useState('#about');
+
+  const navLinks = [
+    { label: 'About', href: '#about' },
+    { label: 'Patents', href: '#patents' },
+    { label: 'Journey', href: '#journey' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Leadership', href: '#leadership' },
+    { label: 'Credentials', href: '#credentials' },
+    { label: 'Media', href: '#media' },
+    { label: 'Contact', href: '#contact' },
+  ];
+
+  // Smooth custom scroll handler taking navbar height into account
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    setActiveTab(href);
+    if (open) setOpen(false);
+
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const topOffset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      window.history.pushState(null, '', href);
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => {
       setStuck(window.scrollY > 40);
 
-      const sectionIds = ['patents', 'trajectory', 'projects', 'leadership', 'credentials', 'media', 'contact'];
+      const sectionIds = ['about', 'patents', 'journey', 'projects', 'leadership', 'credentials', 'media', 'contact'];
       const scrollPosition = window.scrollY + 180;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -43,16 +74,6 @@ export default function Navbar() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  const navLinks = [
-    { label: 'Patents', href: '#patents' },
-    { label: 'Trajectory', href: '#trajectory' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Leadership', href: '#leadership' },
-    { label: 'Credentials', href: '#credentials' },
-    { label: 'Media', href: '#media' },
-    { label: 'Contact', href: '#contact' },
-  ];
-
   return (
     <motion.header
       initial={false}
@@ -69,8 +90,12 @@ export default function Navbar() {
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
         
-        {/* Brand Monogram & Name */}
-        <a href="#" className="flex items-center gap-2.5 group select-none">
+        {/* Brand Monogram & Name — Smooth scroll to #about */}
+        <a
+          href="#about"
+          onClick={(e) => handleNavClick(e, '#about')}
+          className="flex items-center gap-2.5 group select-none cursor-pointer"
+        >
           <div className="w-7 h-7 rounded-lg bg-[#2f6bff] flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
             <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 20V4l16 16V4" />
@@ -85,17 +110,17 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Center Desktop Navigation Pills — Dynamic Sliding Pill */}
-        <nav className="relative hidden md:flex items-center gap-1 font-mono text-xs" aria-label="Main Navigation">
+        {/* Center Desktop Navigation Pills — Dynamic Sliding Pill with Silky Smooth Spring */}
+        <nav className="relative hidden md:flex items-center gap-0.5 lg:gap-1 font-mono text-xs" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = activeTab === link.href;
             return (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setActiveTab(link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
-                  'relative rounded-full px-3.5 py-1.5 transition-colors duration-200 z-10 select-none',
+                  'relative rounded-full px-2.5 lg:px-3 py-1.5 transition-colors duration-200 z-10 select-none text-[11px] lg:text-xs',
                   isActive
                     ? 'text-white font-bold'
                     : 'text-slate-300 hover:text-white'
@@ -156,60 +181,72 @@ export default function Navbar() {
 
       </div>
 
-      {/* Mobile Drawer Menu (Quarry UI Pattern) */}
+      {/* Mobile Drawer Menu & Outside Tap Close */}
       <AnimatePresence initial={false}>
         {open && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
-            className="overflow-hidden md:hidden font-mono"
-            aria-label="Mobile Navigation"
-          >
-            <ul className="border-t border-white/10 px-5 py-3 space-y-1">
-              {navLinks.map((link, i) => (
+          <>
+            {/* Backdrop Dismiss Layer for Mobile */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-20 md:hidden"
+              onClick={() => setOpen(false)}
+            />
+
+            <motion.nav
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
+              className="overflow-y-auto max-h-[calc(100vh-5rem)] md:hidden font-mono bg-[#0d1017]/98 border-t border-white/10 rounded-b-2xl shadow-2xl"
+              aria-label="Mobile Navigation"
+            >
+              <ul className="px-4 py-3 space-y-1">
+                {navLinks.map((link, i) => {
+                  const isActive = activeTab === link.href;
+                  return (
+                    <motion.li
+                      key={link.href}
+                      initial={{ opacity: 0, x: -8 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.025 * i }}
+                    >
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className={cn(
+                          'flex items-center justify-between py-2.5 px-3.5 rounded-xl text-xs tracking-wider transition-colors select-none',
+                          isActive
+                            ? 'bg-[#2f6bff] text-white font-bold shadow-md'
+                            : 'text-slate-300 hover:text-white hover:bg-white/5'
+                        )}
+                      >
+                        <span>{link.label}</span>
+                        {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white shadow-sm" />}
+                      </a>
+                    </motion.li>
+                  );
+                })}
                 <motion.li
-                  key={link.href}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.04 * i }}
+                  transition={{ delay: 0.025 * navLinks.length }}
+                  className="pt-2 border-t border-white/10"
                 >
                   <a
-                    href={link.href}
-                    onClick={() => {
-                      setActiveTab(link.href);
-                      setOpen(false);
-                    }}
-                    className={cn(
-                      'block py-2.5 px-3 rounded-lg text-xs tracking-wider transition-colors',
-                      activeTab === link.href
-                        ? 'bg-[#2f6bff] text-white font-bold'
-                        : 'text-slate-300 hover:text-white hover:bg-white/5'
-                    )}
+                    href="/documents/Nethra-Neha-DS-CV.docx"
+                    download
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors"
                   >
-                    {link.label}
+                    <FileText className="w-3.5 h-3.5 text-[#2f6bff]" />
+                    <span>Download CV</span>
                   </a>
                 </motion.li>
-              ))}
-              <motion.li
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.04 * navLinks.length }}
-                className="pt-2"
-              >
-                <a
-                  href="/documents/Nethra-Neha-DS-CV.docx"
-                  download
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-bold tracking-wider bg-white/10 text-white border border-white/10"
-                >
-                  <FileText className="w-3.5 h-3.5 text-[#2f6bff]" />
-                  <span>Download CV</span>
-                </a>
-              </motion.li>
-            </ul>
-          </motion.nav>
+              </ul>
+            </motion.nav>
+          </>
         )}
       </AnimatePresence>
     </motion.header>

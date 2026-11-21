@@ -23,7 +23,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-[#0a0c10] border-b border-white/10 relative overflow-hidden">
+    <section id="contact" className="scroll-mt-20 py-16 sm:py-24 bg-[#0a0c10] border-b border-white/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Split Layout: Previous Content in Modern Contact 8 Design */}

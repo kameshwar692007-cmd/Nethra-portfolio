@@ -7,13 +7,16 @@ export default function TrajectorySection() {
   const [expandedStory, setExpandedStory] = useState(false);
 
   return (
-    <section id="trajectory" className="py-16 sm:py-20 bg-[#0a0c10] border-b border-white/10 relative overflow-hidden">
+    <section id="journey" className="scroll-mt-20 py-16 sm:py-20 bg-[#0a0c10] border-b border-white/10 relative overflow-hidden">
+      {/* Anchor for backward compatibility with #trajectory */}
+      <span id="trajectory" className="sr-only pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-10">
-          <div className="text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2">
-            Biographical Trajectory &bull; 2020 &mdash; 2026
+          <div className="text-xs font-mono font-semibold tracking-wider text-[#2f6bff] uppercase mb-2">
+            Biographical Journey &bull; 2020 &mdash; 2026
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.05] font-display">
             Two Worlds. One Relentless Velocity.
@@ -150,7 +153,7 @@ export default function TrajectorySection() {
               Chronological Milestones (2020 &mdash; 2026)
             </h3>
             <span className="text-xs font-mono text-slate-400 hidden sm:inline-block">
-              Progressive Trajectory
+              Milestones &amp; Journey
             </span>
           </div>
 

@@ -64,7 +64,7 @@
 
 /* Mobile Touch Target Standards */
 @media (max-width: 640px) {
-  button, a, input, select {
+  input, select, textarea {
     min-height: 44px;
     touch-action: manipulation;
   }

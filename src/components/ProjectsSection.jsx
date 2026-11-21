@@ -10,7 +10,7 @@ export default function ProjectsSection() {
   const activeProject = projectsData[activeProjectIndex];
 
   return (
-    <section id="projects" className="py-16 sm:py-20 bg-[#090b10] border-b border-white/10 relative">
+    <section id="projects" className="scroll-mt-20 py-16 sm:py-20 bg-[#090b10] border-b border-white/10 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

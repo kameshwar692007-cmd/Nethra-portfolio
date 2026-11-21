@@ -41,7 +41,7 @@ export default function MediaNewsroom() {
   }, [filteredArticles, currentPage, pageSize]);
 
   return (
-    <section id="media" className="py-16 sm:py-20 bg-[#090b10] border-b border-white/10 relative">
+    <section id="media" className="scroll-mt-20 py-16 sm:py-20 bg-[#090b10] border-b border-white/10 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

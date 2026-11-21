@@ -61,7 +61,7 @@ export default function HeroSection() {
     <section
       ref={containerRef}
       id="about"
-      className="relative pt-20 pb-12 sm:pt-24 sm:pb-16 md:pt-28 md:pb-20 overflow-hidden border-b border-white/10 bg-[#0a0c10]"
+      className="scroll-mt-20 relative pt-20 pb-12 sm:pt-24 sm:pb-16 md:pt-28 md:pb-20 overflow-hidden border-b border-white/10 bg-[#0a0c10]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         

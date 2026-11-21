@@ -15,7 +15,7 @@ export default function LeadershipSection() {
   const displayedOtherRoles = showAll ? otherRoles : otherRoles.slice(0, 3);
 
   return (
-    <section id="leadership" className="py-16 sm:py-20 bg-[#0a0c10] border-b border-white/10 relative">
+    <section id="leadership" className="scroll-mt-20 py-16 sm:py-20 bg-[#0a0c10] border-b border-white/10 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
