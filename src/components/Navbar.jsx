@@ -53,9 +53,6 @@ export default function Navbar() {
             <span className="font-display font-extrabold text-white tracking-tight text-sm sm:text-base leading-none">
               NETHRA NEHA DS
             </span>
-            <span className="text-[10px] font-mono text-[#2f6bff] font-bold tracking-wider uppercase hidden sm:inline">
-              ANNEXRA
-            </span>
           </div>
         </a>
 

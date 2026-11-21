@@ -9,7 +9,7 @@ const WORDS = [
   "Predictive Power Telemetry",
   "38 Districts Statewide Infrastructure",
   "Hardware-Software Co-Design",
-  "Annexra Technologies",
+  "Deep-Tech Architecture",
   "UK IPO Registered #6518777",
   "CIPO Canada Registered #1249257",
   "IP India Certified #LD-20260188338",

@@ -154,7 +154,7 @@ export default function HeroSection() {
               className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-xl font-normal"
             >
               High school student in Computer Science &amp; Bio-Maths at GHSS Periyavadangampatti. 
-              Founder &amp; Director of <strong className="text-white">Annexra Technologies Pvt Ltd</strong> and Manager of Technology &amp; Digital Systems at <strong className="text-white">Tamil Nadu Volunteers</strong>.
+              Deep-tech founder and Manager of Technology &amp; Digital Systems at <strong className="text-white">Tamil Nadu Volunteers</strong>.
             </motion.p>
 
             {/* Action Buttons with Magnetic Touch */}
@@ -199,7 +199,7 @@ export default function HeroSection() {
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">16</div>
                 <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Founder Age</div>
-                <div className="text-[10px] text-slate-500">Annexra Tech</div>
+                <div className="text-[10px] text-slate-500">Deep-Tech R&amp;D</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-[#2f6bff] tracking-tight font-display">07</div>
@@ -253,7 +253,7 @@ export default function HeroSection() {
               <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/85 to-transparent">
                 <div className="flex items-center justify-between text-xs font-mono text-slate-300">
                   <span className="font-bold text-white uppercase tracking-wider">Nethra Neha DS</span>
-                  <span className="text-[#2f6bff] font-semibold">Founder &bull; Annexra</span>
+                  <span className="text-[#2f6bff] font-semibold">Systems Innovator</span>
                 </div>
                 <div className="text-[11px] font-mono text-slate-400 mt-0.5">
                   GHSS Periyavadangampatti, Salem

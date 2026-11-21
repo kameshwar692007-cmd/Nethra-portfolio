@@ -89,7 +89,7 @@ export default function Preloader({ onComplete }) {
               className="w-10 h-[1.5px] bg-[#2f6bff]"
             />
             <span className="text-[11px] font-mono tracking-widest text-[#2f6bff] font-bold uppercase">
-              Annexra Innovation Core &bull; 2026
+              Innovation Core &bull; 2026
             </span>
             <motion.div
               initial={{ scaleX: 0 }}
