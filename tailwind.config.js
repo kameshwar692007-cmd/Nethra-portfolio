@@ -22,7 +22,42 @@ export default {
           greenLight: '#34d399',
           greenGlow: '#00dc82',
           darkPill: '#09261d',
-        }
+        },
+        background: '#0a0c10',
+        foreground: '#f8fafc',
+        card: {
+          DEFAULT: '#0d1017',
+          foreground: '#f8fafc',
+        },
+        popover: {
+          DEFAULT: '#0d1017',
+          foreground: '#f8fafc',
+        },
+        primary: {
+          DEFAULT: '#2f6bff',
+          foreground: '#ffffff',
+        },
+        secondary: {
+          DEFAULT: '#141824',
+          foreground: '#f8fafc',
+        },
+        muted: {
+          DEFAULT: '#141824',
+          foreground: '#94a3b8',
+        },
+        accent: {
+          DEFAULT: '#192236',
+          foreground: '#2f6bff',
+        },
+        border: 'rgba(255, 255, 255, 0.1)',
+        brand: '#2f6bff',
+        chart: {
+          1: '#2f6bff',
+          2: '#38bdf8',
+          3: '#818cf8',
+          4: '#a78bfa',
+          5: '#34d399',
+        },
       },
       fontFamily: {
         sans: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],

@@ -6,10 +6,11 @@ import {
   Download, 
   Eye, 
   X, 
-  ChevronDown,
-  ChevronUp,
-  FileCheck2
+  ChevronDown, 
+  ChevronUp, 
+  FileCheck2 
 } from 'lucide-react';
+import HorizontalPatentGallery from './quarry/HorizontalPatentGallery';
 
 export default function PatentShowcase() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -45,6 +46,11 @@ export default function PatentShowcase() {
               <strong className="text-[#2f6bff]">04</strong> Jurisdictions
             </span>
           </div>
+        </div>
+
+        {/* FLAGSHIP INTERACTIVE HORIZONTAL SCROLL ARCHIVE (QUARRY UI) */}
+        <div className="mb-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+          <HorizontalPatentGallery />
         </div>
 
         {/* BENTO BOX GRID — TOP 2 FEATURED PATENTS (SOLID STYLING) */}

@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: #0a0c10;
+  --foreground: #f8fafc;
+  --card: #0d1017;
+  --card-foreground: #f8fafc;
+  --popover: #0d1017;
+  --popover-foreground: #f8fafc;
+  --primary: #2f6bff;
+  --primary-foreground: #ffffff;
+  --secondary: #141824;
+  --secondary-foreground: #f8fafc;
+  --muted: #141824;
+  --muted-foreground: #94a3b8;
+  --accent: #192236;
+  --accent-foreground: #2f6bff;
+  --border: rgba(255, 255, 255, 0.1);
+  --brand: #2f6bff;
+  --radius: 0.75rem;
+}
+
 @layer base {
   html {
     font-family: 'Geist', 'Inter', system-ui, sans-serif;
