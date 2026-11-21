@@ -9,10 +9,11 @@ import ProjectsSection from './components/ProjectsSection';
 import CredentialsAndHonors from './components/CredentialsAndHonors';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import MobileQuickNav from './components/MobileQuickNav';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#080a0f] text-slate-100 flex flex-col font-sans selection:bg-emerald-500/20 selection:text-emerald-300">
+    <div className="min-h-screen bg-[#080a0f] text-slate-100 flex flex-col font-sans selection:bg-emerald-500/20 selection:text-emerald-300 pb-16 md:pb-0">
       <Navbar />
       <main className="flex-1">
         <HeroSection />
@@ -25,6 +26,8 @@ export default function App() {
         <ContactSection />
       </main>
       <Footer />
+      {/* Mobile quick action dock */}
+      <MobileQuickNav />
     </div>
   );
 }
