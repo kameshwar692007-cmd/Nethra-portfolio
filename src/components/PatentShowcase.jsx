@@ -49,7 +49,7 @@ export default function PatentShowcase() {
         </div>
 
         {/* FLAGSHIP INTERACTIVE HORIZONTAL SCROLL ARCHIVE (QUARRY UI) */}
-        <div className="mb-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+        <div className="mb-12">
           <HorizontalPatentGallery />
         </div>
 
