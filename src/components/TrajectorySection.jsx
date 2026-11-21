@@ -1,9 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { storyData } from '../data/portfolioData';
-import { Compass, CheckCircle2, Quote } from 'lucide-react';
+import { Compass, CheckCircle2, Quote, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function TrajectorySection() {
+  const [expandedStory, setExpandedStory] = useState(false);
+
   const milestoneImages = {
     "2023": "/assets/award-kalai-thiruvizha.jpeg",
     "2024": "/assets/award-beyond-space.jpeg",
@@ -24,8 +26,108 @@ export default function TrajectorySection() {
             Two Worlds. One Relentless Velocity.
           </h2>
           <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-            Her credibility isn't derived from startup hype. It is rooted in two concurrent, real-world realities: managing state-wide civic digital infrastructure for 38 districts while building a 7-patent deep-tech enterprise.
+            Her credibility is rooted in two concurrent, real-world realities: managing state-wide civic digital infrastructure for 38 districts while building a 7-patent deep-tech enterprise.
           </p>
+        </div>
+
+        {/* Narrative & Visual Feature Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+          
+          {/* Left Column: Full 5-Part Biographical Narrative (7 cols) */}
+          <div className="lg:col-span-7 space-y-5">
+            <div className="p-6 sm:p-8 rounded-xl bg-[#0e1219] border border-white/[0.08] space-y-4">
+              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 text-xs font-mono text-slate-400">
+                <span className="text-cyan-400 font-bold uppercase tracking-wide">Origin &amp; Foundation</span>
+                <span>Government School to Startup Founder</span>
+              </div>
+
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                {storyData.paragraphs[0]}
+              </p>
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                {storyData.paragraphs[1]}
+              </p>
+
+              {/* Expandable 5-Part Narrative */}
+              <AnimatePresence>
+                {expandedStory && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="space-y-3.5 overflow-hidden pt-3 border-t border-white/[0.06]"
+                  >
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{storyData.paragraphs[2]}</p>
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{storyData.paragraphs[3]}</p>
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{storyData.paragraphs[4]}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Toggle Button */}
+              <div className="pt-2">
+                <button
+                  onClick={() => setExpandedStory(!expandedStory)}
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-300 px-4 py-2 rounded-lg bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-500/30 transition-all"
+                >
+                  {expandedStory ? (
+                    <>
+                      <ChevronUp className="w-4 h-4 text-cyan-400" />
+                      <span>Show Summary</span>
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="w-4 h-4 text-cyan-400" />
+                      <span>Read Complete 5-Part Narrative</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+
+            {/* Founder Quote */}
+            <div className="p-6 rounded-xl bg-[#0e1219] border-l-2 border-l-cyan-400 border border-white/[0.08]">
+              <Quote className="w-5 h-5 text-cyan-400 mb-2" />
+              <blockquote className="text-sm sm:text-base text-slate-100 italic leading-relaxed">
+                &ldquo;{storyData.quote}&rdquo;
+              </blockquote>
+              <div className="mt-3 text-xs font-mono font-medium text-cyan-400">
+                — NETHRA NEHA DS &bull; Founder &amp; CEO, Annexra Technologies
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Authentic Media Artifact (5 cols) */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className="p-4 rounded-xl bg-[#0e1219] border border-white/[0.08]">
+              <div 
+                className="w-full rounded-lg overflow-hidden bg-[#06080d] mb-3 border border-white/[0.08] flex items-center justify-center"
+                style={{ aspectRatio: '1179 / 1177' }}
+              >
+                <img
+                  src="/assets/news-just-now-salem.jpeg"
+                  alt="Salem newspaper feature covering Nethra Neha DS"
+                  className="w-full h-full object-contain filter brightness-95"
+                  style={{ aspectRatio: '1179 / 1177' }}
+                />
+              </div>
+              <div className="text-sm font-bold text-white font-display">Salem District Recognition to National Media</div>
+              <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                From Salem government school science exhibitions to syndication across 207 nationwide news outlets.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#0e1219] border border-cyan-500/20 text-xs">
+              <div className="text-xs font-mono text-cyan-400 font-semibold mb-1">
+                Annexra Technologies Directive
+              </div>
+              <p className="text-slate-300 leading-relaxed">
+                Incorporated in January 2026 to convert grassroots research in clinical AI, soil sensor telemetry, and IoT warning hardware into sovereign, production technologies.
+              </p>
+            </div>
+          </div>
+
         </div>
 
         {/* Dual Worlds Editorial Breakdown */}

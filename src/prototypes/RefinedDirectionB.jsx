@@ -65,7 +65,7 @@ export default function RefinedDirectionB() {
               <div>
                 <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[0.98] font-display">
                   NETHRA<br />
-                  <span className="text-slate-300">DURAISAMY.</span>
+                  <span className="text-slate-300">NEHA DS.</span>
                 </h1>
                 <p className="mt-6 text-xl sm:text-2xl text-slate-300 font-normal max-w-xl leading-snug">
                   Building deep-tech hardware &amp; clinical AI from Salem, while orchestrating digital platforms for <span className="text-white font-semibold">38 districts</span> across Tamil Nadu.

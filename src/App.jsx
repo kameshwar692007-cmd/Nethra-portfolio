@@ -1,10 +1,12 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import MarqueeStrip from './components/MarqueeStrip';
 import PatentShowcase from './components/PatentShowcase';
 import TrajectorySection from './components/TrajectorySection';
 import ProjectsSection from './components/ProjectsSection';
 import LeadershipSection from './components/LeadershipSection';
+import CredentialsAndHonors from './components/CredentialsAndHonors';
 import MediaNewsroom from './components/MediaNewsroom';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
@@ -16,10 +18,12 @@ export default function App() {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
+        <MarqueeStrip />
         <PatentShowcase />
         <TrajectorySection />
         <ProjectsSection />
         <LeadershipSection />
+        <CredentialsAndHonors />
         <MediaNewsroom />
         <ContactSection />
       </main>

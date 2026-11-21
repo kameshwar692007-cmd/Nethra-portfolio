@@ -1,6 +1,6 @@
 export const personalInfo = {
-  name: "Nethra Neha DS",
-  preferredName: "Nethra D",
+  name: "NETHRA NEHA DS",
+  preferredName: "NETHRA NEHA DS",
   title: "Founder & CEO, Annexra Technologies | Student Innovator & Multi-National Patentee",
   bio: "16-year-old high school student, founder, and inventor bridging artificial intelligence, healthcare engineering, precision medicine, and sustainable technology. Built and registered Annexra Technologies Pvt Ltd while developing a 7-invention multi-national patent & intellectual property portfolio across India, the UK, Canada, and Germany.",
   email: "ceo@annexra.in",
@@ -117,7 +117,7 @@ export const patentsData = [
     status: "Granted & Registered",
     grantDate: "14 August 2026",
     registrationDate: "03 April 2026",
-    inventor: "Nethra Duraisamy (Co-Inventor)",
+    inventor: "NETHRA NEHA DS (Co-Inventor)",
     classification: "Class 14: Data Processing Equipment & Peripherals",
     summary: "An ultra-portable folding glass interface combining electro-mechanical micro-actuators that simulate natural mechanical key resistance on a durable, germ-resistant glass pane.",
     significance: "Solves the chronic ergonomic latency and lack of tactile feedback typical of flat travel touch keyboards without adding physical weight or thickness.",

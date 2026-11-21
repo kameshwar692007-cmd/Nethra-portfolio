@@ -15,10 +15,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Trajectory', href: '#trajectory' },
     { name: 'Patents & IP', href: '#patents', highlight: true },
+    { name: 'Trajectory', href: '#trajectory' },
     { name: 'Projects', href: '#projects' },
     { name: 'Leadership', href: '#leadership' },
+    { name: 'Credentials', href: '#credentials' },
     { name: 'Media (207+)', href: '#media' },
     { name: 'Contact', href: '#contact' },
   ];
