@@ -1,35 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from '../data/portfolioData';
-import { Check, ArrowUpRight, Cpu, Cloud, Globe, Palette } from 'lucide-react';
+import { Check, ArrowUpRight } from 'lucide-react';
 import { SpotlightGrid, SpotlightCardItem } from './quarry/SpotlightCard';
+import { RewardsList } from '@/components/rewards-list';
 
 export default function ProjectsSection() {
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
   const activeProject = projectsData[activeProjectIndex];
-
-  const skillCategories = [
-    {
-      title: "AI & Medical Technology",
-      icon: <Cpu className="w-4 h-4 text-[#2f6bff]" />,
-      skills: ["TensorFlow.js (In-Browser Inference)", "AI in Healthcare (NCVET Level 4)", "Hematological Oncology Models", "Predictive Analytics"]
-    },
-    {
-      title: "Cloud & Systems",
-      icon: <Cloud className="w-4 h-4 text-cyan-400" />,
-      skills: ["Google Cloud Platform (GCP)", "Kubernetes (GKE)", "BigQuery Analytics", "AWS Solutions Architecture"]
-    },
-    {
-      title: "Software & Web",
-      icon: <Globe className="w-4 h-4 text-emerald-400" />,
-      skills: ["JavaScript (ES6+)", "Angular", "HTML5 & Canvas API", "Flutter & Dart Fundamentals"]
-    },
-    {
-      title: "Human-Centered Design",
-      icon: <Palette className="w-4 h-4 text-indigo-400" />,
-      skills: ["Miro Global Ambassador", "Figma UI Systems", "User Interface Architecture", "Technical Writing"]
-    }
-  ];
 
   return (
     <section id="projects" className="py-16 sm:py-20 bg-[#090b10] border-b border-white/10 relative">
@@ -139,39 +117,15 @@ export default function ProjectsSection() {
           </SpotlightCardItem>
         </SpotlightGrid>
 
-        {/* Technical Competency Matrix — Powered by Quarry UI Spotlight Grid */}
-        <div className="border-t border-white/10 pt-8 sm:pt-10">
-          <div className="max-w-2xl mb-6">
-            <h3 className="text-lg sm:text-xl font-bold text-white font-display tracking-tight">
-              Engineering Disciplines &bull; NCVET Level 4 Certified
-            </h3>
-            <p className="text-xs text-slate-400 mt-1 font-mono">
-              Recognized vocational qualifications and production toolchains.
-            </p>
-          </div>
-
-          <SpotlightGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {skillCategories.map((cat, i) => (
-              <SpotlightCardItem key={i} className="p-4 rounded-xl">
-                <div className="flex items-center gap-2 mb-2.5">
-                  <div className="p-1.5 rounded-lg bg-white/5 border border-white/10">
-                    {cat.icon}
-                  </div>
-                  <div className="text-xs font-bold text-white font-display">
-                    {cat.title}
-                  </div>
-                </div>
-                <ul className="space-y-1.5 text-xs font-mono text-slate-400">
-                  {cat.skills.map((s, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2f6bff]" />
-                      <span className="text-[11px] leading-snug">{s}</span>
-                    </li>
-                  ))}
-                </ul>
-              </SpotlightCardItem>
-            ))}
-          </SpotlightGrid>
+        {/* Technical Competency Matrix — Powered by Quarry UI Sticky RewardsList */}
+        <div className="border-t border-white/10 pt-4">
+          <RewardsList
+            eyebrow="Certified Competency"
+            title="Engineering Disciplines & Production Systems"
+            text="Recognized vocational qualifications (NCVET Level 4) paired with enterprise cloud infrastructure, clinical oncology AI, and human-centered user interface architecture."
+            cta="Inspect Credentials"
+            className="px-0 py-10"
+          />
         </div>
 
       </div>

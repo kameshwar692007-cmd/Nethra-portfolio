@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { storyData } from '../data/portfolioData';
-import { ChevronDown, ChevronUp, Quote, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, Quote } from 'lucide-react';
 
 export default function TrajectorySection() {
   const [expandedStory, setExpandedStory] = useState(false);
@@ -141,81 +141,6 @@ export default function TrajectorySection() {
             </div>
           </div>
 
-        </div>
-
-        {/* TWO WORLDS DUALITY GRID — RETAINED PREVIOUS DESIGN */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-10 sm:mb-12">
-          {/* World 01: Civic Technology & State Infrastructure */}
-          <div className="p-6 sm:p-7 rounded-xl bg-[#0d1017] border border-white/10 flex flex-col justify-between shadow-lg">
-            <div className="space-y-3.5">
-              <div className="flex items-center justify-between font-mono text-xs text-slate-400 pb-2.5 border-b border-white/10">
-                <span className="text-[#2f6bff] font-bold uppercase tracking-wider">World 01</span>
-                <span>Grassroots Reality</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-display tracking-tight leading-snug">
-                Civic Technology &amp; State Infrastructure
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Operating from Salem while completing 12th grade in Computer Science and Bio-Maths at a government school, Nethra manages statewide IT infrastructure for <strong className="text-white font-semibold">Tamil Nadu Volunteers</strong>. Her responsibilities span centralized volunteer databases, disaster response dispatch portals, and mission-critical cloud deployments.
-              </p>
-
-              <div className="pt-2 space-y-2 font-mono text-xs text-slate-300">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                  <span>Automated dispatch pipelines serving thousands of volunteers</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                  <span>Executive management across all 38 revenue districts</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                  <span>Civic disaster relief, youth mobilization, and blood donation coordination</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-3 border-t border-white/10 font-mono text-xs text-slate-400 flex items-center justify-between">
-              <span>Organization: TN Volunteers</span>
-              <span className="text-[#2f6bff] font-semibold">Active Executive</span>
-            </div>
-          </div>
-
-          {/* World 02: Deep Tech Hardware & Enterprise */}
-          <div className="p-6 sm:p-7 rounded-xl bg-[#0d1017] border border-[#2f6bff]/30 flex flex-col justify-between shadow-lg">
-            <div className="space-y-3.5">
-              <div className="flex items-center justify-between font-mono text-xs text-slate-400 pb-2.5 border-b border-white/10">
-                <span className="text-[#2f6bff] font-bold uppercase tracking-wider">World 02</span>
-                <span>Deep Tech Innovation</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-display tracking-tight leading-snug">
-                Annexra Technologies &amp; Patent Architecture
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Incorporated Annexra Technologies at age 16 to engineer scalable hardware-software systems. Rather than building superficial apps, she mastered patent drafting and sovereign filing independently, securing intellectual property across the UK Intellectual Property Office, CIPO Canada, and IP India.
-              </p>
-
-              <div className="pt-2 space-y-2 font-mono text-xs text-slate-300">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                  <span>Clinical AI Precision Oncology algorithm filed with CIPO Canada (#1249257)</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                  <span>Predictive power telemetry device registered with UK IPO (#6518777)</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
-                  <span>Certified in AI in Healthcare (NCVET Level 4 / Microsoft CSR)</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-3 border-t border-white/10 font-mono text-xs text-slate-400 flex items-center justify-between">
-              <span>Enterprise: Annexra Technologies</span>
-              <span className="text-[#2f6bff] font-semibold">Founder &amp; Director</span>
-            </div>
-          </div>
         </div>
 
         {/* CHRONOLOGICAL MILESTONES — UNIFORM, CLEAN 5-CARD GRID */}
