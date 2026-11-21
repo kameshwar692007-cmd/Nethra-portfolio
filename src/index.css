@@ -4,49 +4,45 @@
 
 @layer base {
   html {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Geist', 'Inter', system-ui, sans-serif;
     color-scheme: dark;
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
+    background-color: #0b0f19;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Geist', sans-serif;
     letter-spacing: -0.025em;
   }
 
-  /* Prevent text size adjustment on orientation changes */
   body {
     -webkit-text-size-adjust: 100%;
-    overscroll-behavior-y: none;
+    background-color: #0b0f19;
+    color: #f1f5f9;
   }
 }
 
-/* Emil Kowalski Snappy Decelerate Easing */
-.ease-out-expo {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Custom subtle scrollbar */
+/* Custom crisp scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080a0f;
+  background: #0b0f19;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #23304a;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #334466;
 }
 
-/* Mobile Touch Target Guard */
+/* Mobile Touch Target Standards */
 @media (max-width: 640px) {
   button, a, input, select {
     min-height: 44px;

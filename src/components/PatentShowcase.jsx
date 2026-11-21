@@ -10,7 +10,7 @@ import {
   ChevronDown, 
   ChevronUp,
   FileCheck2,
-  Sparkles
+  ExternalLink
 } from 'lucide-react';
 
 export default function PatentShowcase() {
@@ -24,30 +24,30 @@ export default function PatentShowcase() {
     ? patentsData
     : patentsData.filter(p => p.country === activeFilter);
 
-  // If "All" is active and showAll is false, show first 3 to prevent excessive scrolling
+  // Default to 3 items initially for clean non-scrolling layout
   const visiblePatents = (activeFilter === 'All' && !showAll)
     ? filteredPatents.slice(0, 3)
     : filteredPatents;
 
   return (
-    <section id="patents" className="py-14 sm:py-20 bg-[#0a0d14] border-b border-slate-800/80 relative">
+    <section id="patents" className="py-14 sm:py-20 bg-[#0d1322] border-b border-[#202c44] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-2.5">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            Highlighted Intellectual Property
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 text-xs font-mono font-semibold uppercase tracking-wider mb-2.5 shadow-sm">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            Sovereign Intellectual Property Portfolio
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Patented Inventions &amp; Innovation Portfolio
+            7 Patented Inventions &amp; Designs
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Seven sovereign-registered invention concepts across the UK, Canada, India, and Germany—spanning predictive energy AI, clinical oncology platforms, and rural smart irrigation.
+            Registered inventions engineered across the UK Patent Office, Canadian CIPO, and Government of India—bridging clinical oncology AI, energy prediction, and agritech.
           </p>
         </div>
 
-        {/* Country Filter Tabs */}
+        {/* Country Filter Tabs (High Contrast) */}
         <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-8 overflow-x-auto pb-2 scrollbar-none">
           {filters.map((filter) => {
             const count = filter === 'All' 
@@ -59,12 +59,12 @@ export default function PatentShowcase() {
                 key={filter}
                 onClick={() => {
                   setActiveFilter(filter);
-                  setShowAll(true); // show all for filtered view
+                  setShowAll(true);
                 }}
-                className={`whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                   isActive
-                    ? 'bg-emerald-500 text-slate-950 shadow-sm'
-                    : 'bg-slate-900 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800'
+                    ? 'bg-emerald-400 text-slate-950 font-bold shadow-[0_2px_10px_rgba(16,185,129,0.25)]'
+                    : 'bg-[#141d30] text-slate-300 hover:text-white hover:bg-[#1a253d] border border-[#263552]'
                 }`}
               >
                 {filter === 'United Kingdom' && '🇬🇧 '}
@@ -77,7 +77,7 @@ export default function PatentShowcase() {
           })}
         </div>
 
-        {/* Compact Patents Grid */}
+        {/* Non-Generic Structural Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="popLayout">
             {visiblePatents.map((patent) => (
@@ -87,73 +87,74 @@ export default function PatentShowcase() {
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-xl bg-[#0f141f] border border-slate-800/90 hover:border-emerald-500/40 transition-all flex flex-col justify-between overflow-hidden group shadow-sm hover:shadow-md"
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-2xl bg-[#141d30] border-2 border-[#23304a] hover:border-emerald-500/50 transition-all flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] group"
               >
                 <div>
-                  {/* Certificate Top Container - Image preserved in natural document ratio */}
+                  {/* Structural Card Header Ribbon */}
+                  <div className="px-4 py-2.5 bg-[#0e1526] border-b border-[#202c44] flex items-center justify-between text-xs font-mono">
+                    <div className="flex items-center gap-1.5 text-slate-200 font-semibold">
+                      <span>{patent.flag}</span>
+                      <span>{patent.country}</span>
+                    </div>
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-[11px] font-bold">
+                      {patent.status}
+                    </span>
+                  </div>
+
+                  {/* Document Thumbnail Inset in Exact Aspect Ratio */}
                   <div 
-                    className="relative bg-slate-950 border-b border-slate-800/80 overflow-hidden cursor-pointer flex items-center justify-center p-3"
-                    style={{ minHeight: '190px', maxHeight: '220px' }}
+                    className="relative bg-[#0a0f1d] border-b border-[#202c44] overflow-hidden cursor-pointer flex items-center justify-center p-3"
+                    style={{ height: '190px' }}
                     onClick={() => setSelectedPatent(patent)}
                   >
                     <img
                       src={patent.certificateImage}
                       alt={patent.title}
-                      className="max-h-48 w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter brightness-95"
+                      className="max-h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105 filter brightness-95 rounded"
                       onError={(e) => {
                         e.target.onerror = null;
                         e.target.src = "/assets/patent-cert-india-smart-irrigation.jpeg";
                       }}
                     />
                     
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/95 text-white text-xs font-semibold px-3 py-1.5 rounded-md border border-slate-700 flex items-center gap-1.5 shadow-lg">
+                    {/* Hover Inspect Overlay */}
+                    <div className="absolute inset-0 bg-[#0b0f19]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="bg-[#141d30] text-emerald-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-500/50 flex items-center gap-1.5 shadow-lg">
                         <Eye className="w-3.5 h-3.5 text-emerald-400" />
-                        Inspect Grant
+                        Inspect Official Grant
                       </span>
-                    </div>
-
-                    {/* Flag Badge */}
-                    <div className="absolute top-2.5 left-2.5 bg-slate-950/85 backdrop-blur-sm border border-slate-800 px-2 py-0.5 rounded text-[11px] font-semibold text-slate-200 flex items-center gap-1">
-                      <span>{patent.flag}</span>
-                      <span>{patent.country}</span>
-                    </div>
-
-                    {/* Status Badge */}
-                    <div className="absolute top-2.5 right-2.5 bg-emerald-500/90 text-slate-950 px-2 py-0.5 rounded text-[10px] font-bold">
-                      {patent.status}
                     </div>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="p-4 sm:p-5">
-                    <div className="flex items-center justify-between text-[11px] text-slate-400 mb-1.5 font-mono">
-                      <span className="text-emerald-400 font-bold">{patent.number}</span>
-                      <span>{patent.grantDate}</span>
+                  {/* Card Content Inset */}
+                  <div className="p-4 sm:p-5 space-y-2">
+                    <div className="flex items-center justify-between text-xs font-mono">
+                      <span className="text-emerald-400 font-bold tracking-wide">{patent.number}</span>
+                      <span className="text-slate-400">{patent.grantDate}</span>
                     </div>
 
-                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug tracking-tight font-display group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-sm sm:text-base font-bold text-white leading-snug font-display group-hover:text-emerald-300 transition-colors">
                       {patent.title}
                     </h3>
 
-                    <div className="mt-1.5 text-xs text-slate-400 flex items-center gap-1 truncate">
-                      <Building className="w-3 h-3 text-slate-500 shrink-0" />
+                    <div className="text-xs text-slate-300 flex items-center gap-1 truncate pt-0.5">
+                      <Building className="w-3 h-3 text-emerald-400 shrink-0" />
                       <span className="truncate">{patent.office}</span>
                     </div>
 
-                    <p className="mt-2.5 text-xs text-slate-300 line-clamp-3 leading-relaxed">
+                    {/* Inset Description Compartment for Maximum Readability */}
+                    <div className="p-2.5 rounded-xl bg-[#0e1628] border border-[#1e2a42] text-xs text-slate-300 leading-relaxed mt-2.5 line-clamp-3">
                       {patent.summary}
-                    </p>
+                    </div>
                   </div>
                 </div>
 
-                {/* Card Footer Actions */}
-                <div className="p-4 pt-0 border-t border-slate-800/60 mt-2 flex items-center gap-2">
+                {/* Card Action Footer */}
+                <div className="p-4 pt-0 border-t border-[#202c44] mt-2 flex items-center gap-2">
                   <button
                     onClick={() => setSelectedPatent(patent)}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 active:scale-98 text-xs font-semibold text-slate-200 transition-all"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-[#1c273e] hover:bg-[#23324f] active:scale-98 text-xs font-bold text-slate-100 transition-all border border-[#2b3c5e]"
                   >
                     <Eye className="w-3.5 h-3.5 text-emerald-400" />
                     Inspect Grant
@@ -163,8 +164,8 @@ export default function PatentShowcase() {
                     <a
                       href={patent.documentUrl}
                       download
-                      className="inline-flex items-center justify-center p-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 active:scale-98 text-emerald-400 border border-emerald-500/30 transition-all"
-                      title="Download Official Certificate PDF"
+                      className="inline-flex items-center justify-center p-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 active:scale-98 text-emerald-300 border border-emerald-500/40 transition-all"
+                      title="Download Official Sovereign Certificate PDF"
                     >
                       <Download className="w-4 h-4" />
                     </a>
@@ -175,12 +176,12 @@ export default function PatentShowcase() {
           </AnimatePresence>
         </div>
 
-        {/* View All / Collapse Button (Prevents excessive page scrolling) */}
+        {/* View All / Collapse Button (Prevents excessive vertical page scrolling) */}
         {activeFilter === 'All' && (
           <div className="mt-8 text-center">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs sm:text-sm font-semibold text-slate-200 active:scale-98 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#141d30] hover:bg-[#1c2842] border border-[#263552] text-xs sm:text-sm font-semibold text-slate-200 active:scale-98 transition-all shadow-md"
             >
               {showAll ? (
                 <>
@@ -201,30 +202,30 @@ export default function PatentShowcase() {
 
       {/* Official Certificate Inspection Modal */}
       {selectedPatent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-[#070b14]/90 backdrop-blur-md">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-3xl bg-[#0e121a] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col"
+            className="relative w-full max-w-3xl bg-[#131b2e] border-2 border-[#2b3a58] rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col"
           >
             {/* Modal Header */}
-            <div className="px-5 py-3.5 border-b border-slate-800 flex items-center justify-between bg-slate-900/70">
+            <div className="px-5 py-3.5 border-b border-[#23304a] flex items-center justify-between bg-[#0e1628]">
               <div className="flex items-center gap-2.5">
                 <span className="text-xl">{selectedPatent.flag}</span>
                 <div>
-                  <h3 className="text-sm sm:text-base font-bold text-white tracking-tight line-clamp-1">
+                  <h3 className="text-sm sm:text-base font-bold text-white tracking-tight line-clamp-1 font-display">
                     {selectedPatent.title}
                   </h3>
-                  <div className="text-[11px] text-emerald-400 font-mono">
+                  <div className="text-[11px] text-emerald-400 font-mono font-semibold">
                     {selectedPatent.number} &bull; {selectedPatent.office}
                   </div>
                 </div>
               </div>
               <button
                 onClick={() => setSelectedPatent(null)}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-[#1a253d] transition-colors"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
@@ -235,7 +236,7 @@ export default function PatentShowcase() {
             <div className="p-4 sm:p-6 overflow-y-auto space-y-4">
               
               {/* Certificate Image in Exact Natural Proportion */}
-              <div className="rounded-xl border border-slate-800 overflow-hidden bg-slate-950 flex items-center justify-center p-3">
+              <div className="rounded-xl border border-[#23304a] overflow-hidden bg-[#090e1a] flex items-center justify-center p-3">
                 <img
                   src={selectedPatent.certificateImage}
                   alt={`${selectedPatent.title} Certificate`}
@@ -245,25 +246,27 @@ export default function PatentShowcase() {
 
               {/* Information Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <span className="text-slate-500 text-[10px] uppercase font-semibold block">Inventor</span>
-                  <span className="text-slate-200 font-semibold mt-0.5 block">{selectedPatent.inventor}</span>
+                <div className="p-3 rounded-xl bg-[#0e1628] border border-[#202c44]">
+                  <span className="text-slate-400 text-[10px] uppercase font-mono font-semibold block">Inventor</span>
+                  <span className="text-white font-bold mt-0.5 block">{selectedPatent.inventor}</span>
                 </div>
-                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <span className="text-slate-500 text-[10px] uppercase font-semibold block">Status</span>
-                  <span className="text-emerald-400 font-semibold mt-0.5 block">{selectedPatent.status}</span>
+                <div className="p-3 rounded-xl bg-[#0e1628] border border-[#202c44]">
+                  <span className="text-slate-400 text-[10px] uppercase font-mono font-semibold block">Status</span>
+                  <span className="text-emerald-400 font-bold mt-0.5 block">{selectedPatent.status}</span>
                 </div>
-                <div className="col-span-2 sm:col-span-1 p-2.5 rounded-lg bg-slate-900 border border-slate-800">
-                  <span className="text-slate-500 text-[10px] uppercase font-semibold block">Grant Date</span>
-                  <span className="text-slate-200 font-semibold mt-0.5 block">{selectedPatent.grantDate}</span>
+                <div className="col-span-2 sm:col-span-1 p-3 rounded-xl bg-[#0e1628] border border-[#202c44]">
+                  <span className="text-slate-400 text-[10px] uppercase font-mono font-semibold block">Grant Date</span>
+                  <span className="text-white font-bold mt-0.5 block">{selectedPatent.grantDate}</span>
                 </div>
               </div>
 
               {/* Technical Description */}
-              <div className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800/80 text-xs text-slate-300 leading-relaxed">
-                <strong className="text-white block mb-1">Architecture &amp; Real-World Application:</strong>
-                {selectedPatent.summary}
-                <div className="mt-2 text-emerald-300/90">
+              <div className="p-4 rounded-xl bg-[#0e1628] border border-[#202c44] text-xs text-slate-200 leading-relaxed space-y-2">
+                <div>
+                  <strong className="text-white block font-display text-sm mb-1">Architecture &amp; Real-World Application:</strong>
+                  {selectedPatent.summary}
+                </div>
+                <div className="pt-2 border-t border-[#202c44] text-emerald-300">
                   <strong className="text-emerald-400">Core Impact: </strong>{selectedPatent.significance}
                 </div>
               </div>
@@ -271,22 +274,22 @@ export default function PatentShowcase() {
             </div>
 
             {/* Modal Footer */}
-            <div className="px-5 py-3 border-t border-slate-800 bg-slate-900/80 flex items-center justify-between">
+            <div className="px-5 py-3 border-t border-[#23304a] bg-[#0e1628] flex items-center justify-between">
               {selectedPatent.documentUrl ? (
                 <a
                   href={selectedPatent.documentUrl}
                   download
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 hover:text-emerald-300"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300"
                 >
-                  <Download className="w-3.5 h-3.5" />
+                  <Download className="w-4 h-4" />
                   Download Official Registered PDF
                 </a>
               ) : (
-                <span className="text-[11px] text-slate-500">Official Sovereign Registration</span>
+                <span className="text-xs font-mono text-slate-400">Official Sovereign Registration</span>
               )}
               <button
                 onClick={() => setSelectedPatent(null)}
-                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200"
+                className="px-4 py-1.5 rounded-xl text-xs font-bold bg-[#1a253d] hover:bg-[#233252] text-slate-200"
               >
                 Close
               </button>

@@ -8,35 +8,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-          950: '#022c22',
+        theme: {
+          bg: '#0b0f19',
+          surface: '#111827',
+          card: '#141d30',
+          cardHover: '#18243b',
+          inner: '#0d1322',
+          border: '#23304a',
+          borderActive: '#10b981',
         },
-        dark: {
-          bg: '#080a0f',
-          surface: '#0e121a',
-          card: '#131924',
-          cardHover: '#18202e',
-          border: '#1f293d',
-          borderSubtle: '#182233',
+        luminous: {
+          green: '#10b981',
+          greenLight: '#34d399',
+          greenGlow: '#00dc82',
+          darkPill: '#09261d',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Geist', 'system-ui', 'sans-serif'],
+        mono: ['Space Grotesk', 'ui-monospace', 'monospace'],
       },
       animation: {
-        'fade-in': 'fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'slide-up': 'slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in': 'fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slide-up': 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'marquee': 'marquee 35s linear infinite',
       },
       keyframes: {
@@ -45,7 +40,7 @@ export default {
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
         marquee: {
