@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, ShieldCheck, FileText } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
@@ -15,12 +15,12 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Patents & IP', href: '#patents', highlight: true },
+    { name: 'Patents', href: '#patents', highlight: true },
     { name: 'Trajectory', href: '#trajectory' },
     { name: 'Projects', href: '#projects' },
     { name: 'Leadership', href: '#leadership' },
     { name: 'Credentials', href: '#credentials' },
-    { name: 'Media (207+)', href: '#media' },
+    { name: 'Media', href: '#media' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -28,17 +28,17 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? 'bg-[#0a0c10]/90 backdrop-blur-md border-b border-white/[0.08] shadow-lg py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-[#0a0c10]/95 backdrop-blur-md border-b border-white/10 shadow-lg py-3'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo & Name — Solid Mark */}
+          {/* Brand Logo & Name — Solid Blue Accent */}
           <a href="#" className="flex items-center gap-2.5 group select-none">
-            <div className="w-8 h-8 rounded-lg bg-[#141822] border border-white/15 flex items-center justify-center text-white group-hover:border-white transition-colors">
-              <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+            <div className="w-8 h-8 rounded-lg bg-[#2f6bff] flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
+              <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 20V4l16 16V4" />
                 <circle cx="4" cy="4" r="1.5" fill="currentColor" />
                 <circle cx="20" cy="20" r="1.5" fill="currentColor" />
@@ -46,24 +46,24 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="font-display font-extrabold text-white tracking-tight text-sm sm:text-base leading-none">
-                NETHRA NEHA <span className="font-mono text-white">DS</span>
+                NETHRA NEHA <span className="font-mono text-[#2f6bff]">DS</span>
               </span>
-              <span className="text-[10px] font-mono text-slate-400 tracking-wider uppercase mt-1 leading-none">
-                Annexra &bull; 07 Sovereign IP
+              <span className="text-[10px] font-mono text-slate-400 tracking-wider mt-1 leading-none">
+                Founder &bull; Annexra Technologies
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          <nav className="hidden md:flex items-center gap-1 lg:gap-1.5">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono tracking-wider transition-all ${
                   link.highlight
-                    ? 'text-slate-950 bg-white font-bold'
-                    : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
+                    ? 'text-white bg-[#2f6bff] hover:bg-[#2558d9] font-bold shadow-sm'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
                 {link.name}
@@ -76,10 +76,10 @@ export default function Navbar() {
             <a
               href="/documents/Nethra-Neha-DS-CV.docx"
               download
-              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition-all"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#141822] hover:bg-[#1c2230] border border-white/10 text-xs font-mono text-white transition-all"
             >
-              <FileText className="w-3.5 h-3.5 text-cyan-400" />
-              <span>CV (.docx)</span>
+              <FileText className="w-3.5 h-3.5 text-[#2f6bff]" />
+              <span>Download CV</span>
             </a>
 
             {/* Mobile Hamburger Button (44px touch target) */}
@@ -88,7 +88,7 @@ export default function Navbar() {
               aria-label="Toggle Navigation Menu"
               className="md:hidden flex items-center justify-center w-11 h-11 rounded-lg border border-white/10 bg-[#12151c] text-slate-300 hover:text-white focus:outline-none"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#2f6bff]" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
@@ -103,7 +103,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden border-b border-white/[0.08] bg-[#0c0e14] px-4 pt-3 pb-6 shadow-2xl overflow-hidden font-mono"
+            className="md:hidden border-b border-white/10 bg-[#0c0e14] px-4 pt-3 pb-6 shadow-2xl overflow-hidden font-mono"
           >
             <div className="space-y-1.5">
               {navLinks.map((link) => (
@@ -113,24 +113,22 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-lg text-xs tracking-wider transition-colors ${
                     link.highlight
-                      ? 'text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 font-bold'
-                      : 'text-slate-300 hover:bg-white/[0.04] hover:text-white'
+                      ? 'bg-[#2f6bff] text-white font-bold'
+                      : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
                   }`}
                 >
                   {link.name}
                 </a>
               ))}
-              <div className="pt-3">
-                <a
-                  href="/documents/Nethra-Neha-DS-CV.docx"
-                  download
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-cyan-400 text-slate-950 font-bold text-xs uppercase"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>Download Curriculum Vitae</span>
-                </a>
-              </div>
+              <a
+                href="/documents/Nethra-Neha-DS-CV.docx"
+                download
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 rounded-lg text-xs tracking-wider bg-[#141822] text-white border border-white/10 mt-2"
+              >
+                <FileText className="w-4 h-4 text-[#2f6bff]" />
+                <span>Download CV</span>
+              </a>
             </div>
           </motion.div>
         )}

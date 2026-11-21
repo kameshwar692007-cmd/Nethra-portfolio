@@ -26,7 +26,7 @@ export default function PatentShowcase() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
           <div className="max-w-2xl">
-            <div className="text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2">
+            <div className="text-xs font-mono font-semibold tracking-wider text-[#2f6bff] uppercase mb-2">
               Sovereign Intellectual Property &bull; 07 Registered Inventions
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-display">
@@ -39,10 +39,10 @@ export default function PatentShowcase() {
 
           <div className="flex items-center gap-2 font-mono text-xs">
             <span className="px-3 py-1.5 rounded-lg bg-[#12151c] border border-white/10 text-slate-300">
-              <strong className="text-white">07</strong> Registered
+              <strong className="text-[#2f6bff]">07</strong> Registered
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-[#12151c] border border-white/10 text-slate-300">
-              <strong className="text-white">04</strong> Jurisdictions
+              <strong className="text-[#2f6bff]">04</strong> Jurisdictions
             </span>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function PatentShowcase() {
                     <a
                       href={initialPatents[0].documentUrl}
                       download
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold text-xs transition-colors shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>PDF</span>
@@ -168,7 +168,7 @@ export default function PatentShowcase() {
                     <a
                       href={initialPatents[1].documentUrl}
                       download
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold text-xs transition-colors shadow-sm"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>PDF</span>
@@ -231,7 +231,7 @@ export default function PatentShowcase() {
                         <a
                           href={patent.documentUrl}
                           download
-                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs transition-colors"
+                          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold text-xs transition-colors shadow-sm"
                         >
                           <Download className="w-3 h-3" />
                           <span>PDF</span>
@@ -362,7 +362,7 @@ export default function PatentShowcase() {
                   <a
                     href={selectedPatent.documentUrl}
                     download
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-slate-950 text-xs font-mono font-bold hover:bg-slate-100 transition-colors uppercase tracking-wider"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white text-xs font-mono font-bold transition-colors uppercase tracking-wider shadow-sm"
                   >
                     <Download className="w-4 h-4" />
                     <span>Download Official PDF Document</span>

@@ -53,7 +53,7 @@ export default function ProjectsSection() {
                 onClick={() => setActiveProjectIndex(idx)}
                 className={`px-3.5 py-2 rounded-lg whitespace-nowrap transition-all uppercase tracking-wider text-xs ${
                   isActive
-                    ? 'text-slate-950 font-bold bg-white shadow-sm'
+                    ? 'text-white font-bold bg-[#2f6bff] shadow-sm'
                     : 'text-slate-400 hover:text-white bg-[#12151c] border border-white/10'
                 }`}
               >
@@ -118,7 +118,7 @@ export default function ProjectsSection() {
                   href={activeProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold transition-all uppercase tracking-wider text-xs shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold transition-all uppercase tracking-wider text-xs shadow-sm"
                 >
                   <span>Launch Application / Code</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

@@ -50,7 +50,7 @@ export default function MediaNewsroom() {
           <a
             href="/documents/Nethra-D-Inspiring-Journey-Media-Report.pdf"
             download
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-white hover:bg-slate-100 text-slate-950 text-xs font-mono font-bold tracking-wider transition-all uppercase self-start md:self-end shadow-sm active:scale-98"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white text-xs font-mono font-bold tracking-wider transition-all uppercase self-start md:self-end shadow-sm active:scale-98"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download PR Report (PDF)</span>
@@ -66,7 +66,7 @@ export default function MediaNewsroom() {
                 onClick={() => setSelectedRegion(region)}
                 className={`px-3.5 py-2 rounded-lg whitespace-nowrap transition-colors uppercase tracking-wider text-xs ${
                   selectedRegion === region
-                    ? 'bg-white text-slate-950 font-bold'
+                    ? 'bg-[#2f6bff] text-white font-bold shadow-sm'
                     : 'bg-[#12151c] border border-white/10 text-slate-400 hover:text-white'
                 }`}
               >

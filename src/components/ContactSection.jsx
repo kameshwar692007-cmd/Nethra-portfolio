@@ -170,7 +170,7 @@ export default function ContactSection() {
 
                   <button
                     type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-white hover:bg-slate-100 text-slate-950 font-bold text-xs uppercase font-mono tracking-wider shadow-sm transition-all active:scale-98"
+                    className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold text-xs uppercase font-mono tracking-wider shadow-sm transition-all active:scale-98"
                   >
                     <Send className="w-4 h-4" />
                     <span>Transmit Dispatch to Executive Desk</span>

@@ -28,7 +28,7 @@ export default function CredentialsAndHonors() {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-10">
-          <div className="text-xs font-mono font-semibold tracking-wider text-slate-400 uppercase mb-2">
+          <div className="text-xs font-mono font-semibold tracking-wider text-[#2f6bff] uppercase mb-2">
             Accreditations &amp; Distinctions
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-display">
@@ -39,7 +39,7 @@ export default function CredentialsAndHonors() {
           </p>
         </div>
 
-        {/* Segmented View Switcher — Solid Active Tab */}
+        {/* Segmented View Switcher — Solid Brand Blue Active Tab */}
         <div className="flex items-center gap-1.5 mb-8 overflow-x-auto p-1 bg-[#0e121a] border border-white/10 rounded-lg w-fit scrollbar-none font-mono text-xs">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -49,7 +49,7 @@ export default function CredentialsAndHonors() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`whitespace-nowrap px-4 py-2 rounded-md text-xs font-medium transition-all ${
                   isActive
-                    ? 'text-slate-950 bg-white font-bold shadow-sm'
+                    ? 'text-white bg-[#2f6bff] font-bold shadow-sm'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >
@@ -63,7 +63,7 @@ export default function CredentialsAndHonors() {
         <div className="space-y-6">
           <AnimatePresence mode="wait">
             
-            {/* 1. Honors Tab */}
+            {/* 1. Honors Tab (Retained Previous Design with Solid Blue Accents) */}
             {activeTab === 'honors' && (
               <motion.div
                 key="honors"
@@ -77,11 +77,11 @@ export default function CredentialsAndHonors() {
                   {honorsData.map((honor, i) => (
                     <div
                       key={i}
-                      className="p-5 rounded-xl bg-[#0d1017] border border-white/10 flex flex-col justify-between"
+                      className="p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-center justify-between gap-2 mb-2 font-mono text-xs">
-                          <span className="text-white font-bold">
+                          <span className="text-[#2f6bff] font-bold px-2 py-0.5 rounded bg-[#2f6bff]/10 border border-[#2f6bff]/20">
                             {honor.year}
                           </span>
                           <span className="text-slate-400 text-[11px]">
@@ -91,7 +91,7 @@ export default function CredentialsAndHonors() {
                         <h3 className="text-base font-bold text-white mb-1 leading-snug font-display">
                           {honor.title}
                         </h3>
-                        <div className="text-xs font-semibold text-slate-200">{honor.award}</div>
+                        <div className="text-xs font-semibold text-[#2f6bff]">{honor.award}</div>
                         <div className="text-[11px] text-slate-400 mt-0.5">{honor.organization}</div>
                         <p className="mt-2.5 text-xs text-slate-300 leading-relaxed">
                           {honor.desc}
@@ -123,7 +123,7 @@ export default function CredentialsAndHonors() {
                         className="w-full h-full object-contain filter brightness-95 rounded"
                       />
                     </div>
-                    <div className="text-sm font-bold text-white font-display">Beyond Science • Space Astronomy Honor</div>
+                    <div className="text-sm font-bold text-white font-display">Beyond Science &bull; Space Astronomy Honor</div>
                     <p className="text-xs text-slate-400 mt-1">Scientific inquiry into astronomical telemetry and cosmic systems.</p>
                   </div>
                 </div>
@@ -143,10 +143,10 @@ export default function CredentialsAndHonors() {
                 {certificationsData.map((cert, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-[#0d1017] border border-white/10 flex flex-col justify-between"
+                    className="p-4 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between"
                   >
                     <div>
-                      <span className="text-[10px] font-mono font-medium text-slate-400 uppercase tracking-wide block mb-1">
+                      <span className="text-[10px] font-mono font-medium text-[#2f6bff] uppercase tracking-wide block mb-1">
                         {cert.category} &bull; {cert.year}
                       </span>
                       <h4 className="text-xs sm:text-sm font-bold text-white leading-snug font-display">
@@ -156,8 +156,8 @@ export default function CredentialsAndHonors() {
                         {cert.issuer}
                       </p>
                     </div>
-                    <div className="mt-3 pt-2 border-t border-white/5 text-[10px] text-slate-300 font-mono flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3 h-3 text-white shrink-0" />
+                    <div className="mt-3 pt-2 border-t border-white/5 text-[10px] text-[#2f6bff] font-mono flex items-center gap-1.5 font-semibold">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#2f6bff] shrink-0" />
                       <span>Verified Credential</span>
                     </div>
                   </div>
@@ -176,12 +176,12 @@ export default function CredentialsAndHonors() {
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
               >
                 {governmentPledges.map((item, idx) => (
-                  <div key={idx} className="p-4 rounded-xl bg-[#0d1017] border border-white/10 flex items-start gap-3">
-                    <ShieldCheck className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                  <div key={idx} className="p-4 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex items-start gap-3">
+                    <ShieldCheck className="w-4 h-4 text-[#2f6bff] shrink-0 mt-0.5" />
                     <div>
                       <div className="text-xs font-bold text-white font-display">{item.title}</div>
                       <div className="text-[11px] text-slate-400 mt-0.5">{item.ministry}</div>
-                      <div className="text-[10px] font-mono text-slate-300 mt-1 bg-white/5 px-2 py-0.5 rounded border border-white/10 inline-block">
+                      <div className="text-[10px] font-mono text-[#2f6bff] mt-1 bg-[#2f6bff]/10 px-2 py-0.5 rounded border border-[#2f6bff]/20 inline-block font-semibold">
                         ID: {item.id}
                       </div>
                     </div>
@@ -192,11 +192,11 @@ export default function CredentialsAndHonors() {
 
           </AnimatePresence>
 
-          {/* Trilingual Fluency Showcase — Solid Styling */}
+          {/* Trilingual Fluency Showcase */}
           <div className="p-5 rounded-xl bg-[#0d1017] border border-white/10">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-white/10 border border-white/15 flex items-center justify-center text-white shrink-0">
+                <div className="w-9 h-9 rounded-lg bg-[#2f6bff]/15 border border-[#2f6bff]/30 flex items-center justify-center text-[#2f6bff] shrink-0">
                   <Languages className="w-4 h-4" />
                 </div>
                 <div>
@@ -210,13 +210,13 @@ export default function CredentialsAndHonors() {
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-white/10 text-xs font-mono font-medium text-white">
+                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-xs font-mono font-medium text-[#2f6bff]">
                   English (Professional)
                 </span>
-                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-white/10 text-xs font-mono font-medium text-white">
+                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-xs font-mono font-medium text-[#2f6bff]">
                   Tamil (Native)
                 </span>
-                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-white/10 text-xs font-mono font-medium text-white">
+                <span className="px-3 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-xs font-mono font-medium text-[#2f6bff]">
                   Japanese (Elementary)
                 </span>
               </div>
