@@ -2,18 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 import { ShieldCheck, Award, ArrowRight, MapPin, Mail, Phone, FileText } from 'lucide-react';
-import SpotlightCard from './ui/SpotlightCard';
-import BorderBeam from './ui/BorderBeam';
 import NumberTicker from './ui/NumberTicker';
 
 export default function HeroSection() {
   return (
-    <section id="about" className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 border-b-2 border-[#202c44] bg-[#0b0f19] overflow-hidden">
-      {/* Structural technical grid background (Quarry UI style) */}
+    <section id="about" className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 border-b border-[#1e293b] bg-[#0b0f19] overflow-hidden">
+      {/* Subtle background technical grid */}
       <div 
-        className="absolute inset-0 opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, #34d399 1px, transparent 0)',
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)',
           backgroundSize: '24px 24px'
         }}
       />
@@ -23,66 +21,66 @@ export default function HeroSection() {
           
           {/* Main Editorial Column (7 cols) */}
           <motion.div 
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-4"
           >
-            {/* High-Visibility Green Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 text-xs font-mono font-semibold tracking-wide shadow-[0_0_15px_rgba(16,185,129,0.15)]">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              FOUNDER &amp; CEO @ AGE 16 &bull; ANNEXRA TECHNOLOGIES
+            {/* Solid High-Visibility Green Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#064e3b] border border-[#059669] text-[#a7f3d0] text-xs font-mono font-bold tracking-wide">
+              <span className="w-2 h-2 rounded-full bg-[#34d399]" />
+              FOUNDER &amp; CEO @ AGE 16 • ANNEXRA TECHNOLOGIES
             </div>
 
-            {/* Main Name & Title */}
+            {/* Main Name & Title in Crisp Pure White */}
             <div>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.08] font-display">
                 NETHRA NEHA DS
               </h1>
-              <p className="mt-2 text-base sm:text-xl font-semibold text-emerald-400 tracking-tight flex items-center gap-2 font-display">
+              <p className="mt-2 text-base sm:text-xl font-bold text-slate-200 tracking-tight flex items-center gap-2 font-display">
                 <span>Student Innovator</span>
-                <span className="text-slate-600">&bull;</span>
+                <span className="text-slate-600">•</span>
                 <span>Founder &amp; CEO</span>
-                <span className="text-slate-600">&bull;</span>
-                <span className="text-emerald-300 font-mono">7 Sovereign Patents</span>
+                <span className="text-slate-600">•</span>
+                <span className="text-[#34d399] font-mono">7 Sovereign Patents</span>
               </p>
             </div>
 
-            {/* Narrative Summary */}
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl font-normal">
+            {/* Narrative Summary with Crisp Whites and Lights */}
+            <p className="text-slate-200 text-xs sm:text-sm leading-relaxed max-w-2xl font-normal">
               From a government school classroom in Salem to founding{' '}
-              <strong className="text-white font-semibold">Annexra Technologies</strong> at age 16. 
-              Inventor behind <strong className="text-emerald-400 font-semibold">7 sovereign-patented inventions</strong> across 
+              <strong className="text-white font-bold">Annexra Technologies</strong> at age 16. 
+              Inventor behind <strong className="text-[#34d399] font-bold">7 sovereign-patented inventions</strong> across 
               the UK, Canada, India, and Germany—bridging AI hematological oncology, sustainable smart irrigation, and wearable warning hardware.
             </p>
 
             {/* Quick Contact & Verified Location */}
-            <div className="flex flex-wrap gap-2 text-xs font-mono text-slate-300 pt-1">
-              <div className="flex items-center gap-1.5 bg-[#141d30] px-3 py-1.5 rounded-xl border-2 border-[#23304a]">
-                <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+            <div className="flex flex-wrap gap-2 text-xs font-mono text-slate-200 pt-1">
+              <div className="flex items-center gap-1.5 bg-[#121a2d] px-3 py-1.5 rounded-lg border border-[#263654]">
+                <MapPin className="w-3.5 h-3.5 text-[#34d399] shrink-0" />
                 <span>Salem, Tamil Nadu, India</span>
               </div>
               <a 
                 href={`mailto:${personalInfo.email}`}
-                className="flex items-center gap-1.5 bg-[#141d30] px-3 py-1.5 rounded-xl border-2 border-[#23304a] hover:text-emerald-300 hover:border-emerald-500/50 active:scale-98 transition-all"
+                className="flex items-center gap-1.5 bg-[#121a2d] px-3 py-1.5 rounded-lg border border-[#263654] hover:text-[#34d399] hover:border-[#059669] active:scale-98 transition-all"
               >
-                <Mail className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-[#34d399] shrink-0" />
                 <span>{personalInfo.email}</span>
               </a>
               <a 
                 href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-1.5 bg-[#141d30] px-3 py-1.5 rounded-xl border-2 border-[#23304a] hover:text-emerald-300 hover:border-emerald-500/50 active:scale-98 transition-all"
+                className="flex items-center gap-1.5 bg-[#121a2d] px-3 py-1.5 rounded-lg border border-[#263654] hover:text-[#34d399] hover:border-[#059669] active:scale-98 transition-all"
               >
-                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#34d399] shrink-0" />
                 <span>{personalInfo.phone}</span>
               </a>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons in Solid Colors */}
             <div className="pt-2 flex flex-wrap gap-3">
               <a
                 href="#patents"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-950 bg-emerald-400 hover:bg-emerald-300 active:scale-98 transition-all shadow-[0_2px_12px_rgba(16,185,129,0.25)]"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#059669] hover:bg-[#047857] active:scale-98 transition-all shadow-sm"
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>Inspect 7 Patents</span>
@@ -91,24 +89,24 @@ export default function HeroSection() {
 
               <a
                 href="#media"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-200 bg-[#141d30] border-2 border-[#263552] hover:bg-[#1a253d] hover:text-white hover:border-emerald-500/50 active:scale-98 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#141d30] border border-[#263654] hover:bg-[#1a253d] hover:border-[#059669] active:scale-98 transition-all"
               >
-                <Award className="w-4 h-4 text-emerald-400" />
+                <Award className="w-4 h-4 text-[#34d399]" />
                 <span>207+ Press Releases</span>
               </a>
 
               <a
                 href="/documents/Nethra-Neha-DS-CV.docx"
                 download
-                className="inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-medium text-slate-300 bg-[#141d30] border-2 border-[#23304a] hover:text-white hover:border-emerald-500/50 active:scale-98 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-bold text-slate-200 bg-[#0f172a] border border-[#334155] hover:text-white hover:border-[#059669] active:scale-98 transition-all"
               >
-                <FileText className="w-4 h-4 text-emerald-400" />
+                <FileText className="w-4 h-4 text-[#34d399]" />
                 <span>CV (.docx)</span>
               </a>
             </div>
           </motion.div>
 
-          {/* Right Column: Portrait Card with 21st.dev Border Beam & Spotlight (5 cols) */}
+          {/* Right Column: Portrait Card with Solid Architecture (5 cols) */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -116,13 +114,11 @@ export default function HeroSection() {
             className="lg:col-span-5"
           >
             <div className="relative mx-auto max-w-sm">
-              <SpotlightCard className="p-3 shadow-2xl relative">
-                {/* 21st.dev Border Beam Animation */}
-                <BorderBeam size={250} duration={8} colorFrom="#10b981" colorTo="#34d399" borderWidth={2} />
-
+              <div className="rounded-2xl border-2 border-[#263654] border-t-4 border-t-[#059669] bg-[#121a2d] p-3 shadow-lg">
+                
                 {/* Natural 853x1280 Aspect Ratio Container */}
                 <div 
-                  className="relative w-full rounded-xl overflow-hidden bg-[#0c1220] border border-[#1e2a42]"
+                  className="relative w-full rounded-xl overflow-hidden bg-[#090e1a] border border-[#1e2a42]"
                   style={{ aspectRatio: '853 / 1280' }}
                 >
                   <img
@@ -136,41 +132,41 @@ export default function HeroSection() {
                     }}
                   />
                   
-                  {/* High-Contrast Bottom Caption */}
+                  {/* High-Contrast Bottom Solid Banner */}
                   <div className="absolute inset-x-0 bottom-0 p-3.5 bg-gradient-to-t from-[#090d16] via-[#090d16]/90 to-transparent">
-                    <div className="text-sm font-bold text-white tracking-tight font-display">Nethra Neha DS</div>
-                    <div className="text-xs text-emerald-400 font-semibold font-mono">Founder &amp; CEO, Annexra Technologies</div>
-                    <div className="text-[11px] text-slate-300 font-sans mt-0.5">Government Higher Secondary School, Salem</div>
+                    <div className="text-base font-extrabold text-white tracking-tight font-display">Nethra Neha DS</div>
+                    <div className="text-xs text-[#34d399] font-bold font-mono">Founder &amp; CEO, Annexra Technologies</div>
+                    <div className="text-[11px] text-slate-200 font-sans mt-0.5 font-normal">Government Higher Secondary School, Salem</div>
                   </div>
                 </div>
 
-                {/* Sub-label Badges with Dark Green Inset */}
+                {/* Sub-label Badges with Solid Dark Green Inset */}
                 <div className="mt-2.5 grid grid-cols-2 gap-2 text-center text-xs font-medium">
-                  <div className="p-2 rounded-xl bg-[#0e1626] border border-[#212e47]">
-                    <span className="block text-slate-400 text-[10px] uppercase font-mono font-semibold">Leadership</span>
-                    <span className="text-slate-100 text-xs font-bold mt-0.5 block font-display">Tamil Nadu Volunteers</span>
+                  <div className="p-2.5 rounded-xl bg-[#0b1120] border border-[#1e2a42]">
+                    <span className="block text-slate-400 text-[10px] uppercase font-mono font-bold">Leadership</span>
+                    <span className="text-white text-xs font-bold mt-0.5 block font-display">Tamil Nadu Volunteers</span>
                   </div>
-                  <div className="p-2 rounded-xl bg-[#0e1626] border border-[#212e47]">
-                    <span className="block text-slate-400 text-[10px] uppercase font-mono font-semibold">Ambassadorship</span>
-                    <span className="text-emerald-300 text-xs font-bold mt-0.5 block font-display">Miro &bull; UN SDC</span>
+                  <div className="p-2.5 rounded-xl bg-[#0b1120] border border-[#1e2a42]">
+                    <span className="block text-slate-400 text-[10px] uppercase font-mono font-bold">Ambassadorship</span>
+                    <span className="text-[#a7f3d0] text-xs font-bold mt-0.5 block font-display">Miro • UN SDC</span>
                   </div>
                 </div>
 
-              </SpotlightCard>
+              </div>
             </div>
           </motion.div>
 
         </div>
 
-        {/* High-Contrast Numerical Stats Ribbon with Spotlight and NumberTicker */}
-        <div className="mt-10 pt-8 border-t-2 border-[#202c44] grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        {/* High-Contrast Numerical Stats Ribbon in Solid Cards */}
+        <div className="mt-10 pt-8 border-t border-[#1e293b] grid grid-cols-2 md:grid-cols-4 gap-4">
           {personalInfo.stats.map((stat, i) => {
             const num = parseInt(stat.value, 10);
             const isPureNum = !isNaN(num) && String(num) === stat.value;
             return (
-              <SpotlightCard 
+              <div 
                 key={i} 
-                className="p-4 rounded-xl shadow-sm hover:border-emerald-500/50 transition-colors"
+                className="p-4 rounded-xl bg-[#121a2d] border border-[#263654] hover:border-[#059669] transition-colors shadow-sm"
               >
                 <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display flex items-baseline gap-1">
                   {isPureNum ? (
@@ -178,15 +174,15 @@ export default function HeroSection() {
                   ) : (
                     <span>{stat.value}</span>
                   )}
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] inline-block" />
                 </div>
-                <div className="mt-1 text-xs sm:text-sm font-bold text-slate-100 font-display">
+                <div className="mt-1 text-xs sm:text-sm font-bold text-white font-display">
                   {stat.label}
                 </div>
-                <div className="text-[11px] font-mono text-emerald-400 font-semibold truncate mt-0.5">
+                <div className="text-[11px] font-mono text-[#34d399] font-bold truncate mt-0.5">
                   {stat.sub}
                 </div>
-              </SpotlightCard>
+              </div>
             );
           })}
         </div>
