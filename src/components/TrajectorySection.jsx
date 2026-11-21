@@ -23,22 +23,22 @@ export default function TrajectorySection() {
           </p>
         </div>
 
-        {/* BENTO BOX NARRATIVE & VISUAL MEDIA (PRECISE MATCH TO PREVIOUS DESIGN) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-10">
+        {/* BENTO BOX NARRATIVE & VISUAL MEDIA */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-10 items-stretch">
           
-          {/* Left Column: Personal History Story & Standalone Quote Card (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-5">
-            {/* Story Card */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-[#0d1017] border border-white/10 space-y-4 shadow-xl">
+          {/* Left Column: Personal History Story, Quote, and Annexra Directive (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col gap-5">
+            {/* Story Card — Comfortable editorial font size that flows naturally */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1017] border border-white/10 space-y-4 shadow-xl">
               <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
                 <span className="text-[#2f6bff] font-bold uppercase tracking-wider">Origin &amp; Mission</span>
                 <span className="text-slate-400">Government School to Tech Founder</span>
               </div>
 
-              <p className="text-white/95 text-xs sm:text-sm leading-relaxed font-normal">
+              <p className="text-white/95 text-sm sm:text-base leading-relaxed font-normal">
                 {storyData.paragraphs[0]}
               </p>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
                 {storyData.paragraphs[1]}
               </p>
 
@@ -50,7 +50,7 @@ export default function TrajectorySection() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="space-y-3.5 overflow-hidden pt-3 border-t border-white/10 text-xs text-slate-300 leading-relaxed"
+                    className="space-y-4 overflow-hidden pt-4 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed"
                   >
                     <p>{storyData.paragraphs[2]}</p>
                     <p>{storyData.paragraphs[3]}</p>
@@ -87,45 +87,57 @@ export default function TrajectorySection() {
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
               </div>
-              <blockquote className="text-xs sm:text-sm text-slate-100 italic leading-relaxed">
+              <blockquote className="text-sm sm:text-base text-slate-100 italic leading-relaxed">
                 &ldquo;{storyData.quote}&rdquo;
               </blockquote>
-              <div className="text-[11px] font-mono font-medium text-[#2f6bff]">
+              <div className="text-xs font-mono font-medium text-[#2f6bff]">
                 — NETHRA NEHA DS &bull; Founder &amp; CEO, Annexra Technologies
               </div>
             </div>
-          </div>
 
-          {/* Right Column: Exact-Size Poster Card & Directive Card (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between gap-5">
-            {/* Press Poster Artifact Card — Exact Natural Poster Proportions */}
-            <div className="rounded-2xl border border-white/10 bg-[#0d1017] p-5 sm:p-6 space-y-3.5 shadow-xl">
-              <div className="rounded-xl overflow-hidden border border-white/10 bg-[#06080d]">
-                <img
-                  src="/assets/news-just-now-salem.jpeg"
-                  alt="Salem District Recognition to National Media"
-                  className="w-full h-auto object-cover filter contrast-[1.02]"
-                />
+            {/* Annexra Technologies Directive Card (Moved below quote card for seamless narrative continuity) */}
+            <div className="p-6 rounded-2xl bg-[#0d1017] border border-white/10 shadow-xl space-y-2.5">
+              <div className="flex items-center justify-between text-xs font-mono">
+                <span className="text-[#2f6bff] font-bold uppercase tracking-wider">Annexra Technologies Directive</span>
+                <span className="text-slate-400">Salem Core</span>
               </div>
-
-              <div className="space-y-1">
-                <h4 className="text-sm sm:text-base font-bold text-white font-display">
-                  Salem District Recognition to National Media
-                </h4>
-                <p className="text-xs text-slate-400 leading-relaxed font-normal">
-                  From Salem government school science exhibitions to syndication across 207 nationwide news outlets.
-                </p>
-              </div>
-            </div>
-
-            {/* Directive Card */}
-            <div className="p-6 rounded-2xl bg-[#0d1017] border border-white/10 shadow-xl space-y-2">
-              <div className="text-xs font-mono font-bold text-[#2f6bff] uppercase tracking-wider">
-                Annexra Technologies Directive
-              </div>
-              <p className="text-slate-300 leading-relaxed text-xs font-normal">
+              <p className="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal">
                 Incorporated in January 2026 to convert grassroots research in clinical AI, soil sensor telemetry, and IoT warning hardware into sovereign, production technologies.
               </p>
+            </div>
+          </div>
+
+          {/* Right Column: Exact Natural Poster Artifact Card (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <div className="rounded-2xl border border-white/10 bg-[#0d1017] p-5 sm:p-6 space-y-4 shadow-xl h-full flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-2 border-b border-white/10">
+                  <span className="text-[#2f6bff] font-bold uppercase tracking-wider">Press Artifact</span>
+                  <span>National Syndication</span>
+                </div>
+
+                <div className="rounded-xl overflow-hidden border border-white/10 bg-[#06080d]">
+                  <img
+                    src="/assets/news-just-now-salem.jpeg"
+                    alt="Salem District Recognition to National Media"
+                    className="w-full h-auto object-cover filter contrast-[1.02]"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <h4 className="text-base sm:text-lg font-bold text-white font-display">
+                    Salem District Recognition to National Media
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                    From Salem government school science exhibitions to syndication across 207 nationwide news outlets.
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                <span className="text-slate-400">38 Districts Active</span>
+                <span className="text-[#2f6bff] font-semibold">TN Volunteers IT</span>
+              </div>
             </div>
           </div>
 

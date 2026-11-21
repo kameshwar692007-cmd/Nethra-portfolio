@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Star, FileText, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, FileText } from 'lucide-react';
 
 export default function ContactSection() {
   const [formState, setFormState] = useState({
@@ -21,13 +21,6 @@ export default function ContactSection() {
     window.location.href = mailtoUrl;
     setSubmitted(true);
   };
-
-  const reviewers = [
-    { name: "Tamil Nadu Volunteers", role: "State Executive Body", initials: "TN", bg: "bg-blue-600" },
-    { name: "UK IPO Registry", role: "Design Grant Office", initials: "UK", bg: "bg-indigo-600" },
-    { name: "CIPO Canada", role: "Precision Oncology IP", initials: "CA", bg: "bg-emerald-600" },
-    { name: "National Press", role: "207+ Verified Outlets", initials: "PR", bg: "bg-cyan-600" },
-  ];
 
   return (
     <section id="contact" className="py-16 sm:py-24 bg-[#0a0c10] border-b border-white/10 relative overflow-hidden">
@@ -105,40 +98,6 @@ export default function ContactSection() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Reviewers & Endorsement Social Proof Card */}
-            <div className="p-5 rounded-2xl bg-[#0d1017] border border-white/10 shadow-xl space-y-3">
-              <div className="flex items-center gap-3">
-                {/* Avatar Stack */}
-                <div className="flex -space-x-2 overflow-hidden">
-                  {reviewers.map((rev, i) => (
-                    <div
-                      key={i}
-                      className={`inline-flex items-center justify-center w-8 h-8 rounded-full ring-2 ring-[#0d1017] text-[10px] font-bold text-white font-mono ${rev.bg}`}
-                      title={`${rev.name} - ${rev.role}`}
-                    >
-                      {rev.initials}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Rating & Outlets */}
-                <div className="text-xs">
-                  <div className="flex items-center gap-1 text-amber-400">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-[11px] font-mono text-slate-400">
-                    Verified across <strong className="text-white">207+ Publications</strong>
-                  </span>
-                </div>
-              </div>
-
-              <p className="text-xs text-slate-300 leading-relaxed pt-1 border-t border-white/5 font-sans">
-                &ldquo;Engineering grassroots innovation into sovereign, certified digital infrastructure across 38 districts.&rdquo;
-              </p>
             </div>
 
             {/* Download Curriculum Vitae */}

@@ -100,7 +100,7 @@ export default function MediaNewsroom() {
         </div>
 
         {/* Directory Ledger Table */}
-        <div className="rounded-xl border border-white/10 bg-[#0d1017] overflow-hidden shadow-xl">
+        <div className="rounded-xl border border-white/10 bg-[#0d1017] overflow-hidden shadow-xl min-h-[540px]">
           <div className="hidden md:grid grid-cols-12 gap-4 px-5 py-3 border-b border-white/10 bg-[#090c12] text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold">
             <div className="col-span-1">#</div>
             <div className="col-span-3">Publication Outlet</div>
@@ -113,10 +113,10 @@ export default function MediaNewsroom() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPage + selectedRegion + searchQuery}
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.18 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.12 }}
               >
                 {displayedArticles.map((article, idx) => {
                   const globalIndex = currentPage * pageSize + idx + 1;
@@ -163,16 +163,8 @@ export default function MediaNewsroom() {
           </div>
         </div>
 
-        {/* Wheel Pagination Integration with Lazy Page Splitting */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
-          <div className="text-slate-400 text-center sm:text-left">
-            Showing <strong className="text-white">{currentPage * pageSize + 1}</strong> &ndash;{' '}
-            <strong className="text-white">
-              {Math.min((currentPage + 1) * pageSize, filteredArticles.length)}
-            </strong> of <strong className="text-white">{filteredArticles.length}</strong> outlets
-            (Page {currentPage + 1} of {totalPages})
-          </div>
-
+        {/* Centered Wheel Pagination & Status Indicator */}
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 font-mono text-xs">
           <div className="flex items-center justify-center">
             <WheelPagination
               totalPages={totalPages}
@@ -181,6 +173,14 @@ export default function MediaNewsroom() {
               onChange={(page) => setCurrentPage(page)}
               className="bg-[#0e121a] border border-white/10 rounded-2xl shadow-xl py-2 px-3"
             />
+          </div>
+
+          <div className="text-slate-400 text-center">
+            Showing <strong className="text-white">{currentPage * pageSize + 1}</strong> &ndash;{' '}
+            <strong className="text-white">
+              {Math.min((currentPage + 1) * pageSize, filteredArticles.length)}
+            </strong> of <strong className="text-white">{filteredArticles.length}</strong> outlets
+            (Page {currentPage + 1} of {totalPages})
           </div>
         </div>
 

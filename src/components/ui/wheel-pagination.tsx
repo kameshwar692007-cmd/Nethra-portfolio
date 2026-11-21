@@ -23,6 +23,7 @@ export default function WheelPagination({
 }: WheelPaginationProps) {
   const [active, setActive] = useState(currentPage ?? 0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const lastWheelTime = useRef(0);
 
   useEffect(() => {
     if (currentPage !== undefined && currentPage !== active) {
@@ -30,17 +31,30 @@ export default function WheelPagination({
     }
   }, [currentPage]);
 
-  useEffect(() => {
-    if (onChange) onChange(active);
-  }, [active, onChange]);
+  const handlePageChange = (newPage: number) => {
+    const clamped = Math.max(0, Math.min(newPage, totalPages - 1));
+    setActive(clamped);
+    if (onChange) onChange(clamped);
+  };
 
-  const prevPage = () => setActive((p) => Math.max(p - 1, 0));
-  const nextPage = () => setActive((p) => Math.min(p + 1, totalPages - 1));
+  const prevPage = () => handlePageChange(active - 1);
+  const nextPage = () => handlePageChange(active + 1);
 
   const handleWheel = (e: WheelEvent) => {
+    // Only handle horizontal wheeling or shift+wheel so normal page scrolling NEVER glitches or freezes
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+    if (!isHorizontal && !e.shiftKey) {
+      return;
+    }
+
     e.preventDefault();
-    if (e.deltaY < 0) setActive((p) => Math.max(p - 1, 0));
-    else if (e.deltaY > 0) setActive((p) => Math.min(p + 1, totalPages - 1));
+    const now = Date.now();
+    if (now - lastWheelTime.current < 180) return;
+    lastWheelTime.current = now;
+
+    const delta = isHorizontal ? e.deltaX : e.deltaY;
+    if (delta < 0) handlePageChange(active - 1);
+    else if (delta > 0) handlePageChange(active + 1);
   };
 
   useEffect(() => {
@@ -48,7 +62,7 @@ export default function WheelPagination({
     if (!el) return;
     el.addEventListener("wheel", handleWheel, { passive: false });
     return () => el.removeEventListener("wheel", handleWheel);
-  }, []);
+  }, [active, totalPages]);
 
   // Determine visible pages based on active
   const getVisiblePages = () => {
@@ -106,7 +120,7 @@ export default function WheelPagination({
                 ? "bg-[#2f6bff] text-white border border-[#2f6bff] shadow-md font-bold"
                 : "bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10"
             )}
-            onClick={() => setActive(p)}
+            onClick={() => handlePageChange(p)}
           >
             {p + 1}
           </motion.div>
