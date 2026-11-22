@@ -13,34 +13,33 @@ export default function Preloader({ onComplete }) {
       return;
     }
 
-    // Monitor document & critical hero assets
-    const imagesToPreload = [
-      "/assets/nethra-portrait.jpeg",
-      "/assets/news-just-now-salem.jpeg",
-      "/assets/award-kalai-thiruvizha.jpeg",
-    ];
+    // High performance smooth 60fps/120fps progress countdown without artificial delay
+    let startTimestamp = null;
+    const duration = 480; // Crisp, cinematic 480ms unmasking
+    let rafId;
 
-    let loadedCount = 0;
-    const totalAssets = imagesToPreload.length + 1;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const elapsed = timestamp - startTimestamp;
+      const pct = Math.min(100, Math.round((elapsed / duration) * 100));
+      setProgress(pct);
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsFinished(true);
-            onComplete?.();
-          }, 350);
-          return 100;
-        }
-        return prev + 15;
-      });
-    }, 120);
+      if (pct < 100) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        setTimeout(() => {
+          setIsFinished(true);
+          onComplete?.();
+        }, 100);
+      }
+    };
+
+    rafId = requestAnimationFrame(step);
 
     // Escape listener
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        clearInterval(interval);
+        cancelAnimationFrame(rafId);
         setIsFinished(true);
         onComplete?.();
       }
@@ -48,10 +47,10 @@ export default function Preloader({ onComplete }) {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      clearInterval(interval);
+      cancelAnimationFrame(rafId);
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onComplete]);
 
   if (isFinished) return null;
 

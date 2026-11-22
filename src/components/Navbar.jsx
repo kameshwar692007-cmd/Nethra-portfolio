@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText } from 'lucide-react';
 import { cn } from '../lib/utils';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Navbar() {
   const [stuck, setStuck] = useState(false);
@@ -141,6 +142,9 @@ export default function Navbar() {
 
         {/* Right CTA Action & Mobile Toggle */}
         <div className="flex items-center gap-2">
+          {/* Atmospheric Theme Switcher with permanent blue accent */}
+          <ThemeSwitcher />
+
           <a
             href="/documents/Nethra-Neha-DS-CV.docx"
             download

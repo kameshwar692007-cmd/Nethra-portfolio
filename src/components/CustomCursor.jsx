@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
@@ -6,6 +6,10 @@ export default function CustomCursor() {
   const [cursorState, setCursorState] = useState("default"); // "default", "hover", "view", "drag", "explore"
   const [cursorLabel, setCursorLabel] = useState("");
   const [isTouchDevice, setIsTouchDevice] = useState(true);
+
+  const isVisibleRef = useRef(false);
+  const lastTargetRef = useRef(null);
+  const lastStateRef = useRef({ state: "default", label: "" });
 
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -27,29 +31,49 @@ export default function CustomCursor() {
     const onMouseMove = (e) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      
+      if (!isVisibleRef.current) {
+        isVisibleRef.current = true;
+        setIsVisible(true);
+      }
 
-      // Check context element under pointer
-      const target = e.target.closest("[data-cursor], button, a, [role='button']");
-      if (target) {
-        const customType = target.getAttribute("data-cursor");
-        if (customType) {
-          setCursorState(customType);
-          setCursorLabel(target.getAttribute("data-cursor-label") || customType.toUpperCase());
-        } else {
-          setCursorState("hover");
-          setCursorLabel("");
+      // Check context element under pointer — only update React state when target actually changes
+      const target = e.target ? e.target.closest("[data-cursor], button, a, [role='button']") : null;
+      if (target !== lastTargetRef.current) {
+        lastTargetRef.current = target;
+        let newState = "default";
+        let newLabel = "";
+
+        if (target) {
+          const customType = target.getAttribute("data-cursor");
+          if (customType) {
+            newState = customType;
+            newLabel = target.getAttribute("data-cursor-label") || customType.toUpperCase();
+          } else {
+            newState = "hover";
+            newLabel = "";
+          }
         }
-      } else {
-        setCursorState("default");
-        setCursorLabel("");
+
+        if (newState !== lastStateRef.current.state || newLabel !== lastStateRef.current.label) {
+          lastStateRef.current = { state: newState, label: newLabel };
+          setCursorState(newState);
+          setCursorLabel(newLabel);
+        }
       }
     };
 
-    const onMouseLeave = () => setIsVisible(false);
-    const onMouseEnter = () => setIsVisible(true);
+    const onMouseLeave = () => {
+      isVisibleRef.current = false;
+      setIsVisible(false);
+    };
 
-    window.addEventListener("mousemove", onMouseMove);
+    const onMouseEnter = () => {
+      isVisibleRef.current = true;
+      setIsVisible(true);
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
     document.addEventListener("mouseleave", onMouseLeave);
     document.addEventListener("mouseenter", onMouseEnter);
 
@@ -58,7 +82,7 @@ export default function CustomCursor() {
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseenter", onMouseEnter);
     };
-  }, [isVisible]);
+  }, [mouseX, mouseY]);
 
   if (isTouchDevice || !isVisible) return null;
 

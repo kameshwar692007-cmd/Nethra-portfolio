@@ -244,6 +244,10 @@ export default function HeroSection() {
               <img
                 src="/assets/nethra-portrait.jpeg"
                 alt="Nethra Neha DS - Founder & Director of Annexra Technologies"
+                width={853}
+                height={1180}
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-auto object-cover object-top filter contrast-[1.02] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 style={{ aspectRatio: '853 / 1180' }}
                 loading="eager"

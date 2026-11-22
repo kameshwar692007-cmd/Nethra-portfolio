@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { ThemeProvider } from './context/ThemeContext';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
@@ -28,36 +29,38 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-[#0a0c10] text-[#f8fafc] flex flex-col font-sans selection:bg-[#2f6bff] selection:text-white pb-16 md:pb-0 relative antialiased">
-      {/* Cinematic Branded Preloader */}
-      <Preloader onComplete={() => setLoaderComplete(true)} />
+    <ThemeProvider>
+      <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] flex flex-col font-sans selection:bg-[var(--brand)]/20 selection:text-[var(--brand)] pb-16 md:pb-0 relative antialiased transition-colors duration-300">
+        {/* Cinematic Branded Preloader */}
+        <Preloader onComplete={() => setLoaderComplete(true)} />
 
-      {/* Desktop Context-Aware Interactive Custom Cursor */}
-      <CustomCursor />
+        {/* Desktop Context-Aware Interactive Custom Cursor */}
+        <CustomCursor />
 
-      {/* Thin Global Reading Progress Bar */}
-      <motion.div
-        style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-[2px] bg-[#2f6bff] origin-left z-[9999] pointer-events-none"
-      />
+        {/* Thin Global Reading Progress Bar */}
+        <motion.div
+          style={{ scaleX }}
+          className="fixed top-0 left-0 right-0 h-[2px] bg-[var(--brand)] origin-left z-[9999] pointer-events-none"
+        />
 
-      <Navbar />
+        <Navbar />
 
-      <main className="flex-1">
-        <HeroSection />
-        <MarqueeStrip />
-        <PatentShowcase />
-        <TrajectorySection />
-        <TiltedFeatureCards />
-        <ProjectsSection />
-        <LeadershipSection />
-        <CredentialsAndHonors />
-        <MediaNewsroom />
-        <ContactSection />
-      </main>
+        <main className="flex-1">
+          <HeroSection />
+          <MarqueeStrip />
+          <PatentShowcase />
+          <TrajectorySection />
+          <TiltedFeatureCards />
+          <ProjectsSection />
+          <LeadershipSection />
+          <CredentialsAndHonors />
+          <MediaNewsroom />
+          <ContactSection />
+        </main>
 
-      <Footer />
-      <MobileQuickNav />
-    </div>
+        <Footer />
+        <MobileQuickNav />
+      </div>
+    </ThemeProvider>
   );
 }
