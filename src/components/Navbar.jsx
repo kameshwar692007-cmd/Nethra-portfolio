@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FileText } from 'lucide-react';
 import { cn } from '../lib/utils';
 import ThemeSwitcher from './ThemeSwitcher';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar() {
+  const { theme, setTheme, themes } = useTheme();
   const [stuck, setStuck] = useState(false);
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('#about');
@@ -247,6 +249,46 @@ export default function Navbar() {
                     <FileText className="w-3.5 h-3.5 text-[#2f6bff]" />
                     <span>Download CV</span>
                   </a>
+                </motion.li>
+
+                {/* Mobile Direct Theme Switcher */}
+                <motion.li
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.025 * (navLinks.length + 1) }}
+                  className="pt-3 border-t border-white/10"
+                >
+                  <div className="text-[10px] uppercase tracking-wider text-slate-400 font-bold px-1 mb-2 flex items-center justify-between">
+                    <span>Visual Atmosphere</span>
+                    <span className="text-[9px] text-[var(--brand)] font-mono">Permanent Blue Accent</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {themes.map((t) => {
+                      const isActive = theme === t.id;
+                      return (
+                        <button
+                          key={t.id}
+                          type="button"
+                          onClick={() => {
+                            setTheme(t.id);
+                            setOpen(false);
+                          }}
+                          className={cn(
+                            "flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-mono transition-all border text-left",
+                            isActive
+                              ? "bg-[var(--brand)]/15 border-[var(--brand)] text-[var(--brand)] font-bold shadow-xs"
+                              : "bg-white/5 border-white/10 text-slate-300 hover:text-white"
+                          )}
+                        >
+                          <span
+                            className="w-3 h-3 rounded-full border border-white/20 shrink-0"
+                            style={{ backgroundColor: t.bg }}
+                          />
+                          <span className="truncate">{t.name}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </motion.li>
               </ul>
             </motion.nav>

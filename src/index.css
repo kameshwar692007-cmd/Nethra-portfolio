@@ -101,7 +101,7 @@
     scroll-behavior: smooth;
     background-color: var(--background);
     color: var(--foreground);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -113,7 +113,170 @@
     -webkit-text-size-adjust: 100%;
     background-color: var(--background);
     color: var(--foreground);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* ==========================================================================
+   THEME ATMOSPHERE ENGINE & TEXT CONTRAST GUARANTEE
+   Eliminates dark overlay stack-order issues across all 4 themes
+   ========================================================================== */
+
+/* Universal Blue Accent Across All Themes */
+[data-theme] .text-\[\#2f6bff\] {
+  color: var(--brand) !important;
+}
+
+[data-theme] .border-\[\#2f6bff\] {
+  border-color: var(--brand) !important;
+}
+
+[data-theme] .border-\[\#2f6bff\]\/20,
+[data-theme] .border-\[\#2f6bff\]\/30 {
+  border-color: rgba(8, 127, 153, 0.25) !important;
+}
+
+[data-theme="midnight"] .border-\[\#2f6bff\]\/20,
+[data-theme="midnight"] .border-\[\#2f6bff\]\/30 {
+  border-color: rgba(34, 199, 230, 0.25) !important;
+}
+
+[data-theme] .bg-\[\#2f6bff\]\/10 {
+  background-color: rgba(8, 127, 153, 0.1) !important;
+}
+
+[data-theme="midnight"] .bg-\[\#2f6bff\]\/10 {
+  background-color: rgba(34, 199, 230, 0.1) !important;
+}
+
+/* Solid Blue Interactive Elements ALWAYS have crisp white text */
+[data-theme] button.bg-\[\#2f6bff\],
+[data-theme] a.bg-\[\#2f6bff\],
+[data-theme] .bg-\[\#2f6bff\],
+[data-theme] .bg-\[\#2f6bff\] span,
+[data-theme] .bg-\[\#2f6bff\] svg {
+  background-color: var(--brand) !important;
+  color: #FFFFFF !important;
+}
+
+/* Active navigation pill text remains crisp white */
+[data-theme] nav a.font-bold,
+[data-theme] nav a.font-bold span {
+  color: #FFFFFF !important;
+}
+
+/* Dynamic Section & Card Background Overrides for Light / Warm Themes */
+[data-theme="clean-light"],
+[data-theme="warm-sand"],
+[data-theme="soft-stone"] {
+  /* Section & Root Backgrounds: Remove Dark Stacking Overlay */
+  section,
+  main,
+  footer,
+  .bg-\[\#0a0c10\],
+  .bg-\[\#0b0f19\],
+  .bg-\[\#07090e\],
+  .bg-\[\#090b10\] {
+    background-color: var(--background) !important;
+  }
+
+  /* Card, Bento Box, & Table Backgrounds */
+  .bg-\[\#0d1017\],
+  .bg-\[\#111827\],
+  .bg-\[\#11151D\],
+  .bg-\[\#12151c\],
+  .bg-\[\#141824\],
+  .bg-\[\#141d30\],
+  .bg-\[\#090c12\],
+  .bg-\[\#0e121a\],
+  .bg-\[\#080a0f\],
+  .bg-\[\#1a2030\] {
+    background-color: var(--card) !important;
+  }
+
+  /* Navbar & Floating Panels */
+  header,
+  header nav,
+  .bg-\[\#0d1017\]\/90,
+  .bg-\[\#0d1017\]\/95,
+  .bg-\[\#0d1017\]\/98 {
+    background-color: var(--surface) !important;
+    border-color: var(--border) !important;
+  }
+
+  /* Inactive Navigation Links */
+  header nav a:not(.font-bold) {
+    color: var(--muted-foreground) !important;
+  }
+  header nav a:not(.font-bold):hover {
+    color: var(--foreground) !important;
+  }
+
+  /* High Contrast Visible Typography */
+  h1, h2, h3, h4, h5, h6,
+  .text-white:not(button *):not(a.bg-\[\#2f6bff\] *),
+  .text-\[\#f8fafc\],
+  .text-\[\#f4f5f7\],
+  .text-white\/95 {
+    color: var(--foreground) !important;
+  }
+
+  p,
+  .text-slate-100,
+  .text-slate-200,
+  .text-slate-300 {
+    color: var(--foreground) !important;
+    opacity: 0.88;
+  }
+
+  .text-slate-400 {
+    color: var(--muted-foreground) !important;
+    opacity: 1;
+  }
+
+  .text-slate-500 {
+    color: var(--muted-foreground) !important;
+    opacity: 0.75;
+  }
+
+  /* Subtle Borders for Light Atmospheres */
+  .border-white\/5,
+  .border-white\/10,
+  .border-white\/15,
+  .border-white\/20,
+  .border-white\/25,
+  .border-white\/30,
+  .border-white\/40 {
+    border-color: var(--border) !important;
+  }
+
+  .divide-white\/5 > :not([hidden]) ~ :not([hidden]),
+  .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+    border-color: var(--border) !important;
+  }
+
+  /* Form Elements */
+  input, textarea, select {
+    background-color: var(--card) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--muted-foreground) !important;
+    opacity: 0.65;
+  }
+
+  /* Secondary Actions / Subtle Buttons */
+  .bg-white\/5,
+  .bg-white\/10 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: var(--foreground) !important;
+  }
+  .hover\:bg-white\/5:hover,
+  .hover\:bg-white\/10:hover,
+  .hover\:bg-white\/15:hover {
+    background-color: rgba(0, 0, 0, 0.08) !important;
   }
 }
 
