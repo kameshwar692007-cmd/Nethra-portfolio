@@ -27,3 +27,5 @@ dist-ssr
 run_ocr.ps1
 cv_full_text.txt
 book_extracted.jpg
+
+.vercel
