@@ -264,14 +264,14 @@ export default function LeadershipSection() {
         </div>
 
         {/* ========================================================= */}
-        {/* DESKTOP VIEW: EDITORIAL DUAL BENTO + SECONDARY ROLES GRID */}
+        {/* DESKTOP & TABLET VIEW: EDITORIAL DUAL BENTO + SECONDARY ROLES */}
         {/* ========================================================= */}
         <div className="hidden md:block">
-          {/* Dual Primary Governance Bento Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 mb-5">
+          {/* Dual Primary Governance Bento Cards (stacked on tablet md, side-by-side on lg) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-5">
             
-            {/* Primary Role 1: TAMIL NADU VOLUNTEERS (7 cols) */}
-            <div className="md:col-span-7 rounded-xl bg-[#0d1017] border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-lg">
+            {/* Primary Role 1: TAMIL NADU VOLUNTEERS (7 cols on lg, full width on tablet) */}
+            <div className="lg:col-span-7 rounded-xl bg-[#0d1017] border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3 font-mono text-xs">
                   <span className="px-2.5 py-0.5 rounded bg-white/10 border border-white/15 text-white font-semibold uppercase text-[11px]">
@@ -315,8 +315,8 @@ export default function LeadershipSection() {
               </div>
             </div>
 
-            {/* Primary Role 2: ANNEXRA TECHNOLOGIES (5 cols) */}
-            <div className="md:col-span-5 rounded-xl bg-[#0d1017] border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-lg">
+            {/* Primary Role 2: ANNEXRA TECHNOLOGIES (5 cols on lg, full width on tablet) */}
+            <div className="lg:col-span-5 rounded-xl bg-[#0d1017] border border-white/10 p-6 sm:p-7 flex flex-col justify-between shadow-lg">
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3 font-mono text-xs">
                   <span className="px-2.5 py-0.5 rounded bg-white/10 border border-white/15 text-white font-semibold uppercase text-[11px]">
@@ -358,8 +358,8 @@ export default function LeadershipSection() {
 
           </div>
 
-          {/* Secondary Engagements: Miro, SDC, Paytm, Tata iQ */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+          {/* Secondary Engagements: Miro, SDC, Paytm, Tata iQ (2-cols on tablet md, 3-cols on lg) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
             <AnimatePresence mode="popLayout">
               {displayedOtherRoles.map((role) => (
                 <div

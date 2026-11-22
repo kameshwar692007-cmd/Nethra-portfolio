@@ -253,13 +253,15 @@ export default function HeroSection() {
                 loading="eager"
               />
 
-              {/* Verified Attribution Bar at Bottom of Portrait */}
-              <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/85 to-transparent">
-                <div className="flex items-center justify-between text-xs font-mono text-slate-300">
-                  <span className="font-bold text-white uppercase tracking-wider">Nethra Neha DS</span>
-                  <span className="text-[#2f6bff] font-semibold">Systems Innovator</span>
+              {/* Verified Attribution Bar at Bottom of Portrait — Always high-contrast on photo */}
+              <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 bg-gradient-to-t from-black/95 via-black/80 to-transparent pointer-events-none">
+                <div className="flex items-center justify-between text-xs font-mono">
+                  <span className="font-bold text-white uppercase tracking-wider keep-white">Nethra Neha DS</span>
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#2f6bff] text-white font-mono text-[10px] font-bold uppercase tracking-wider shadow-sm keep-white">
+                    Systems Innovator
+                  </span>
                 </div>
-                <div className="text-[11px] font-mono text-slate-400 mt-0.5">
+                <div className="text-[11px] font-mono text-slate-200 mt-0.5 keep-white">
                   GHSS Periyavadangampatti, Salem
                 </div>
               </div>

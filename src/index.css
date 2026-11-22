@@ -2,94 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-:root, [data-theme="midnight"] {
-  --background: #090B10;
-  --surface: #11151D;
-  --card: #11151D;
-  --card-foreground: #F4F5F7;
-  --popover: #11151D;
-  --popover-foreground: #F4F5F7;
-  --foreground: #F4F5F7;
-  --primary: #22C7E6;
-  --primary-foreground: #090B10;
+/* ==========================================================================
+   NETHRA NEHA DS — DUAL THEME ENGINE (DARK & SOFT STONE)
+   Signature Electric Royal Blue: #2f6bff (Strict & Non-Negotiable)
+   ========================================================================== */
+
+:root, [data-theme="dark"], body.dark {
+  --background: #0a0c10;
+  --surface: #0d1017;
+  --card: #0d1017;
+  --card-foreground: #f8fafc;
+  --popover: #0d1017;
+  --popover-foreground: #f8fafc;
+  --foreground: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --primary: #2f6bff;
+  --primary-foreground: #ffffff;
   --secondary: #141824;
-  --secondary-foreground: #F4F5F7;
+  --secondary-foreground: #f8fafc;
   --muted: #141824;
-  --muted-foreground: #94A3B8;
+  --muted-foreground: #94a3b8;
   --accent: #192236;
-  --accent-foreground: #22C7E6;
+  --accent-foreground: #2f6bff;
   --border: rgba(255, 255, 255, 0.1);
-  --brand: #22C7E6;
-  --brand-active: #22C7E6;
+  --brand: #2f6bff;
+  --brand-glow: rgba(47, 107, 255, 0.25);
+  --brand-subtle: rgba(47, 107, 255, 0.12);
+  --nav-bg: rgba(13, 16, 23, 0.92);
   --radius: 0.75rem;
   color-scheme: dark;
 }
 
-[data-theme="clean-light"] {
-  --background: #FAFAF8;
-  --surface: #FFFFFF;
-  --card: #FFFFFF;
-  --card-foreground: #17191E;
-  --popover: #FFFFFF;
-  --popover-foreground: #17191E;
-  --foreground: #17191E;
-  --primary: #087F99;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F1F1EE;
-  --secondary-foreground: #17191E;
-  --muted: #F1F1EE;
-  --muted-foreground: #64748B;
-  --accent: #E6F4F7;
-  --accent-foreground: #087F99;
-  --border: rgba(0, 0, 0, 0.1);
-  --brand: #087F99;
-  --brand-active: #087F99;
-  --radius: 0.75rem;
-  color-scheme: light;
-}
-
-[data-theme="warm-sand"] {
-  --background: #F3EBDD;
-  --surface: #FFF9F0;
-  --card: #FFF9F0;
-  --card-foreground: #29251F;
-  --popover: #FFF9F0;
-  --popover-foreground: #29251F;
-  --foreground: #29251F;
-  --primary: #087F99;
-  --primary-foreground: #FFFFFF;
-  --secondary: #EBE1CF;
-  --secondary-foreground: #29251F;
-  --muted: #EBE1CF;
-  --muted-foreground: #78716C;
-  --accent: #E2F1F4;
-  --accent-foreground: #087F99;
-  --border: rgba(41, 37, 31, 0.12);
-  --brand: #087F99;
-  --brand-active: #087F99;
-  --radius: 0.75rem;
-  color-scheme: light;
-}
-
-[data-theme="soft-stone"] {
+[data-theme="soft-stone"], body.soft-stone {
   --background: #E8E6E1;
   --surface: #F5F3EF;
   --card: #F5F3EF;
-  --card-foreground: #252A30;
+  --card-foreground: #1E232A;
   --popover: #F5F3EF;
-  --popover-foreground: #252A30;
-  --foreground: #252A30;
-  --primary: #087F99;
-  --primary-foreground: #FFFFFF;
-  --secondary: #DCD9D2;
-  --secondary-foreground: #252A30;
-  --muted: #DCD9D2;
-  --muted-foreground: #6B7280;
-  --accent: #DEF0F4;
-  --accent-foreground: #087F99;
-  --border: rgba(37, 42, 48, 0.12);
-  --brand: #087F99;
-  --brand-active: #087F99;
+  --popover-foreground: #1E232A;
+  --foreground: #1E232A;
+  --text-secondary: #333C48;
+  --text-muted: #556070;
+  --primary: #2f6bff;
+  --primary-foreground: #ffffff;
+  --secondary: #DDD9D2;
+  --secondary-foreground: #1E232A;
+  --muted: #DDD9D2;
+  --muted-foreground: #556070;
+  --accent: #E2DFD7;
+  --accent-foreground: #2f6bff;
+  --border: rgba(30, 35, 42, 0.12);
+  --brand: #2f6bff;
+  --brand-glow: rgba(47, 107, 255, 0.25);
+  --brand-subtle: rgba(47, 107, 255, 0.12);
+  --nav-bg: rgba(245, 243, 239, 0.94);
   --radius: 0.75rem;
   color-scheme: light;
 }
@@ -118,58 +85,69 @@
 }
 
 /* ==========================================================================
-   THEME ATMOSPHERE ENGINE & TEXT CONTRAST GUARANTEE
-   Eliminates dark overlay stack-order issues across all 4 themes
+   PERMANENT ROYAL BLUE ACCENT (#2f6bff)
    ========================================================================== */
 
-/* Universal Blue Accent Across All Themes */
+.text-\[\#2f6bff\],
 [data-theme] .text-\[\#2f6bff\] {
-  color: var(--brand) !important;
+  color: #2f6bff !important;
 }
 
+.bg-\[\#2f6bff\],
+[data-theme] .bg-\[\#2f6bff\] {
+  background-color: #2f6bff !important;
+  color: #ffffff !important;
+}
+
+.border-\[\#2f6bff\],
 [data-theme] .border-\[\#2f6bff\] {
-  border-color: var(--brand) !important;
+  border-color: #2f6bff !important;
 }
 
+.border-\[\#2f6bff\]\/20,
+.border-\[\#2f6bff\]\/30,
 [data-theme] .border-\[\#2f6bff\]\/20,
 [data-theme] .border-\[\#2f6bff\]\/30 {
-  border-color: rgba(8, 127, 153, 0.25) !important;
+  border-color: rgba(47, 107, 255, 0.3) !important;
 }
 
-[data-theme="midnight"] .border-\[\#2f6bff\]\/20,
-[data-theme="midnight"] .border-\[\#2f6bff\]\/30 {
-  border-color: rgba(34, 199, 230, 0.25) !important;
-}
-
+.bg-\[\#2f6bff\]\/10,
 [data-theme] .bg-\[\#2f6bff\]\/10 {
-  background-color: rgba(8, 127, 153, 0.1) !important;
+  background-color: rgba(47, 107, 255, 0.1) !important;
 }
 
-[data-theme="midnight"] .bg-\[\#2f6bff\]\/10 {
-  background-color: rgba(34, 199, 230, 0.1) !important;
+.bg-\[\#2f6bff\]\/15,
+[data-theme] .bg-\[\#2f6bff\]\/15 {
+  background-color: rgba(47, 107, 255, 0.15) !important;
 }
 
-/* Solid Blue Interactive Elements ALWAYS have crisp white text */
-[data-theme] button.bg-\[\#2f6bff\],
-[data-theme] a.bg-\[\#2f6bff\],
-[data-theme] .bg-\[\#2f6bff\],
-[data-theme] .bg-\[\#2f6bff\] span,
-[data-theme] .bg-\[\#2f6bff\] svg {
-  background-color: var(--brand) !important;
-  color: #FFFFFF !important;
+.bg-\[\#2f6bff\]\/20,
+[data-theme] .bg-\[\#2f6bff\]\/20 {
+  background-color: rgba(47, 107, 255, 0.2) !important;
 }
 
-/* Active navigation pill text remains crisp white */
-[data-theme] nav a.font-bold,
-[data-theme] nav a.font-bold span {
-  color: #FFFFFF !important;
+/* All buttons with blue background ALWAYS keep pure white text */
+button.bg-\[\#2f6bff\],
+a.bg-\[\#2f6bff\],
+.bg-\[\#2f6bff\] span,
+.bg-\[\#2f6bff\] svg,
+nav a.font-bold,
+nav a.font-bold span {
+  color: #ffffff !important;
 }
 
-/* Dynamic Section & Card Background Overrides for Light / Warm Themes */
-[data-theme="clean-light"],
-[data-theme="warm-sand"],
+/* Overlays on photos always retain crisp white text */
+.keep-white,
+[data-keep-white="true"] {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   SOFT STONE LIGHT THEME RE-SKINNING (High Contrast & Visible Typography)
+   ========================================================================== */
+
 [data-theme="soft-stone"] {
-  /* Section & Root Backgrounds: Remove Dark Stacking Overlay */
+  /* Section Backgrounds */
   section,
   main,
   footer,
@@ -180,7 +158,7 @@
     background-color: var(--background) !important;
   }
 
-  /* Card, Bento Box, & Table Backgrounds */
+  /* Card and Container Backgrounds */
   .bg-\[\#0d1017\],
   .bg-\[\#111827\],
   .bg-\[\#11151D\],
@@ -190,31 +168,32 @@
   .bg-\[\#090c12\],
   .bg-\[\#0e121a\],
   .bg-\[\#080a0f\],
+  .bg-\[\#10131a\],
   .bg-\[\#1a2030\] {
     background-color: var(--card) !important;
   }
 
-  /* Navbar & Floating Panels */
+  /* Header and Navigation Surface */
   header,
   header nav,
   .bg-\[\#0d1017\]\/90,
   .bg-\[\#0d1017\]\/95,
   .bg-\[\#0d1017\]\/98 {
-    background-color: var(--surface) !important;
+    background-color: var(--nav-bg) !important;
     border-color: var(--border) !important;
   }
 
-  /* Inactive Navigation Links */
+  /* Inactive Nav Links */
   header nav a:not(.font-bold) {
-    color: var(--muted-foreground) !important;
+    color: var(--text-muted) !important;
   }
   header nav a:not(.font-bold):hover {
     color: var(--foreground) !important;
   }
 
-  /* High Contrast Visible Typography */
+  /* High Contrast Typography */
   h1, h2, h3, h4, h5, h6,
-  .text-white:not(button *):not(a.bg-\[\#2f6bff\] *),
+  .text-white:not(.keep-white):not(button.bg-\[\#2f6bff\] *):not(a.bg-\[\#2f6bff\] *):not(.bg-\[\#2f6bff\] *),
   .text-\[\#f8fafc\],
   .text-\[\#f4f5f7\],
   .text-white\/95 {
@@ -225,21 +204,18 @@
   .text-slate-100,
   .text-slate-200,
   .text-slate-300 {
-    color: var(--foreground) !important;
-    opacity: 0.88;
+    color: var(--text-secondary) !important;
   }
 
   .text-slate-400 {
-    color: var(--muted-foreground) !important;
-    opacity: 1;
+    color: var(--text-muted) !important;
   }
 
   .text-slate-500 {
-    color: var(--muted-foreground) !important;
-    opacity: 0.75;
+    color: #6B7280 !important;
   }
 
-  /* Subtle Borders for Light Atmospheres */
+  /* Borders */
   .border-white\/5,
   .border-white\/10,
   .border-white\/15,
@@ -257,17 +233,17 @@
 
   /* Form Elements */
   input, textarea, select {
-    background-color: var(--card) !important;
+    background-color: #FFFFFF !important;
     color: var(--foreground) !important;
-    border-color: var(--border) !important;
+    border-color: rgba(30, 35, 42, 0.2) !important;
   }
 
   input::placeholder, textarea::placeholder {
-    color: var(--muted-foreground) !important;
-    opacity: 0.65;
+    color: var(--text-muted) !important;
+    opacity: 0.7;
   }
 
-  /* Secondary Actions / Subtle Buttons */
+  /* Subtle Tag Pills */
   .bg-white\/5,
   .bg-white\/10 {
     background-color: rgba(0, 0, 0, 0.05) !important;
@@ -287,19 +263,19 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f19;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #23304a;
+  background: rgba(47, 107, 255, 0.35);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334466;
+  background: #2f6bff;
 }
 
-/* Mobile Touch Target Standards */
+/* Mobile & Touch Target Standards */
 @media (max-width: 640px) {
   input, select, textarea {
     min-height: 44px;

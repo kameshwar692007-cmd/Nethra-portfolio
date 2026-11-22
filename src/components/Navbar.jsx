@@ -113,8 +113,8 @@ export default function Navbar() {
           </div>
         </a>
 
-        {/* Center Desktop Navigation Pills — Dynamic Sliding Pill with Silky Smooth Spring */}
-        <nav className="relative hidden md:flex items-center gap-0.5 lg:gap-1 font-mono text-xs" aria-label="Main Navigation">
+        {/* Center Desktop Navigation Pills — Shown on lg (1024px+) to prevent tablet header collision */}
+        <nav className="relative hidden lg:flex items-center gap-0.5 lg:gap-1 font-mono text-xs" aria-label="Main Navigation">
           {navLinks.map((link) => {
             const isActive = activeTab === link.href;
             return (
@@ -142,7 +142,7 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right CTA Action & Mobile Toggle */}
+        {/* Right CTA Action & Mobile/Tablet Toggle */}
         <div className="flex items-center gap-2">
           {/* Atmospheric Theme Switcher with permanent blue accent */}
           <ThemeSwitcher />
@@ -156,13 +156,13 @@ export default function Navbar() {
             <span>Download CV</span>
           </a>
 
-          {/* Morphing Mobile Burger Button (Quarry UI Pattern) */}
+          {/* Morphing Mobile/Tablet Burger Button */}
           <button
             type="button"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="relative grid size-9 place-items-center rounded-full border border-white/15 md:hidden bg-[#12151c] focus:outline-none"
+            className="relative grid size-9 place-items-center rounded-full border border-white/15 lg:hidden bg-[#12151c] focus:outline-none"
           >
             <span
               className={cn(
@@ -187,16 +187,16 @@ export default function Navbar() {
 
       </div>
 
-      {/* Mobile Drawer Menu & Outside Tap Close */}
+      {/* Mobile & Tablet Drawer Menu */}
       <AnimatePresence initial={false}>
         {open && (
           <>
-            {/* Backdrop Dismiss Layer for Mobile */}
+            {/* Backdrop Dismiss Layer */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-20 md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm -z-20 lg:hidden"
               onClick={() => setOpen(false)}
             />
 
@@ -205,8 +205,8 @@ export default function Navbar() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
-              className="overflow-y-auto max-h-[calc(100vh-5rem)] md:hidden font-mono bg-[#0d1017]/98 border-t border-white/10 rounded-b-2xl shadow-2xl"
-              aria-label="Mobile Navigation"
+              className="overflow-y-auto max-h-[calc(100vh-5rem)] lg:hidden font-mono bg-[#0d1017]/98 border-t border-white/10 rounded-b-2xl shadow-2xl"
+              aria-label="Mobile and Tablet Navigation"
             >
               <ul className="px-4 py-3 space-y-1">
                 {navLinks.map((link, i) => {
