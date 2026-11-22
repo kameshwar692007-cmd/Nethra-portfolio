@@ -7,7 +7,7 @@
    Signature Electric Royal Blue: #2f6bff (Strict & Non-Negotiable)
    ========================================================================== */
 
-:root, [data-theme="dark"], body.dark {
+:root, [data-theme="dark"], [data-theme="midnight"], body.dark {
   --background: #0a0c10;
   --surface: #0d1017;
   --card: #0d1017;
