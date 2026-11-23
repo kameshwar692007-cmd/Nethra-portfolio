@@ -113,7 +113,10 @@ export default function CredentialsAndHonors() {
                   </div>
 
                   {/* Bento Card 2: International Model United Nations (Text) */}
-                  <div className="p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg">
+                  <div className={cn(
+                    "p-5 rounded-xl bg-[#0d1017] border border-white/10 hover:border-[#2f6bff]/40 transition-colors flex flex-col justify-between shadow-lg",
+                    !showAllHonors && "hidden md:flex"
+                  )}>
                     <div>
                       <div className="flex items-center justify-between gap-2 mb-2 font-mono text-xs">
                         <span className="text-[#2f6bff] font-bold px-2 py-0.5 rounded bg-[#2f6bff]/10 border border-[#2f6bff]/20">

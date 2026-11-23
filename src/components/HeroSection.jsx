@@ -71,16 +71,16 @@ export default function HeroSection() {
     <div ref={pinRef} className="relative w-full h-[180vh] sm:h-[200vh]">
       <section
         id="about"
-        className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden border-b border-[var(--border)] bg-[#0a0c10]"
+        className="sticky top-0 min-h-screen sm:h-screen w-full flex flex-col justify-center pt-24 sm:pt-20 lg:pt-8 pb-12 sm:pb-0 overflow-hidden border-b border-[var(--border)] bg-[#0a0c10]"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 pt-4 sm:pt-0">
           
           {/* Top Identity Tag — Solid Blue Monospace */}
           <motion.div 
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#2f6bff] mb-5 sm:mb-6 font-semibold"
+            className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#2f6bff] mb-4 sm:mb-6 font-semibold"
           >
             <motion.span
               initial={{ scaleX: 0 }}

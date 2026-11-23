@@ -24,15 +24,33 @@ export default function CustomCursor() {
   const smoothY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    // Only enable on desktop devices with mouse pointer
-    const isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!isFinePointer) {
+    // Only enable on desktop devices with fine mouse pointer AND screen width >= 768px
+    const checkIsTouchOrMobile = () => {
+      const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+      const noHover = window.matchMedia("(hover: none)").matches;
+      const isSmallScreen = window.innerWidth < 768;
+      return isCoarse || noHover || isSmallScreen;
+    };
+
+    if (checkIsTouchOrMobile()) {
       setIsTouchDevice(true);
       return;
     }
     setIsTouchDevice(false);
 
+    const handleResize = () => {
+      if (checkIsTouchOrMobile()) {
+        setIsTouchDevice(true);
+        setIsVisible(false);
+      } else {
+        setIsTouchDevice(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize, { passive: true });
+
     const onMouseMove = (e) => {
+      if (checkIsTouchOrMobile()) return;
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       
@@ -82,6 +100,7 @@ export default function CustomCursor() {
     document.addEventListener("mouseenter", onMouseEnter);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseenter", onMouseEnter);
@@ -94,7 +113,7 @@ export default function CustomCursor() {
   const hasLabel = Boolean(cursorLabel);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 z-[99999] overflow-hidden hidden md:block">
       {/* Outer Spring Following Ring */}
       <motion.div
         style={{

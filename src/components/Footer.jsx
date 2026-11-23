@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
 import { personalInfo } from "../data/portfolioData";
-import { ArrowUp, Mail } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { cn } from "../lib/utils";
 
 /**
- * WordmarkFooter from Quarry UI adapted for Nethra Neha DS.
- * A calm footer ending on an oversized wordmark with a soft pointer spotlight.
+ * WordmarkFooter adapted for Nethra Neha DS.
+ * A calm footer ending on an oversized wordmark with a soft, non-intrusive pointer spotlight.
  */
 export default function Footer({
   word = "Nethra Neha",
@@ -25,14 +25,37 @@ export default function Footer({
   className,
 }) {
   const ref = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
   const x = useMotionValue(-500);
   const y = useMotionValue(-500);
-  const sx = useSpring(x, { stiffness: 240, damping: 26 });
-  const sy = useSpring(y, { stiffness: 240, damping: 26 });
-  const mask = useMotionTemplate`radial-gradient(300px circle at ${sx}px ${sy}px, black 30%, transparent 80%)`;
+  const sx = useSpring(x, { stiffness: 220, damping: 28 });
+  const sy = useSpring(y, { stiffness: 220, damping: 28 });
+  const mask = useMotionTemplate`radial-gradient(240px circle at ${sx}px ${sy}px, black 30%, transparent 80%)`;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handlePointerEnter = (e) => {
+    if (!ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    const enterX = e.clientX - r.left;
+    const enterY = e.clientY - r.top;
+    // Jump directly to cursor entrance point to prevent flying across from off-screen
+    x.jump(enterX);
+    y.jump(enterY);
+    setIsHovered(true);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    x.set(e.clientX - r.left);
+    y.set(e.clientY - r.top);
+  };
+
+  const handlePointerLeave = () => {
+    setIsHovered(false);
   };
 
   return (
@@ -69,26 +92,23 @@ export default function Footer({
 
       <div
         ref={ref}
-        onPointerMove={(e) => {
-          if (!ref.current) return;
-          const r = ref.current.getBoundingClientRect();
-          x.set(e.clientX - r.left);
-          y.set(e.clientY - r.top);
-        }}
-        onPointerLeave={() => {
-          x.set(-500);
-          y.set(-500);
-        }}
+        onPointerEnter={handlePointerEnter}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
         className="relative select-none px-4 pb-4 pt-6 border-t border-[var(--border)]/40 overflow-hidden cursor-default group"
       >
-        {/* Soft Ambient Radial Light Following Pointer */}
+        {/* Soft, Professional Ambient Radial Spotlight — Fades smoothly without intense harsh glare */}
         <motion.div
           style={{
             left: sx,
             top: sy,
             transform: "translate(-50%, -50%)",
           }}
-          className="pointer-events-none absolute w-[380px] h-[380px] rounded-full bg-[#2f6bff]/20 dark:bg-[#2f6bff]/25 blur-[60px] opacity-90 transition-opacity"
+          animate={{
+            opacity: isHovered ? 1 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="pointer-events-none absolute w-[260px] h-[260px] rounded-full bg-[#2f6bff]/15 dark:bg-[#2f6bff]/20 blur-[40px]"
         />
 
         {/* Base Subdued Wordmark — Visible in both Light and Dark */}
@@ -99,18 +119,21 @@ export default function Footer({
           {word}
         </p>
 
-        {/* Spotlight Illuminated Layer — Highly Visible Electric Blue Glow in Light & White in Dark */}
+        {/* Spotlight Illuminated Layer — Refined, soft, executive sheen */}
         <motion.p
           aria-hidden
           style={{ WebkitMaskImage: mask, maskImage: mask }}
-          className="pointer-events-none absolute inset-x-4 top-6 text-center text-[clamp(3.5rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter text-[#2f6bff] dark:text-white drop-shadow-[0_0_30px_rgba(47,107,255,0.7)] font-display"
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="pointer-events-none absolute inset-x-4 top-6 text-center text-[clamp(3.5rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter text-[#2f6bff] dark:text-white drop-shadow-[0_0_15px_rgba(47,107,255,0.3)] font-display"
         >
           {word}
         </motion.p>
         <span className="sr-only">{word}</span>
       </div>
 
-      <div className="px-6 py-4 text-center text-[11px] text-[var(--text-muted)] border-t border-[var(--border)]/30">
+      {/* Bottom Footer Details — Generous bottom padding on mobile so MobileQuickNav dock never hides content */}
+      <div className="px-6 pt-4 pb-24 md:pb-6 text-center text-[11px] text-[var(--text-muted)] border-t border-[var(--border)]/30">
         07 Sovereign Registered Patents Across 4 Jurisdictions &bull; Directing TN Volunteers Digital Systems
       </div>
     </footer>

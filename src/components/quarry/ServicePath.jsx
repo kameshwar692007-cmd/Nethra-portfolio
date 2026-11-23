@@ -104,12 +104,16 @@ function build(n) {
 
 function Title({ s }) {
   return (
-    <h3 className="font-display font-extrabold text-[clamp(1.8rem,4vw,3.5rem)] uppercase leading-[0.98] tracking-tight text-[var(--foreground)]">
-      <span>{s.words[0]}</span>{" "}
-      <span className="mx-1 inline-grid size-[0.85em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-xl bg-[#2f6bff] align-middle text-[0.55em] text-white shadow-sm [&_svg]:size-[0.8em]">
+    <h3 className="font-display font-extrabold text-[clamp(1.4rem,2.8vw,2.5rem)] uppercase leading-[1.05] tracking-tight break-words">
+      <span className="text-white dark:text-white light:text-slate-900 inline-block mr-2 drop-shadow-xs">
+        {s.words[0]}
+      </span>
+      <span className="inline-grid size-[0.85em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-lg bg-[#2f6bff] align-middle text-[0.55em] text-white shadow-xs [&_svg]:size-[0.8em]">
         {s.icon}
       </span>{" "}
-      <span className="text-[#2f6bff] block sm:inline">{s.words[1]}</span>
+      <span className="text-sky-300 dark:text-sky-300 light:text-sky-700 block sm:inline drop-shadow-[0_2px_10px_rgba(56,189,248,0.25)]">
+        {s.words[1]}
+      </span>
     </h3>
   );
 }
@@ -118,16 +122,16 @@ function Bubble({ s, tilt }) {
   return (
     <div
       style={{ rotate: `${tilt}deg` }}
-      className="mt-4 max-w-sm rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[4px_4px_0_0_#2f6bff] transition-transform hover:rotate-0 duration-300"
+      className="mt-3.5 max-w-sm rounded-2xl border border-white/10 dark:border-white/10 light:border-slate-300 bg-[#0c1017]/95 dark:bg-[#0c1017]/95 light:bg-white/95 backdrop-blur-md p-4 sm:p-5 shadow-[0_10px_25px_-5px_rgba(0,0,0,0.4)] transition-all hover:rotate-0 hover:border-[#2f6bff]/50 duration-300"
     >
-      <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed font-normal">
+      <p className="text-xs sm:text-sm text-slate-300 dark:text-slate-300 light:text-slate-700 leading-relaxed font-normal">
         {s.body}
       </p>
-      <ul className="mt-3.5 flex flex-wrap gap-1.5">
+      <ul className="mt-3 flex flex-wrap gap-1.5">
         {s.tags.map((t) => (
           <li
             key={t}
-            className="rounded-full border border-[#2f6bff]/30 bg-[#2f6bff]/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-[#2f6bff]"
+            className="rounded-full border border-sky-400/30 bg-sky-500/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-sky-300 dark:text-sky-300 light:text-sky-700"
           >
             {t}
           </li>
@@ -209,14 +213,14 @@ export function ServicePath({
   );
 
   return (
-    <div className={cn("w-full overflow-hidden py-12 relative", className)}>
+    <div className={cn("w-full overflow-x-clip py-12 relative", className)}>
       {head}
       
       {/* Desktop & Tablet Interactive Animated Path */}
       <div
         ref={scene}
         style={{ aspectRatio: `${PW} / ${H}` }}
-        className="relative mx-auto mt-8 hidden w-full max-w-[85rem] md:block"
+        className="relative mx-auto mt-8 hidden w-full max-w-[85rem] md:block px-4"
       >
         <svg
           viewBox={`0 0 ${PW} ${H}`}
@@ -247,17 +251,21 @@ export function ServicePath({
 
         {services.map((s, i) => {
           const on = at.length > 0 && len >= at[i] - (i === 0 ? 900 : 300);
-          const x = way[i].x === 960 ? 470 : 960;
+          const isRight = way[i].x !== 960; // Opposite side of path
+          const targetX = isRight ? 930 : 490; // Pull slightly inward to prevent edge collisions
           return (
             <motion.div
               key={s.words.join()}
               animate={on ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 160, damping: 18 }}
-              style={{ left: `${(x / PW) * 100}%`, top: `${(way[i].y / H) * 100}%` }}
-              className="absolute w-[36%] -translate-x-1/2 -translate-y-1/2"
+              style={{ left: `${(targetX / PW) * 100}%`, top: `${(way[i].y / H) * 100}%` }}
+              className={cn(
+                "absolute w-[44%] max-w-[450px] -translate-y-1/2",
+                isRight ? "-translate-x-1/2 pr-3" : "-translate-x-1/2 pl-3"
+              )}
             >
               <Title s={s} />
-              <Bubble s={s} tilt={i % 2 ? -3 : 3} />
+              <Bubble s={s} tilt={i % 2 ? -2.5 : 2.5} />
             </motion.div>
           );
         })}

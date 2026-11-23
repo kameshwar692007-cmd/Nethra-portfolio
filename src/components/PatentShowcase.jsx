@@ -10,6 +10,7 @@ import {
   ChevronUp, 
   FileCheck2 
 } from 'lucide-react';
+import { cn } from '../lib/utils';
 import HorizontalPatentGallery from './quarry/HorizontalPatentGallery';
 
 export default function PatentShowcase() {
@@ -120,7 +121,10 @@ export default function PatentShowcase() {
 
           {/* Bento Card 2: Companion Feature with Certificate Preview (5 cols) */}
           {initialPatents[1] && (
-            <div className="lg:col-span-5 rounded-xl bg-[#0d1017] border border-white/10 p-6 flex flex-col justify-between transition-colors shadow-lg">
+            <div className={cn(
+              "lg:col-span-5 rounded-xl bg-[#0d1017] border border-white/10 p-6 flex flex-col justify-between transition-colors shadow-lg",
+              !isExpanded && "hidden md:flex"
+            )}>
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3 font-mono text-xs">
                   <div className="flex items-center gap-2">
