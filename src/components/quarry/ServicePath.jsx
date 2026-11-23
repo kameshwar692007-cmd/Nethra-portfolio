@@ -106,10 +106,12 @@ function Title({ s }) {
   return (
     <h3 className="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.85rem)] uppercase leading-[1.0] tracking-tight break-words text-[var(--foreground)]">
       <span>{s.words[0]}</span>{" "}
-      <span className="mx-1 inline-grid size-[0.85em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-xl bg-[#2f6bff] align-middle text-[0.55em] text-white shadow-sm [&_svg]:size-[0.8em]">
+      <span className="mx-1.5 inline-grid size-[1.25em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-xl sm:rounded-2xl bg-[#2f6bff] align-middle text-white shadow-md [&_svg]:!w-[0.62em] [&_svg]:!h-[0.62em]">
         {s.icon}
       </span>{" "}
-      <span className="text-[#2f6bff] block sm:inline">{s.words[1]}</span>
+      <span className="text-[#38bdf8] block sm:inline drop-shadow-[0_2px_12px_rgba(56,189,248,0.25)]">
+        {s.words[1]}
+      </span>
     </h3>
   );
 }
