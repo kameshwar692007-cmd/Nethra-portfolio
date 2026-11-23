@@ -110,18 +110,11 @@ export default function Navbar() {
           onClick={(e) => handleNavClick(e, '#about')}
           className="flex items-center gap-2.5 group select-none cursor-pointer"
         >
-          {/* High-Tech Architectural "N" Monogram */}
-          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-[#131926] to-[#080b11] border border-[#2f6bff]/50 shadow-[0_0_12px_rgba(47,107,255,0.35)] flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:border-[#2f6bff] group-hover:shadow-[0_0_18px_rgba(47,107,255,0.6)]">
-            <svg className="w-4 h-4" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="navNGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#38bdf8" />
-                  <stop offset="50%" stopColor="#2f6bff" />
-                  <stop offset="100%" stopColor="#1d4ed8" />
-                </linearGradient>
-              </defs>
-              <path d="M7 24V8L11 8L21 21V8L25 8V24L21 24L11 11V24H7Z" fill="url(#navNGrad)" />
-            </svg>
+          {/* Signature Bold Royal Blue Logo Box with Prominent "N" */}
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#2f6bff] flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105 shrink-0">
+            <span className="font-display font-black text-white text-base sm:text-lg tracking-tight select-none leading-none">
+              N
+            </span>
           </div>
           <div className="flex items-baseline gap-1.5">
             <span className="font-display font-extrabold text-[var(--foreground)] tracking-tight text-sm sm:text-base leading-none">
