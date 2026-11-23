@@ -1,80 +1,104 @@
-import React from 'react';
-import { personalInfo } from '../data/portfolioData';
-import { ArrowUp, Mail } from 'lucide-react';
+"use client";
 
-export default function Footer() {
+import React, { useRef } from "react";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { personalInfo } from "../data/portfolioData";
+import { ArrowUp, Mail } from "lucide-react";
+import { cn } from "../lib/utils";
+
+/**
+ * WordmarkFooter from Quarry UI adapted for Nethra Neha DS.
+ * A calm footer ending on an oversized wordmark with a soft pointer spotlight.
+ */
+export default function Footer({
+  word = "nethra neha",
+  links = [
+    { label: "About", href: "#about" },
+    { label: "Patents", href: "#patents" },
+    { label: "Journey", href: "#journey" },
+    { label: "Projects", href: "#projects" },
+    { label: "Leadership", href: "#leadership" },
+    { label: "Credentials", href: "#credentials" },
+    { label: "Media", href: "#media" },
+    { label: "Contact", href: "#contact" },
+  ],
+  className,
+}) {
+  const ref = useRef(null);
+  const x = useMotionValue(-300);
+  const y = useMotionValue(-300);
+  const sx = useSpring(x, { stiffness: 220, damping: 28 });
+  const sy = useSpring(y, { stiffness: 220, damping: 28 });
+  const mask = useMotionTemplate`radial-gradient(220px circle at ${sx}px ${sy}px, black, transparent 70%)`;
+
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <footer className="bg-[#06080d] text-slate-400 border-t border-white/[0.08] font-mono text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-white/[0.08]">
-          
-          {/* Left Brand Anchor */}
-          <div>
-            <div className="text-white font-bold text-base tracking-tight font-display">
-              NETHRA NEHA DS
-            </div>
-            <div className="text-slate-500 text-xs mt-1">
-              Founder &amp; Director, Annexra Technologies &bull; Salem, Tamil Nadu, India
-            </div>
-          </div>
-
-          {/* Social Links & Back to Top */}
-          <div className="flex flex-wrap items-center gap-6">
+    <footer
+      className={cn(
+        "w-full overflow-hidden border-t border-[var(--border)] bg-[var(--background)] text-[var(--foreground)] font-mono",
+        className
+      )}
+    >
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-8">
+        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-[var(--text-muted)]">
+          {links.map((l) => (
             <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors flex items-center gap-2 text-slate-300"
+              key={l.label}
+              href={l.href}
+              className="transition-colors hover:text-[#2f6bff] font-medium"
             >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2Z" />
-              </svg>
-              <span>LinkedIn</span>
+              {l.label}
             </a>
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors flex items-center gap-2 text-slate-300"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z" />
-              </svg>
-              <span>GitHub</span>
-            </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="hover:text-white transition-colors flex items-center gap-2 text-slate-300"
-            >
-              <Mail className="w-4 h-4" />
-              <span>Executive Mail</span>
-            </a>
-            
-            <button
-              onClick={scrollToTop}
-              className="p-2.5 rounded-lg bg-[#12151c] hover:bg-[#1a1f2c] border border-white/10 text-slate-300 hover:text-white transition-all ml-auto md:ml-4"
-              title="Return to Top of Page"
-            >
-              <ArrowUp className="w-4 h-4 text-white" />
-            </button>
-          </div>
-
+          ))}
+        </nav>
+        <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
+          <span>&copy; 2026 Annexra Technologies Pvt Ltd</span>
+          <button
+            onClick={scrollToTop}
+            className="p-2 rounded-lg bg-[var(--card)] hover:bg-[#2f6bff]/10 border border-[var(--border)] text-[var(--foreground)] hover:text-[#2f6bff] transition-all ml-2"
+            title="Return to Top"
+            aria-label="Return to Top"
+          >
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
+      </div>
 
-        {/* Bottom Rights Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
-          <div>
-            &copy; 2026 NETHRA NEHA DS. All rights reserved. Annexra Technologies Pvt Ltd.
-          </div>
-          <div>
-            Registered Enterprise &bull; 07 Sovereign Patents Across 4 Jurisdictions
-          </div>
-        </div>
+      <div
+        ref={ref}
+        onPointerMove={(e) => {
+          if (!ref.current) return;
+          const r = ref.current.getBoundingClientRect();
+          x.set(e.clientX - r.left);
+          y.set(e.clientY - r.top);
+        }}
+        onPointerLeave={() => {
+          x.set(-300);
+          y.set(-300);
+        }}
+        className="relative select-none px-4 pb-4 pt-6 border-t border-[var(--border)]/40"
+      >
+        <p
+          aria-hidden
+          className="text-center text-[clamp(3.5rem,15vw,12rem)] font-bold lowercase leading-[0.85] tracking-tighter text-[var(--foreground)]/[0.07] font-display"
+        >
+          {word}
+        </p>
+        <motion.p
+          aria-hidden
+          style={{ WebkitMaskImage: mask, maskImage: mask }}
+          className="pointer-events-none absolute inset-x-4 top-6 bg-gradient-to-b from-[#2f6bff] to-[var(--foreground)] bg-clip-text text-center text-[clamp(3.5rem,15vw,12rem)] font-bold lowercase leading-[0.85] tracking-tighter text-transparent font-display"
+        >
+          {word}
+        </motion.p>
+        <span className="sr-only">{word}</span>
+      </div>
 
+      <div className="px-6 py-4 text-center text-[11px] text-[var(--text-muted)] border-t border-[var(--border)]/30">
+        07 Sovereign Registered Patents Across 4 Jurisdictions &bull; Directing TN Volunteers Digital Systems
       </div>
     </footer>
   );

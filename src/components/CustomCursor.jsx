@@ -1,7 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 export default function CustomCursor() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   const [isVisible, setIsVisible] = useState(false);
   const [cursorState, setCursorState] = useState("default"); // "default", "hover", "view", "drag", "explore"
   const [cursorLabel, setCursorLabel] = useState("");
@@ -103,18 +107,24 @@ export default function CustomCursor() {
           width: hasLabel ? 76 : isExpanded ? 46 : 28,
           height: hasLabel ? 76 : isExpanded ? 46 : 28,
           backgroundColor: hasLabel
-            ? "rgba(47, 107, 255, 0.9)"
+            ? "#2f6bff"
             : isExpanded
-            ? "rgba(47, 107, 255, 0.15)"
-            : "rgba(255, 255, 255, 0.04)",
+            ? isDark
+              ? "rgba(47, 107, 255, 0.2)"
+              : "rgba(47, 107, 255, 0.15)"
+            : isDark
+            ? "rgba(255, 255, 255, 0.05)"
+            : "rgba(30, 35, 42, 0.06)",
           borderColor: hasLabel
             ? "#2f6bff"
             : isExpanded
-            ? "rgba(47, 107, 255, 0.6)"
-            : "rgba(255, 255, 255, 0.3)",
+            ? "#2f6bff"
+            : isDark
+            ? "rgba(255, 255, 255, 0.35)"
+            : "rgba(30, 35, 42, 0.45)",
         }}
         transition={{ type: "spring", damping: 20, stiffness: 260 }}
-        className="rounded-full border flex items-center justify-center backdrop-blur-[1px]"
+        className="rounded-full border flex items-center justify-center backdrop-blur-[1px] shadow-xs"
       >
         {hasLabel && (
           <span className="text-[10px] font-mono font-bold text-white tracking-widest uppercase select-none">
@@ -134,9 +144,10 @@ export default function CustomCursor() {
         animate={{
           scale: isExpanded ? 0 : 1,
           opacity: isExpanded ? 0 : 1,
+          backgroundColor: isDark ? "#ffffff" : "#2f6bff",
         }}
         transition={{ duration: 0.15 }}
-        className="w-1.5 h-1.5 rounded-full bg-white fixed top-0 left-0"
+        className="w-1.5 h-1.5 rounded-full fixed top-0 left-0 shadow-xs"
       />
     </div>
   );

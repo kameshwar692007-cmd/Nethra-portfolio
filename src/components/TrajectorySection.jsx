@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { storyData } from '../data/portfolioData';
 import { ChevronDown, ChevronUp, Quote } from 'lucide-react';
+import { ServicePath } from './quarry/ServicePath';
 
 export default function TrajectorySection() {
   const [expandedStory, setExpandedStory] = useState(false);
@@ -146,98 +147,9 @@ export default function TrajectorySection() {
 
         </div>
 
-        {/* CHRONOLOGICAL MILESTONES — CONNECTED PROGRESSION TIMELINE */}
-        <div className="border-t border-[var(--border)] pt-10 sm:pt-12">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
-            <div>
-              <div className="text-xs font-mono font-semibold tracking-wider text-[#2f6bff] uppercase mb-1.5">
-                Sequential Track
-              </div>
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--foreground)] font-display tracking-tight">
-                Chronological Milestones (2020 &mdash; 2026)
-              </h3>
-            </div>
-            <p className="text-xs font-mono text-[var(--text-muted)]">
-              5 Key Step Progressions &bull; Empirical Trajectory
-            </p>
-          </div>
-
-          {/* Desktop/Tablet Horizontal Stepped Timeline (md:block) */}
-          <div className="hidden md:block relative">
-            {/* Connected Track Line behind the step nodes */}
-            <div className="absolute top-[28px] left-[5%] right-[5%] h-0.5 bg-[var(--border)] z-0">
-              <div className="h-full bg-gradient-to-r from-[#2f6bff] via-[#2f6bff] to-[#2f6bff]/40 w-full" />
-            </div>
-
-            <div className="grid grid-cols-5 gap-4 relative z-10">
-              {storyData.milestones.map((m, idx) => (
-                <div key={m.year} className="flex flex-col items-center group">
-                  {/* Step Node Circle */}
-                  <div className="w-14 h-14 rounded-full bg-[#0d1017] border-2 border-[#2f6bff] flex flex-col items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-                    <span className="text-[10px] font-mono font-bold text-[#2f6bff] leading-none">
-                      0{idx + 1}
-                    </span>
-                    <span className="text-[9px] font-mono text-[var(--text-muted)] mt-0.5">
-                      STEP
-                    </span>
-                  </div>
-
-                  {/* Year Pill */}
-                  <div className="mt-3 px-2.5 py-0.5 rounded-full bg-[#2f6bff]/10 border border-[#2f6bff]/20 text-[#2f6bff] font-mono text-xs font-bold">
-                    {m.year}
-                  </div>
-
-                  {/* Content Card with Smooth Lift */}
-                  <div className="mt-4 p-4 rounded-xl bg-[#0d1017] border border-[var(--border)] shadow-md group-hover:shadow-xl group-hover:border-[#2f6bff]/40 transition-all duration-300 w-full flex flex-col justify-between min-h-[140px] text-center">
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[var(--foreground)] font-display leading-snug">
-                        {m.title}
-                      </h4>
-                      <p className="text-[11px] text-[var(--text-secondary)] mt-2 leading-relaxed font-normal text-left">
-                        {m.desc}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile Vertical Stepped Timeline (block md:hidden) */}
-          <div className="block md:hidden relative pl-6 space-y-6">
-            {/* Vertical Track Line */}
-            <div className="absolute top-2 bottom-2 left-[19px] w-0.5 bg-gradient-to-b from-[#2f6bff] via-[#2f6bff] to-[#2f6bff]/30" />
-
-            {storyData.milestones.map((m, idx) => (
-              <div key={m.year} className="relative flex items-start gap-4 group">
-                {/* Step Node Circle */}
-                <div className="w-10 h-10 rounded-full bg-[#0d1017] border-2 border-[#2f6bff] flex flex-col items-center justify-center shrink-0 shadow-md relative z-10 -ml-6">
-                  <span className="text-[10px] font-mono font-bold text-[#2f6bff] leading-none">
-                    0{idx + 1}
-                  </span>
-                </div>
-
-                {/* Milestone Detail Card */}
-                <div className="flex-1 p-4 rounded-xl bg-[#0d1017] border border-[var(--border)] shadow-md">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono font-bold text-[#2f6bff]">
-                      {m.year}
-                    </span>
-                    <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
-                      Stage 0{idx + 1}
-                    </span>
-                  </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-[var(--foreground)] font-display leading-snug">
-                    {m.title}
-                  </h4>
-                  <p className="text-[11px] text-[var(--text-secondary)] mt-1.5 leading-relaxed font-normal">
-                    {m.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
+        {/* CHRONOLOGICAL MILESTONES — QUARRY UI SERVICE PATH */}
+        <div className="border-t border-[var(--border)] pt-8 sm:pt-10">
+          <ServicePath />
         </div>
 
       </div>

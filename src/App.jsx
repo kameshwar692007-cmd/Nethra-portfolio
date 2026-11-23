@@ -6,6 +6,7 @@ import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import MarqueeStrip from './components/MarqueeStrip';
+import AboutSummarySection from './components/AboutSummarySection';
 import PatentShowcase from './components/PatentShowcase';
 import TrajectorySection from './components/TrajectorySection';
 import TiltedFeatureCards from './components/quarry/TiltedFeatureCards';
@@ -48,6 +49,7 @@ export default function App() {
         <main className="flex-1">
           <HeroSection />
           <MarqueeStrip />
+          <AboutSummarySection />
           <PatentShowcase />
           <TrajectorySection />
           <TiltedFeatureCards />
