@@ -72,12 +72,12 @@ export default function TrajectorySection() {
                   {expandedStory ? (
                     <>
                       <ChevronUp className="w-3.5 h-3.5" />
-                      <span>Show Summary</span>
+                      <span>Show Less</span>
                     </>
                   ) : (
                     <>
                       <ChevronDown className="w-3.5 h-3.5" />
-                      <span>Read Complete 5-Part Narrative</span>
+                      <span>Know More</span>
                     </>
                   )}
                 </button>

@@ -6,7 +6,7 @@ import { cn } from "../../lib/utils";
 
 function Word({ word, range, progress }) {
   const opacity = useTransform(progress, range, [0.18, 1]);
-  const y = useTransform(progress, range, [6, 0]);
+  const y = useTransform(progress, range, [4, 0]);
   return (
     <span className="relative mr-[0.28em] inline-block">
       <motion.span style={{ opacity, y }} className="inline-block">
@@ -18,20 +18,25 @@ function Word({ word, range, progress }) {
 
 /**
  * A paragraph that reads itself in as you scroll. Each word brightens in turn, so the eye is led
- * through the sentence at the pace of your scroll. Pass scrollContainer to track a scrollable element.
+ * through the sentence at the pace of your scroll.
+ * When completionPoint is < 1.0 (e.g. 0.8), all words reach full 100% white illumination
+ * before the pinned scroll completes, keeping the page stable until fully revealed.
  */
 export function ScrollTextReveal({
   text = "Good material is quiet. It does not shout for attention, it earns it, one clear word after another, until the whole idea is simply there.",
   scrollContainer,
+  progress: externalProgress,
   offset = ["start 0.85", "end 0.45"],
+  completionPoint = 0.8,
   className,
 }) {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: internalProgress } = useScroll({
     target: ref,
     container: scrollContainer,
     offset,
   });
+  const scrollYProgress = externalProgress || internalProgress;
   const words = text.split(" ");
 
   return (
@@ -42,14 +47,18 @@ export function ScrollTextReveal({
         className
       )}
     >
-      {words.map((w, i) => (
-        <Word
-          key={`${w}-${i}`}
-          word={w}
-          range={[i / words.length, (i + 1) / words.length]}
-          progress={scrollYProgress}
-        />
-      ))}
+      {words.map((w, i) => {
+        const start = (i / words.length) * completionPoint;
+        const end = ((i + 1) / words.length) * completionPoint;
+        return (
+          <Word
+            key={`${w}-${i}`}
+            word={w}
+            range={[start, end]}
+            progress={scrollYProgress}
+          />
+        );
+      })}
     </p>
   );
 }
