@@ -11,7 +11,7 @@ import { cn } from "../lib/utils";
  * A calm footer ending on an oversized wordmark with a soft pointer spotlight.
  */
 export default function Footer({
-  word = "nethra neha",
+  word = "Nethra Neha",
   links = [
     { label: "About", href: "#about" },
     { label: "Patents", href: "#patents" },
@@ -25,11 +25,11 @@ export default function Footer({
   className,
 }) {
   const ref = useRef(null);
-  const x = useMotionValue(-300);
-  const y = useMotionValue(-300);
-  const sx = useSpring(x, { stiffness: 220, damping: 28 });
-  const sy = useSpring(y, { stiffness: 220, damping: 28 });
-  const mask = useMotionTemplate`radial-gradient(220px circle at ${sx}px ${sy}px, black, transparent 70%)`;
+  const x = useMotionValue(-500);
+  const y = useMotionValue(-500);
+  const sx = useSpring(x, { stiffness: 240, damping: 26 });
+  const sy = useSpring(y, { stiffness: 240, damping: 26 });
+  const mask = useMotionTemplate`radial-gradient(300px circle at ${sx}px ${sy}px, black 30%, transparent 80%)`;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -76,21 +76,34 @@ export default function Footer({
           y.set(e.clientY - r.top);
         }}
         onPointerLeave={() => {
-          x.set(-300);
-          y.set(-300);
+          x.set(-500);
+          y.set(-500);
         }}
-        className="relative select-none px-4 pb-4 pt-6 border-t border-[var(--border)]/40"
+        className="relative select-none px-4 pb-4 pt-6 border-t border-[var(--border)]/40 overflow-hidden cursor-default group"
       >
+        {/* Soft Ambient Radial Light Following Pointer */}
+        <motion.div
+          style={{
+            left: sx,
+            top: sy,
+            transform: "translate(-50%, -50%)",
+          }}
+          className="pointer-events-none absolute w-[380px] h-[380px] rounded-full bg-[#2f6bff]/20 dark:bg-[#2f6bff]/25 blur-[60px] opacity-90 transition-opacity"
+        />
+
+        {/* Base Subdued Wordmark — Visible in both Light and Dark */}
         <p
           aria-hidden
-          className="text-center text-[clamp(3.5rem,15vw,12rem)] font-bold lowercase leading-[0.85] tracking-tighter text-[var(--foreground)]/[0.07] font-display"
+          className="text-center text-[clamp(3.5rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter text-[var(--foreground)]/12 dark:text-[var(--foreground)]/[0.08] font-display"
         >
           {word}
         </p>
+
+        {/* Spotlight Illuminated Layer — Highly Visible Electric Blue Glow in Light & White in Dark */}
         <motion.p
           aria-hidden
           style={{ WebkitMaskImage: mask, maskImage: mask }}
-          className="pointer-events-none absolute inset-x-4 top-6 bg-gradient-to-b from-[#2f6bff] to-[var(--foreground)] bg-clip-text text-center text-[clamp(3.5rem,15vw,12rem)] font-bold lowercase leading-[0.85] tracking-tighter text-transparent font-display"
+          className="pointer-events-none absolute inset-x-4 top-6 text-center text-[clamp(3.5rem,15vw,12rem)] font-extrabold leading-[0.85] tracking-tighter text-[#2f6bff] dark:text-white drop-shadow-[0_0_30px_rgba(47,107,255,0.7)] font-display"
         >
           {word}
         </motion.p>
