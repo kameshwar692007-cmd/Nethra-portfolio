@@ -193,12 +193,14 @@ nav a.font-bold span {
     border-color: var(--border) !important;
   }
 
-  /* Inactive Nav Links */
+  /* Inactive Nav Links — Clear & High-Contrast in Soft Stone */
   header nav a:not(.font-bold) {
-    color: var(--text-muted) !important;
+    color: var(--foreground) !important;
+    opacity: 0.88;
   }
   header nav a:not(.font-bold):hover {
-    color: var(--foreground) !important;
+    color: #2f6bff !important;
+    opacity: 1;
   }
 
   /* High Contrast Typography */

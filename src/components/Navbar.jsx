@@ -98,8 +98,8 @@ export default function Navbar() {
       }}
       transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
       className={cn(
-        'fixed inset-x-0 z-50 mx-auto border bg-[#0d1017]/90 backdrop-blur-md transition-colors',
-        stuck ? 'border-x-0 border-t-0 border-b border-white/10 shadow-lg' : 'border-white/15 shadow-2xl'
+        'fixed inset-x-0 z-50 mx-auto border bg-[var(--card)]/95 dark:bg-[#0d1017]/95 backdrop-blur-md transition-colors',
+        stuck ? 'border-x-0 border-t-0 border-b border-[var(--border)] shadow-lg' : 'border-[var(--border)] shadow-2xl'
       )}
     >
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6">
@@ -124,7 +124,7 @@ export default function Navbar() {
             </svg>
           </div>
           <div className="flex items-baseline gap-1.5">
-            <span className="font-display font-extrabold text-white tracking-tight text-sm sm:text-base leading-none">
+            <span className="font-display font-extrabold text-[var(--foreground)] tracking-tight text-sm sm:text-base leading-none">
               NETHRA NEHA DS
             </span>
           </div>
@@ -143,7 +143,7 @@ export default function Navbar() {
                   'relative rounded-full px-2.5 lg:px-3 py-1.5 transition-colors duration-200 z-10 select-none text-[11px] lg:text-xs',
                   isActive
                     ? 'text-white font-bold'
-                    : 'text-slate-300 hover:text-white'
+                    : 'text-[var(--text-muted)] hover:text-[var(--foreground)]'
                 )}
               >
                 {isActive && (
@@ -174,29 +174,29 @@ export default function Navbar() {
             <span>Download CV</span>
           </button>
 
-          {/* Morphing Mobile/Tablet Burger Button */}
+          {/* Morphing Mobile/Tablet Burger Button — High contrast theme-aware lines */}
           <button
             type="button"
             aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
-            className="relative grid size-9 place-items-center rounded-full border border-white/15 lg:hidden bg-[#12151c] focus:outline-none"
+            className="relative grid size-9 place-items-center rounded-full border border-[var(--border)] lg:hidden bg-[var(--surface)] hover:bg-[var(--card)] focus:outline-none transition-colors"
           >
             <span
               className={cn(
-                'absolute h-px w-4 bg-white transition-transform duration-300',
+                'absolute h-0.5 w-4 bg-[var(--foreground)] transition-transform duration-300 rounded-full',
                 open ? 'rotate-45' : '-translate-y-1'
               )}
             />
             <span
               className={cn(
-                'absolute h-px w-4 bg-white transition-opacity duration-200',
+                'absolute h-0.5 w-4 bg-[var(--foreground)] transition-opacity duration-200 rounded-full',
                 open && 'opacity-0'
               )}
             />
             <span
               className={cn(
-                'absolute h-px w-4 bg-white transition-transform duration-300',
+                'absolute h-0.5 w-4 bg-[var(--foreground)] transition-transform duration-300 rounded-full',
                 open ? '-rotate-45' : 'translate-y-1'
               )}
             />
@@ -223,7 +223,7 @@ export default function Navbar() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.28, ease: [0.32, 0.72, 0, 1] }}
-              className="overflow-y-auto max-h-[calc(100vh-5rem)] lg:hidden font-mono bg-[#0d1017]/98 border-t border-white/10 rounded-b-2xl shadow-2xl"
+              className="overflow-y-auto max-h-[calc(100vh-5rem)] lg:hidden font-mono bg-[var(--card)]/98 dark:bg-[#0d1017]/98 border-t border-[var(--border)] rounded-b-2xl shadow-2xl"
               aria-label="Mobile and Tablet Navigation"
             >
               <ul className="px-4 py-3 space-y-1">
@@ -240,10 +240,10 @@ export default function Navbar() {
                         href={link.href}
                         onClick={(e) => handleNavClick(e, link.href)}
                         className={cn(
-                          'flex items-center justify-between py-2.5 px-3.5 rounded-xl text-xs tracking-wider transition-colors select-none',
+                          'flex items-center justify-between py-2.5 px-3.5 rounded-xl text-xs font-semibold tracking-wider transition-colors select-none',
                           isActive
                             ? 'bg-[#2f6bff] text-white font-bold shadow-md'
-                            : 'text-slate-300 hover:text-white hover:bg-white/5'
+                            : 'text-[var(--foreground)] hover:bg-[#2f6bff]/10 hover:text-[#2f6bff]'
                         )}
                       >
                         <span>{link.label}</span>
@@ -256,13 +256,13 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.025 * navLinks.length }}
-                  className="pt-2 border-t border-white/10"
+                  className="pt-2 border-t border-[var(--border)]"
                 >
                   <a
                     href="/documents/Nethra-Neha-DS-CV.docx"
                     download
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider bg-white/10 hover:bg-white/15 text-white border border-white/10 transition-colors"
+                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider bg-[var(--surface)] hover:bg-[#2f6bff]/10 text-[var(--foreground)] hover:text-[#2f6bff] border border-[var(--border)] transition-colors shadow-xs"
                   >
                     <FileText className="w-3.5 h-3.5 text-[#2f6bff]" />
                     <span>Download CV</span>
@@ -274,11 +274,11 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.025 * (navLinks.length + 1) }}
-                  className="pt-3 border-t border-white/10"
+                  className="pt-3 border-t border-[var(--border)]"
                 >
-                  <div className="text-[10px] uppercase tracking-wider text-slate-400 font-bold px-1 mb-2 flex items-center justify-between">
+                  <div className="text-[10px] uppercase tracking-wider text-[var(--text-muted)] font-bold px-1 mb-2 flex items-center justify-between">
                     <span>Visual Atmosphere</span>
-                    <span className="text-[9px] text-[var(--brand)] font-mono">Permanent Blue Accent</span>
+                    <span className="text-[9px] text-[#2f6bff] font-mono">Permanent Blue Accent</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2">
                     {themes.map((t) => {
@@ -294,12 +294,12 @@ export default function Navbar() {
                           className={cn(
                             "flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-mono transition-all border text-left",
                             isActive
-                              ? "bg-[var(--brand)]/15 border-[var(--brand)] text-[var(--brand)] font-bold shadow-xs"
-                              : "bg-white/5 border-white/10 text-slate-300 hover:text-white"
+                              ? "bg-[#2f6bff]/15 border-[#2f6bff] text-[#2f6bff] font-bold shadow-xs"
+                              : "bg-[var(--surface)] border-[var(--border)] text-[var(--foreground)] hover:border-[#2f6bff]/40"
                           )}
                         >
                           <span
-                            className="w-3 h-3 rounded-full border border-white/20 shrink-0"
+                            className="w-3 h-3 rounded-full border border-[var(--border)] shrink-0"
                             style={{ backgroundColor: t.bg }}
                           />
                           <span className="truncate">{t.name}</span>
