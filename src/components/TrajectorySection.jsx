@@ -7,7 +7,7 @@ export default function TrajectorySection() {
   const [expandedStory, setExpandedStory] = useState(false);
 
   return (
-    <section id="journey" className="scroll-mt-20 py-16 sm:py-20 bg-[#0a0c10] border-b border-white/10 relative overflow-hidden">
+    <section id="journey" className="scroll-mt-20 py-16 sm:py-20 bg-[#0a0c10] border-b border-[var(--border)] relative overflow-hidden">
       {/* Anchor for backward compatibility with #trajectory */}
       <span id="trajectory" className="sr-only pointer-events-none" />
 
@@ -18,30 +18,30 @@ export default function TrajectorySection() {
           <div className="text-xs font-mono font-semibold tracking-wider text-[#2f6bff] uppercase mb-2">
             Biographical Journey &bull; 2020 &mdash; 2026
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.05] font-display">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--foreground)] tracking-tight leading-[1.05] font-display">
             Two Worlds. One Relentless Velocity.
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+          <p className="mt-2 text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed font-normal">
             Orchestrating state-wide civic digital infrastructure for 38 districts across Tamil Nadu while developing a 7-patent deep-tech enterprise from Salem.
           </p>
         </div>
 
         {/* BENTO BOX NARRATIVE & VISUAL MEDIA */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 mb-12 items-stretch">
           
           {/* Left Column: Personal History Story, Quote, and Annexra Directive (7 cols) */}
           <div className="lg:col-span-7 flex flex-col gap-5">
-            {/* Story Card — Comfortable editorial font size that flows naturally */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1017] border border-white/10 space-y-4 shadow-xl">
-              <div className="flex items-center justify-between border-b border-white/10 pb-3 text-xs font-mono">
+            {/* Story Card */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0d1017] border border-[var(--border)] space-y-4 shadow-xl">
+              <div className="flex items-center justify-between border-b border-[var(--border)] pb-3 text-xs font-mono">
                 <span className="text-[#2f6bff] font-bold uppercase tracking-wider">Origin &amp; Mission</span>
-                <span className="text-slate-400">Government School to Tech Founder</span>
+                <span className="text-[var(--text-muted)]">Government School to Tech Founder</span>
               </div>
 
-              <p className="text-white/95 text-sm sm:text-base leading-relaxed font-normal">
+              <p className="text-[var(--foreground)] text-sm sm:text-base leading-relaxed font-normal">
                 {storyData.paragraphs[0]}
               </p>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+              <p className="text-[var(--text-secondary)] text-sm sm:text-base leading-relaxed font-normal">
                 {storyData.paragraphs[1]}
               </p>
 
@@ -53,7 +53,7 @@ export default function TrajectorySection() {
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.25 }}
-                    className="space-y-4 overflow-hidden pt-4 border-t border-white/10 text-xs sm:text-sm text-slate-300 leading-relaxed"
+                    className="space-y-4 overflow-hidden pt-4 border-t border-[var(--border)] text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed"
                   >
                     <p>{storyData.paragraphs[2]}</p>
                     <p>{storyData.paragraphs[3]}</p>
@@ -66,7 +66,7 @@ export default function TrajectorySection() {
               <div className="pt-1">
                 <button
                   onClick={() => setExpandedStory(!expandedStory)}
-                  className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#2f6bff] hover:text-white transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-[#2f6bff] hover:underline transition-colors"
                 >
                   {expandedStory ? (
                     <>
@@ -84,13 +84,13 @@ export default function TrajectorySection() {
             </div>
 
             {/* Standalone Founder Quote Card */}
-            <div className="p-6 rounded-2xl bg-[#0d1017] border border-white/10 shadow-xl space-y-3">
+            <div className="p-6 rounded-2xl bg-[#0d1017] border border-[var(--border)] shadow-xl space-y-3">
               <div className="text-[#2f6bff]">
                 <svg className="w-6 h-6 fill-current opacity-90" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
               </div>
-              <blockquote className="text-sm sm:text-base text-slate-100 italic leading-relaxed">
+              <blockquote className="text-sm sm:text-base text-[var(--foreground)] italic leading-relaxed">
                 &ldquo;{storyData.quote}&rdquo;
               </blockquote>
               <div className="text-xs font-mono font-medium text-[#2f6bff]">
@@ -98,28 +98,28 @@ export default function TrajectorySection() {
               </div>
             </div>
 
-            {/* Annexra Technologies Directive Card (Moved below quote card for seamless narrative continuity) */}
-            <div className="p-6 rounded-2xl bg-[#0d1017] border border-white/10 shadow-xl space-y-2.5">
+            {/* Annexra Technologies Directive Card */}
+            <div className="p-6 rounded-2xl bg-[#0d1017] border border-[var(--border)] shadow-xl space-y-2.5">
               <div className="flex items-center justify-between text-xs font-mono">
                 <span className="text-[#2f6bff] font-bold uppercase tracking-wider">Annexra Technologies Directive</span>
-                <span className="text-slate-400">Salem Core</span>
+                <span className="text-[var(--text-muted)]">Salem Core</span>
               </div>
-              <p className="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal">
+              <p className="text-[var(--text-secondary)] leading-relaxed text-xs sm:text-sm font-normal">
                 Incorporated in January 2026 to convert grassroots research in clinical AI, soil sensor telemetry, and IoT warning hardware into sovereign, production technologies.
               </p>
             </div>
           </div>
 
-          {/* Right Column: Exact Natural Poster Artifact Card (5 cols) */}
+          {/* Right Column: Natural Poster Artifact Card (5 cols) */}
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <div className="rounded-2xl border border-white/10 bg-[#0d1017] p-5 sm:p-6 space-y-4 shadow-xl h-full flex flex-col justify-between">
+            <div className="rounded-2xl border border-[var(--border)] bg-[#0d1017] p-5 sm:p-6 space-y-4 shadow-xl h-full flex flex-col justify-between">
               <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-2 border-b border-white/10">
+                <div className="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] pb-2 border-b border-[var(--border)]">
                   <span className="text-[#2f6bff] font-bold uppercase tracking-wider">Press Artifact</span>
                   <span>National Syndication</span>
                 </div>
 
-                <div className="rounded-xl overflow-hidden border border-white/10 bg-[#06080d]">
+                <div className="rounded-xl overflow-hidden border border-[var(--border)] bg-[#06080d]">
                   <img
                     src="/assets/news-just-now-salem.jpeg"
                     alt="Salem District Recognition to National Media"
@@ -128,17 +128,17 @@ export default function TrajectorySection() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <h4 className="text-base sm:text-lg font-bold text-white font-display">
+                  <h4 className="text-base sm:text-lg font-bold text-[var(--foreground)] font-display">
                     Salem District Recognition to National Media
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed font-normal">
                     From Salem government school science exhibitions to syndication across 207 nationwide news outlets.
                   </p>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-                <span className="text-slate-400">38 Districts Active</span>
+              <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between text-xs font-mono">
+                <span className="text-[var(--text-muted)]">38 Districts Active</span>
                 <span className="text-[#2f6bff] font-semibold">TN Volunteers IT</span>
               </div>
             </div>
@@ -146,37 +146,98 @@ export default function TrajectorySection() {
 
         </div>
 
-        {/* CHRONOLOGICAL MILESTONES — UNIFORM, CLEAN 5-CARD GRID */}
-        <div className="border-t border-white/10 pt-8 sm:pt-10">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-base sm:text-lg font-bold text-white font-display tracking-tight">
-              Chronological Milestones (2020 &mdash; 2026)
-            </h3>
-            <span className="text-xs font-mono text-slate-400 hidden sm:inline-block">
-              Milestones &amp; Journey
-            </span>
+        {/* CHRONOLOGICAL MILESTONES — CONNECTED PROGRESSION TIMELINE */}
+        <div className="border-t border-[var(--border)] pt-10 sm:pt-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+            <div>
+              <div className="text-xs font-mono font-semibold tracking-wider text-[#2f6bff] uppercase mb-1.5">
+                Sequential Track
+              </div>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[var(--foreground)] font-display tracking-tight">
+                Chronological Milestones (2020 &mdash; 2026)
+              </h3>
+            </div>
+            <p className="text-xs font-mono text-[var(--text-muted)]">
+              5 Key Step Progressions &bull; Empirical Trajectory
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {storyData.milestones.map((m, idx) => (
-              <div
-                key={m.year}
-                className="p-4 rounded-xl bg-[#0d1017] border border-white/10 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="text-base font-bold text-white font-mono mb-1">
+          {/* Desktop/Tablet Horizontal Stepped Timeline (md:block) */}
+          <div className="hidden md:block relative">
+            {/* Connected Track Line behind the step nodes */}
+            <div className="absolute top-[28px] left-[5%] right-[5%] h-0.5 bg-[var(--border)] z-0">
+              <div className="h-full bg-gradient-to-r from-[#2f6bff] via-[#2f6bff] to-[#2f6bff]/40 w-full" />
+            </div>
+
+            <div className="grid grid-cols-5 gap-4 relative z-10">
+              {storyData.milestones.map((m, idx) => (
+                <div key={m.year} className="flex flex-col items-center group">
+                  {/* Step Node Circle */}
+                  <div className="w-14 h-14 rounded-full bg-[#0d1017] border-2 border-[#2f6bff] flex flex-col items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <span className="text-[10px] font-mono font-bold text-[#2f6bff] leading-none">
+                      0{idx + 1}
+                    </span>
+                    <span className="text-[9px] font-mono text-[var(--text-muted)] mt-0.5">
+                      STEP
+                    </span>
+                  </div>
+
+                  {/* Year Pill */}
+                  <div className="mt-3 px-2.5 py-0.5 rounded-full bg-[#2f6bff]/10 border border-[#2f6bff]/20 text-[#2f6bff] font-mono text-xs font-bold">
                     {m.year}
                   </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-slate-200 font-display leading-snug">
+
+                  {/* Content Card with Smooth Lift */}
+                  <div className="mt-4 p-4 rounded-xl bg-[#0d1017] border border-[var(--border)] shadow-md group-hover:shadow-xl group-hover:border-[#2f6bff]/40 transition-all duration-300 w-full flex flex-col justify-between min-h-[140px] text-center">
+                    <div>
+                      <h4 className="text-xs sm:text-sm font-bold text-[var(--foreground)] font-display leading-snug">
+                        {m.title}
+                      </h4>
+                      <p className="text-[11px] text-[var(--text-secondary)] mt-2 leading-relaxed font-normal text-left">
+                        {m.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Vertical Stepped Timeline (block md:hidden) */}
+          <div className="block md:hidden relative pl-6 space-y-6">
+            {/* Vertical Track Line */}
+            <div className="absolute top-2 bottom-2 left-[19px] w-0.5 bg-gradient-to-b from-[#2f6bff] via-[#2f6bff] to-[#2f6bff]/30" />
+
+            {storyData.milestones.map((m, idx) => (
+              <div key={m.year} className="relative flex items-start gap-4 group">
+                {/* Step Node Circle */}
+                <div className="w-10 h-10 rounded-full bg-[#0d1017] border-2 border-[#2f6bff] flex flex-col items-center justify-center shrink-0 shadow-md relative z-10 -ml-6">
+                  <span className="text-[10px] font-mono font-bold text-[#2f6bff] leading-none">
+                    0{idx + 1}
+                  </span>
+                </div>
+
+                {/* Milestone Detail Card */}
+                <div className="flex-1 p-4 rounded-xl bg-[#0d1017] border border-[var(--border)] shadow-md">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-xs font-mono font-bold text-[#2f6bff]">
+                      {m.year}
+                    </span>
+                    <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
+                      Stage 0{idx + 1}
+                    </span>
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-bold text-[var(--foreground)] font-display leading-snug">
                     {m.title}
                   </h4>
-                  <p className="text-[11px] text-slate-400 mt-2 leading-relaxed font-normal">
+                  <p className="text-[11px] text-[var(--text-secondary)] mt-1.5 leading-relaxed font-normal">
                     {m.desc}
                   </p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
 
       </div>

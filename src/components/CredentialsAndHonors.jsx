@@ -419,33 +419,83 @@ export default function CredentialsAndHonors() {
 
           </AnimatePresence>
 
-          {/* Trilingual Fluency Showcase — Fully Responsive Wrapping, Zero Overflow */}
-          <div className="p-4 sm:p-5 rounded-xl bg-[#0d1017] border border-white/10">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="flex items-start sm:items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-[#2f6bff]/15 border border-[#2f6bff]/30 flex items-center justify-center text-[#2f6bff] shrink-0 mt-0.5 sm:mt-0">
-                  <Languages className="w-4 h-4" />
+          {/* Trilingual Fluency Showcase — Dedicated Feature Section */}
+          <div className="mt-8 pt-8 border-t border-[var(--border)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#2f6bff]/10 border border-[#2f6bff]/20 flex items-center justify-center text-[#2f6bff] shrink-0">
+                  <Languages className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                  <h3 className="text-base sm:text-lg font-bold text-[var(--foreground)] font-display">
                     Trilingual Linguistic Fluency
+                  </h3>
+                  <p className="text-xs text-[var(--text-secondary)]">
+                    Cross-border scientific publishing, state-wide governance, and global technical exchange.
+                  </p>
+                </div>
+              </div>
+              <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-[#2f6bff]/10 border border-[#2f6bff]/20 text-[#2f6bff] self-start sm:self-auto">
+                3 Languages Operational
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* English */}
+              <div className="p-5 rounded-xl bg-[#0d1017] border border-[var(--border)] hover:border-[#2f6bff]/40 transition-all flex flex-col justify-between shadow-md">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-[var(--foreground)] font-display">English</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#2f6bff]/15 text-[#2f6bff] font-bold">
+                      Professional
+                    </span>
                   </div>
-                  <div className="text-xs text-slate-400 mt-0.5">
-                    Academic, scientific, and global technical communication capabilities.
-                  </div>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-normal">
+                    Scientific paper publication, international patent drafting (UK &amp; Canada), and global diplomacy delegations.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[var(--border)] text-[10px] font-mono text-[var(--text-muted)] flex items-center justify-between">
+                  <span>CEFR Equivalent</span>
+                  <span className="text-[#2f6bff] font-semibold">C1 / Professional</span>
                 </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
-                <span className="px-2.5 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-[11px] font-mono font-medium text-[#2f6bff]">
-                  English (Professional)
-                </span>
-                <span className="px-2.5 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-[11px] font-mono font-medium text-[#2f6bff]">
-                  Tamil (Native)
-                </span>
-                <span className="px-2.5 py-1 rounded-md bg-[#080a0f] border border-[#2f6bff]/30 text-[11px] font-mono font-medium text-[#2f6bff]">
-                  Japanese (Elementary)
-                </span>
+              {/* Tamil */}
+              <div className="p-5 rounded-xl bg-[#0d1017] border border-[var(--border)] hover:border-[#2f6bff]/40 transition-all flex flex-col justify-between shadow-md">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-[var(--foreground)] font-display">Tamil (தமிழ்)</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#2f6bff]/15 text-[#2f6bff] font-bold">
+                      Native
+                    </span>
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-normal">
+                    State-wide civic coordination across 38 districts of Tamil Nadu Volunteers, regional governance, and public outreach.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[var(--border)] text-[10px] font-mono text-[var(--text-muted)] flex items-center justify-between">
+                  <span>Fluency Level</span>
+                  <span className="text-[#2f6bff] font-semibold">Native / Mother Tongue</span>
+                </div>
+              </div>
+
+              {/* Japanese */}
+              <div className="p-5 rounded-xl bg-[#0d1017] border border-[var(--border)] hover:border-[#2f6bff]/40 transition-all flex flex-col justify-between shadow-md">
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-bold text-[var(--foreground)] font-display">Japanese (日本語)</span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#2f6bff]/15 text-[#2f6bff] font-bold">
+                      Elementary
+                    </span>
+                  </div>
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-normal">
+                    Foundational grammar, technical terminology, and active linguistic study for international Asian engineering partnerships.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-[var(--border)] text-[10px] font-mono text-[var(--text-muted)] flex items-center justify-between">
+                  <span>Focus Area</span>
+                  <span className="text-[#2f6bff] font-semibold">A1 / Tech Dialogue</span>
+                </div>
               </div>
             </div>
           </div>

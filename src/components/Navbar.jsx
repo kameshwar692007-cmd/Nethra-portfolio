@@ -22,6 +22,17 @@ export default function Navbar() {
     { label: 'Contact', href: '#contact' },
   ];
 
+  // Direct CV Download Helper
+  const handleDownloadCV = (e) => {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = '/documents/Nethra-Neha-DS-CV.docx';
+    link.setAttribute('download', 'Nethra-Neha-DS-CV.docx');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Smooth custom scroll handler taking navbar height into account
   const handleNavClick = (e, href) => {
     e.preventDefault();
@@ -147,14 +158,15 @@ export default function Navbar() {
           {/* Atmospheric Theme Switcher with permanent blue accent */}
           <ThemeSwitcher />
 
-          <a
-            href="/documents/Nethra-Neha-DS-CV.docx"
-            download
-            className="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/10 px-3.5 text-xs font-mono font-medium text-white transition-colors"
+          {/* Direct Download CV Button */}
+          <button
+            type="button"
+            onClick={handleDownloadCV}
+            className="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--card)] px-3.5 text-xs font-mono font-medium text-[var(--foreground)] transition-colors shadow-xs"
           >
             <FileText className="w-3 h-3 text-[#2f6bff]" />
             <span>Download CV</span>
-          </a>
+          </button>
 
           {/* Morphing Mobile/Tablet Burger Button */}
           <button

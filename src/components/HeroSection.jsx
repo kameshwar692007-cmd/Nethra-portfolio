@@ -1,10 +1,22 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 import { ArrowUpRight, FileText } from 'lucide-react';
+import { personalInfo } from '../data/portfolioData';
 
 export default function HeroSection() {
   const containerRef = useRef(null);
   const portraitCardRef = useRef(null);
+
+  // Direct CV Download Helper
+  const handleDownloadCV = (e) => {
+    e.preventDefault();
+    const link = document.createElement('a');
+    link.href = '/documents/Nethra-Neha-DS-CV.docx';
+    link.setAttribute('download', 'Nethra-Neha-DS-CV.docx');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   // Scroll parallax
   const { scrollYProgress } = useScroll({
@@ -132,32 +144,21 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="border-l-2 border-[#2f6bff] pl-4 py-1 max-w-xl"
             >
-              <div className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-                Holder of <strong className="text-white font-semibold">7 sovereign patent registrations</strong> across the UK, Canada, India, and Germany in predictive power AI, clinical oncology, and assistive wearables.{' '}
+              <div className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed font-sans">
+                Holder of <strong className="text-[var(--foreground)] font-semibold">7 sovereign patent registrations</strong> across the UK, Canada, India, and Germany in predictive power AI and clinical oncology.{' '}
                 <a
                   href="#patents"
                   data-cursor="explore"
                   data-cursor-label="PATENTS"
-                  className="text-[#2f6bff] hover:underline underline-offset-2 font-mono font-semibold inline-flex items-center gap-1 group"
+                  className="text-[#2f6bff] hover:underline underline-offset-2 font-mono font-semibold inline-flex items-center gap-1 group ml-1"
                 >
-                  <span>Inspect Inventions</span>
+                  <span>Inspect IP</span>
                   <ArrowUpRight className="w-3.5 h-3.5 inline group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </motion.div>
 
-            {/* Narrative Summary */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.38 }}
-              className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-xl font-normal"
-            >
-              High school student in Computer Science &amp; Bio-Maths at GHSS Periyavadangampatti. 
-              Deep-tech founder and Manager of Technology &amp; Digital Systems at <strong className="text-white">Tamil Nadu Volunteers</strong>.
-            </motion.p>
-
-            {/* Action Buttons with Magnetic Touch */}
+            {/* Action Buttons & Prominent Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -171,22 +172,51 @@ export default function HeroSection() {
                 href="#patents"
                 data-cursor="explore"
                 data-cursor-label="PATENTS"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold text-xs uppercase tracking-wider transition-colors shadow-lg active:scale-95 group"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#2f6bff] hover:bg-[#2558d9] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-lg active:scale-95 group"
               >
                 <span>Sovereign Patents (07)</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </motion.a>
 
-              <a
-                href="/documents/Nethra-Neha-DS-CV.docx"
-                download
+              <button
+                type="button"
+                onClick={handleDownloadCV}
                 data-cursor="download"
                 data-cursor-label="CV"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#141720] hover:bg-[#1a1f2c] border border-white/10 text-white text-xs tracking-wider transition-colors active:scale-95"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--card)] text-[var(--foreground)] font-bold text-xs tracking-wider transition-all active:scale-95 shadow-sm"
               >
                 <FileText className="w-4 h-4 text-[#2f6bff]" />
                 <span>Download CV</span>
-              </a>
+              </button>
+
+              {/* Prominent LinkedIn and GitHub Badges */}
+              <div className="flex items-center gap-2 pl-1">
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  title="Connect with Nethra Neha DS on LinkedIn"
+                  className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--card)] hover:border-[#2f6bff]/50 text-[var(--foreground)] hover:text-[#2f6bff] transition-all active:scale-95 shadow-xs"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                  </svg>
+                </a>
+
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  title="View Open Source Repositories on GitHub"
+                  className="p-2.5 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--card)] hover:border-[#2f6bff]/50 text-[var(--foreground)] hover:text-[#2f6bff] transition-all active:scale-95 shadow-xs"
+                >
+                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                  </svg>
+                </a>
+              </div>
             </motion.div>
 
             {/* Operational Metrics Strip */}
@@ -194,36 +224,36 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.52 }}
-              className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs"
+              className="pt-6 border-t border-[var(--border)] grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs"
             >
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">16</div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Founder Age</div>
-                <div className="text-[10px] text-slate-500">Deep-Tech R&amp;D</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)] tracking-tight font-display">16</div>
+                <div className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">Founder Age</div>
+                <div className="text-[10px] text-[var(--text-muted)] opacity-80">Deep-Tech R&amp;D</div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl font-extrabold text-[#2f6bff] tracking-tight font-display">07</div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Sovereign IP</div>
-                <div className="text-[10px] text-slate-500">UK &bull; CA &bull; IN &bull; DE</div>
+                <div className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">Sovereign IP</div>
+                <div className="text-[10px] text-[var(--text-muted)] opacity-80">UK &bull; CA &bull; IN &bull; DE</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">38</div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Districts Managed</div>
-                <div className="text-[10px] text-slate-500">TN Volunteers</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)] tracking-tight font-display">38</div>
+                <div className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">Districts Managed</div>
+                <div className="text-[10px] text-[var(--text-muted)] opacity-80">TN Volunteers</div>
               </div>
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight font-display">207+</div>
-                <div className="text-[11px] text-slate-400 uppercase tracking-wider mt-1">Media Outlets</div>
-                <div className="text-[10px] text-slate-500">Pan-India Reach</div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)] tracking-tight font-display">207+</div>
+                <div className="text-[11px] text-[var(--text-muted)] uppercase tracking-wider mt-1">Media Outlets</div>
+                <div className="text-[10px] text-[var(--text-muted)] opacity-80">Pan-India Reach</div>
               </div>
             </motion.div>
 
           </motion.div>
 
-          {/* Right Visual Column (5 cols on desktop, responsive container on mobile) */}
+          {/* Right Visual Column — Refined size for optimal visual balance */}
           <motion.div 
             style={{ y: portraitParallax }}
-            className="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none [perspective:1000px]"
+            className="lg:col-span-5 w-full max-w-[320px] sm:max-w-[350px] lg:max-w-[360px] mx-auto [perspective:1000px]"
           >
             <motion.div
               ref={portraitCardRef}
@@ -239,7 +269,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               data-cursor="view"
               data-cursor-label="PORTRAIT"
-              className="relative rounded-lg overflow-hidden border border-white/10 bg-[#12151c] shadow-2xl group transition-shadow duration-300 hover:shadow-[#2f6bff]/10"
+              className="relative rounded-2xl overflow-hidden border border-[var(--border)] bg-[#12151c] shadow-2xl group transition-shadow duration-300 hover:shadow-[#2f6bff]/10"
             >
               <img
                 src="/assets/nethra-portrait.jpeg"

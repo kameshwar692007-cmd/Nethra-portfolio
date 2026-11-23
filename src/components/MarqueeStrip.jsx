@@ -29,7 +29,7 @@ export function TextMarquee({
   const group = (suffix) =>
     words.map((word) => (
       <span key={`${suffix}-${word}`} className="flex items-center gap-8 shrink-0">
-        <span className="text-sm sm:text-base font-semibold tracking-tight text-white/90 font-mono">
+        <span className="text-sm sm:text-base font-semibold tracking-tight text-[var(--foreground)] opacity-90 font-mono">
           {word}
         </span>
         <Sparkles className="w-4 h-4 text-[#2f6bff] shrink-0" />
@@ -39,7 +39,7 @@ export function TextMarquee({
   return (
     <div
       className={cn(
-        "w-full overflow-hidden border-y border-white/10 bg-[#07090e] py-4 select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
+        "w-full overflow-hidden border-y border-[var(--border)] bg-[var(--surface)] py-4 select-none [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
         className
       )}
     >
