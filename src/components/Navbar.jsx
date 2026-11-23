@@ -157,13 +157,13 @@ export default function Navbar() {
           {/* Atmospheric Theme Switcher with permanent blue accent */}
           <ThemeSwitcher />
 
-          {/* Direct Download CV Button */}
+          {/* Direct Download CV Button — High-contrast signature royal blue, crisp in all themes */}
           <button
             type="button"
             onClick={handleDownloadCV}
-            className="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--card)] px-3.5 text-xs font-mono font-medium text-[var(--foreground)] transition-colors shadow-xs"
+            className="hidden sm:inline-flex h-8 items-center gap-1.5 rounded-full bg-[#2f6bff] hover:bg-[#2558d9] text-white px-3.5 text-xs font-mono font-bold border border-[#2f6bff] transition-all shadow-xs hover:shadow-md active:scale-95 cursor-pointer"
           >
-            <FileText className="w-3 h-3 text-[#2f6bff]" />
+            <FileText className="w-3.5 h-3.5 text-white" />
             <span>Download CV</span>
           </button>
 
@@ -255,9 +255,9 @@ export default function Navbar() {
                     href="/documents/Nethra-Neha-DS-CV.docx"
                     download
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider bg-[var(--surface)] hover:bg-[#2f6bff]/10 text-[var(--foreground)] hover:text-[#2f6bff] border border-[var(--border)] transition-colors shadow-xs"
+                    className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-bold tracking-wider bg-[#2f6bff] hover:bg-[#2558d9] text-white border border-[#2f6bff] transition-colors shadow-md active:scale-95 cursor-pointer"
                   >
-                    <FileText className="w-3.5 h-3.5 text-[#2f6bff]" />
+                    <FileText className="w-4 h-4 text-white" />
                     <span>Download CV</span>
                   </a>
                 </motion.li>

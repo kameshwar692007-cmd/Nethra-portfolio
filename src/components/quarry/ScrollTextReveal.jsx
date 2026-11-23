@@ -5,11 +5,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 function Word({ word, range, progress }) {
-  const opacity = useTransform(progress, range, [0.18, 1]);
+  const opacity = useTransform(progress, range, [0.22, 1]);
   const y = useTransform(progress, range, [4, 0]);
   return (
     <span className="relative mr-[0.28em] inline-block">
-      <motion.span style={{ opacity, y }} className="inline-block">
+      <motion.span style={{ opacity, y }} className="inline-block text-white">
         {word}
       </motion.span>
     </span>

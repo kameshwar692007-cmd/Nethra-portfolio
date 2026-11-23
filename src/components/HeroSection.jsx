@@ -68,10 +68,10 @@ export default function HeroSection() {
   };
 
   return (
-    <div ref={pinRef} className="relative w-full h-[180vh] sm:h-[200vh]">
+    <div ref={pinRef} className="relative w-full h-[260vh] sm:h-[200vh]">
       <section
         id="about"
-        className="sticky top-0 min-h-screen sm:h-screen w-full flex flex-col justify-center pt-24 sm:pt-20 lg:pt-8 pb-12 sm:pb-0 overflow-hidden border-b border-[var(--border)] bg-[#0a0c10]"
+        className="sticky top-0 min-h-screen sm:h-screen w-full flex flex-col justify-center pt-28 sm:pt-24 lg:pt-10 pb-16 sm:pb-0 overflow-hidden border-b border-[var(--border)] bg-[#0a0c10]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 pt-4 sm:pt-0">
           
@@ -127,8 +127,8 @@ export default function HeroSection() {
                   <ScrollTextReveal
                     text="Building deep-tech hardware and clinical AI from Salem, while orchestrating digital platforms for 38 districts across Tamil Nadu. Turning grassroots science into 7 sovereign patent registrations and sovereign commercial technologies."
                     progress={scrollYProgress}
-                    completionPoint={0.75}
-                    className="mx-0 max-w-2xl text-left text-lg sm:text-2xl lg:text-[1.65rem] font-medium leading-[1.35] tracking-tight text-[var(--foreground)]"
+                    completionPoint={0.52}
+                    className="mx-0 max-w-2xl text-left text-lg sm:text-2xl lg:text-[1.65rem] font-medium leading-[1.35] tracking-tight text-white"
                   />
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function HeroSection() {
                   onClick={handleDownloadCV}
                   data-cursor="download"
                   data-cursor-label="CV"
-                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-[var(--border)] bg-[var(--surface)] hover:bg-[var(--card)] text-[var(--foreground)] font-bold text-xs tracking-wider transition-all active:scale-95 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 text-white font-bold text-xs tracking-wider transition-all active:scale-95 shadow-sm"
                 >
                   <FileText className="w-4 h-4 text-[#2f6bff]" />
                   <span>Download CV</span>

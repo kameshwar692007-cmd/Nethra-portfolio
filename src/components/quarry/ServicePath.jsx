@@ -106,7 +106,7 @@ function Title({ s }) {
   return (
     <h3 className="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.85rem)] uppercase leading-[1.0] tracking-tight break-words text-[var(--foreground)]">
       <span>{s.words[0]}</span>{" "}
-      <span className="mx-1.5 inline-grid size-[1.25em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-xl sm:rounded-2xl bg-[#2f6bff] align-middle text-white shadow-md [&_svg]:!w-[0.62em] [&_svg]:!h-[0.62em]">
+      <span className="mx-2 sm:mx-3 inline-grid size-[1.65em] sm:size-[1.85em] -translate-y-[0.08em] -rotate-6 place-items-center rounded-2xl sm:rounded-3xl bg-[#2f6bff] align-middle text-white shadow-lg shadow-[#2f6bff]/35 ring-2 ring-[#38bdf8]/40 [&_svg]:!w-[0.95em] [&_svg]:!h-[0.95em] transition-transform hover:scale-110">
         {s.icon}
       </span>{" "}
       <span className="text-[#38bdf8] block sm:inline drop-shadow-[0_2px_12px_rgba(56,189,248,0.25)]">
