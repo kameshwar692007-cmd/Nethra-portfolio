@@ -104,16 +104,12 @@ function build(n) {
 
 function Title({ s }) {
   return (
-    <h3 className="font-display font-extrabold text-[clamp(1.4rem,2.8vw,2.5rem)] uppercase leading-[1.05] tracking-tight break-words">
-      <span className="text-[#1E232A] dark:text-white inline-block mr-2 drop-shadow-xs">
-        {s.words[0]}
-      </span>
-      <span className="inline-grid size-[0.85em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-lg bg-[#2f6bff] align-middle text-[0.55em] text-white shadow-xs [&_svg]:size-[0.8em]">
+    <h3 className="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.85rem)] uppercase leading-[1.0] tracking-tight break-words text-[var(--foreground)]">
+      <span>{s.words[0]}</span>{" "}
+      <span className="mx-1 inline-grid size-[0.85em] -translate-y-[0.06em] -rotate-6 place-items-center rounded-xl bg-[#2f6bff] align-middle text-[0.55em] text-white shadow-sm [&_svg]:size-[0.8em]">
         {s.icon}
       </span>{" "}
-      <span className="text-[#2f6bff] dark:text-sky-300 block sm:inline drop-shadow-[0_2px_10px_rgba(56,189,248,0.2)]">
-        {s.words[1]}
-      </span>
+      <span className="text-[#2f6bff] block sm:inline">{s.words[1]}</span>
     </h3>
   );
 }
@@ -122,16 +118,16 @@ function Bubble({ s, tilt }) {
   return (
     <div
       style={{ rotate: `${tilt}deg` }}
-      className="mt-3.5 max-w-sm rounded-2xl border border-slate-300/80 dark:border-white/10 bg-white/95 dark:bg-[#0c1017]/95 backdrop-blur-md p-4 sm:p-5 shadow-[0_12px_28px_-6px_rgba(47,107,255,0.12),0_4px_12px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.5)] transition-all hover:rotate-0 hover:border-[#2f6bff]/50 duration-300"
+      className="mt-3.5 max-w-sm rounded-2xl border border-[var(--border)] bg-[var(--card)] p-5 shadow-[4px_4px_0_0_#2f6bff] transition-all hover:rotate-0 duration-300"
     >
-      <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal">
+      <p className="text-xs sm:text-sm text-[var(--text-secondary)] leading-relaxed font-normal">
         {s.body}
       </p>
-      <ul className="mt-3 flex flex-wrap gap-1.5">
+      <ul className="mt-3.5 flex flex-wrap gap-1.5">
         {s.tags.map((t) => (
           <li
             key={t}
-            className="rounded-full border border-[#2f6bff]/30 dark:border-sky-400/30 bg-[#2f6bff]/10 dark:bg-sky-500/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-[#2f6bff] dark:text-sky-300"
+            className="rounded-full border border-[#2f6bff]/30 bg-[#2f6bff]/10 px-2.5 py-0.5 text-[11px] font-mono font-semibold text-[#2f6bff]"
           >
             {t}
           </li>

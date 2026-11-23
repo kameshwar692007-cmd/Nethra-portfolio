@@ -108,11 +108,11 @@ export default function Navbar() {
         <a
           href="#about"
           onClick={(e) => handleNavClick(e, '#about')}
-          className="flex items-center gap-2.5 group select-none cursor-pointer"
+          className="flex items-center gap-3 group select-none cursor-pointer"
         >
-          {/* Signature Bold Royal Blue Logo Box with Prominent "N" */}
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#2f6bff] flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105 shrink-0">
-            <span className="font-display font-black text-white text-base sm:text-lg tracking-tight select-none leading-none">
+          {/* Signature Prominent Royal Blue Logo Box with Increased Size on Mobile & Desktop */}
+          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#2f6bff] flex items-center justify-center text-white shadow-md transition-transform group-hover:scale-105 shrink-0">
+            <span className="font-display font-black text-white text-xl sm:text-2xl tracking-tight select-none leading-none">
               N
             </span>
           </div>
