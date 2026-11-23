@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 import { ArrowUpRight, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { ScrollTextReveal } from './scroll-text-reveal';
 
 export default function HeroSection() {
   const containerRef = useRef(null);
@@ -127,14 +128,14 @@ export default function HeroSection() {
                 </span>
               </h1>
               
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.22, ease: "easeOut" }}
-                className="mt-4 sm:mt-5 text-lg sm:text-2xl text-slate-300 font-normal max-w-xl leading-snug"
-              >
-                Building deep-tech hardware &amp; clinical AI from Salem, while orchestrating digital platforms for <span className="text-white font-semibold">38 districts</span> across Tamil Nadu.
-              </motion.p>
+              {/* Dynamic Scroll Text Reveal Summary (Words brighten as user scrolls) */}
+              <div className="mt-4 sm:mt-5 max-w-xl">
+                <ScrollTextReveal
+                  text="Building deep-tech hardware and clinical AI from Salem, while orchestrating digital platforms for 38 districts across Tamil Nadu. Turning grassroots science into 7 sovereign patent registrations and sovereign commercial technologies."
+                  offset={["start 0.45", "end 0.05"]}
+                  className="mx-0 max-w-xl text-left text-base sm:text-lg lg:text-xl font-normal leading-relaxed tracking-tight text-[var(--foreground)]"
+                />
+              </div>
             </div>
 
             {/* Concise Verified Achievement — Solid Hairline Editorial Block */}

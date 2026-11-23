@@ -23,13 +23,14 @@ function Word({ word, range, progress }) {
 export function ScrollTextReveal({
   text = "Good material is quiet. It does not shout for attention, it earns it, one clear word after another, until the whole idea is simply there.",
   scrollContainer,
+  offset = ["start 0.85", "end 0.45"],
   className,
 }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     container: scrollContainer,
-    offset: ["start 0.85", "end 0.45"],
+    offset,
   });
   const words = text.split(" ");
 
