@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FileText } from 'lucide-react';
 import { cn } from '../lib/utils';
 import ThemeSwitcher from './ThemeSwitcher';
+import { ThemeToggle } from './theme-toggle';
 import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar() {
@@ -262,7 +263,7 @@ export default function Navbar() {
                   </a>
                 </motion.li>
 
-                {/* Mobile Direct Theme Switcher */}
+                {/* Mobile Direct Theme Switcher with Circle Spread */}
                 <motion.li
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -273,32 +274,15 @@ export default function Navbar() {
                     <span>Visual Atmosphere</span>
                     <span className="text-[9px] text-[#2f6bff] font-mono">Permanent Blue Accent</span>
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {themes.map((t) => {
-                      const isActive = theme === t.id;
-                      return (
-                        <button
-                          key={t.id}
-                          type="button"
-                          onClick={() => {
-                            setTheme(t.id);
-                            setOpen(false);
-                          }}
-                          className={cn(
-                            "flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-mono transition-all border text-left",
-                            isActive
-                              ? "bg-[#2f6bff]/15 border-[#2f6bff] text-[#2f6bff] font-bold shadow-xs"
-                              : "bg-[var(--surface)] border-[var(--border)] text-[var(--foreground)] hover:border-[#2f6bff]/40"
-                          )}
-                        >
-                          <span
-                            className="w-3 h-3 rounded-full border border-[var(--border)] shrink-0"
-                            style={{ backgroundColor: t.bg }}
-                          />
-                          <span className="truncate">{t.name}</span>
-                        </button>
-                      );
-                    })}
+                  <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)]">
+                    <span className="text-xs font-mono font-medium text-[var(--foreground)]">
+                      {theme === 'dark' ? 'Dark Atmosphere' : 'Soft Stone Atmosphere'}
+                    </span>
+                    <ThemeToggle
+                      checked={theme === 'dark'}
+                      onCheckedChange={(dark) => setTheme(dark ? 'dark' : 'soft-stone')}
+                      size="sm"
+                    />
                   </div>
                 </motion.li>
               </ul>
